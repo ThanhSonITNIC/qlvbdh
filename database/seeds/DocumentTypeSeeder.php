@@ -11,6 +11,12 @@ class DocumentTypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('document_types')->insert([
+            ['id' => 'De', 'name' => 'Văn bản đến'],
+            ['id' => 'Di', 'name' => 'Văn bản đi'],
+            ['id' => 'NB', 'name' => 'Văn bản nội bộ'],
+            ['id' => 'BC', 'name' => 'Báo cáo'],
+            ['id' => 'DT', 'name' => 'Dự thảo'],
+        ]);
     }
 }

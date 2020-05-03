@@ -11,6 +11,9 @@ class PublisherSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('publishers')->insert([
+            ['name' => 'Công ty Hải Sơn'],
+            ['name' => 'Bộ quốc phòng'],
+        ]);
     }
 }
