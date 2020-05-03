@@ -15,6 +15,26 @@ use App\Entities\GroupUser;
 class GroupUserRepositoryEloquent extends BaseRepository implements GroupUserRepository
 {
     /**
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'id' => '=',
+        'user_id' => '=',
+        'group_id' => '=',
+
+        'user.id' => '=',
+        'user.name' => 'like',
+        'user.email' => '=',
+        'user.tel' => '=',
+        'user.birthday' => '=',
+        'user.department_id' => '=',
+        'user.active' => '=',
+
+        'group.id' => '=',
+        'group.name' => 'like',
+    ];
+
+    /**
      * Specify Model class name
      *
      * @return string

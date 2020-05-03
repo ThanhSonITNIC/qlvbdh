@@ -15,6 +15,26 @@ use App\Entities\User;
 class UserRepositoryEloquent extends BaseRepository implements UserRepository
 {
     /**
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'id' => '=',
+        'name' => 'like',
+        'email' => '=',
+        'tel' => '=',
+        'birthday' => '=',
+        'department_id' => '=',
+        'active' => '=',
+
+        'groups.id' => '=',
+        'groups.name' => 'like',
+
+        'department.id' => '=',
+        'department.name' => 'like',
+        'department.tel' => '=',
+    ];
+
+    /**
      * Specify Model class name
      *
      * @return string

@@ -15,6 +15,28 @@ use App\Entities\DocumentType;
 class DocumentTypeRepositoryEloquent extends BaseRepository implements DocumentTypeRepository
 {
     /**
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'id' => '=',
+        'name' => 'like',
+
+        'documents.id' => '=',
+        'documents.abstract' => 'like',
+        'documents.content' => 'like',
+        'documents.book_id' => '=',
+        'documents.type_id' => '=',
+        'documents.signer_id' => '=',
+        'documents.creator_id' => '=',
+        'documents.published_at' => '=',
+        'documents.arrival_at' => '=',
+        'documents.publisher_id' => '=',
+        'documents.attachments' => 'like',
+        'documents.due_at' => '=',
+        'documents.link_id' => '=',
+    ];
+
+    /**
      * Specify Model class name
      *
      * @return string
