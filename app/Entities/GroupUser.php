@@ -26,4 +26,12 @@ class GroupUser extends Model implements Transformable
         'group_id',
     ];
 
+    public function group(){
+        return $this->belongsTo(Group::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
 }

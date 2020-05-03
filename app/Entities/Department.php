@@ -28,4 +28,11 @@ class Department extends Model implements Transformable
 
     protected $keyType = 'string';
 
+    public function users(){
+        return $this->hasMany(User::class);
+    }
+
+    public function documents(){
+        return $this->belongsToMany(Document::class, DocumentReceiver::class);
+    }
 }

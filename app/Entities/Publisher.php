@@ -24,4 +24,7 @@ class Publisher extends Model implements Transformable
 
     public $timestamps = false;
 
+    public function documents(){
+        return $this->hasMany(Documents::class);
+    }
 }

@@ -24,4 +24,12 @@ class Group extends Model implements Transformable
 
     public $timestamps = false;
 
+    public function users(){
+        return $this->belongsToMany(User::class, GroupUser::class);
+    }
+
+    public function documents(){
+        return $this->belongsToMany(Document::class, DocumentReceiver::class);
+    }
+
 }

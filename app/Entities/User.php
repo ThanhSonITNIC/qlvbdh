@@ -42,5 +42,27 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'active' => 'boolean',
+        'birthday' => 'date',
     ];
+
+    public function groups(){
+        return $this->belongsToMany(Group::class, GroupUser::class);
+    }
+
+    public function department(){
+        return $this->belongsTo(Department::class);
+    }
+
+    public function createdDocuments(){
+        return $this->hasMany(Document::class, 'creator_id');
+    }
+
+    public function signedDocuments(){
+        return $this->hasMany(Document::class, 'signer_id');
+    }
+
+    public function receivedDocuments(){
+        return $this->belongsToMany(Document::class, DocumentReceiver::class);
+    }
 }

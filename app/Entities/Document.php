@@ -5,6 +5,7 @@ namespace App\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use App\Casts\Json;
 
 /**
  * Class Document.
@@ -39,5 +40,40 @@ class Document extends Model implements Transformable
     protected $keyType = 'string';
 
     public $incrementing = false;
+
+    protected $casts = [
+        'published_at' => 'date',
+        'arrival_at' => 'date',
+        'due_at' => 'date',
+        'attachments' => Json::class,
+    ];
+
+    public function receivers(){
+        return $this->hasMany(DocumentReceiver::class);
+    }
+
+    public function type(){
+        return $this->belongsTo(DocumentType::class, 'type_id');
+    }
+
+    public function book(){
+        return $this->belongsTo(Book::class);
+    }
+
+    public function publisher(){
+        return $this->belongsTo(Publisher::class);
+    }
+
+    public function signer(){
+        return $this->belongsTo(User::class, 'signer_id');
+    }
+
+    public function creator(){
+        return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function link(){
+        return $this->belongsTo(Document::class, 'link_id');
+    }
 
 }
