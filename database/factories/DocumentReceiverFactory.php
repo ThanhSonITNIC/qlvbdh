@@ -5,22 +5,22 @@
 use App\Entities\DocumentReceiver;
 use Faker\Generator as Faker;
 use App\Entities\User;
-use App\Entities\Group;
 use App\Entities\Department;
 use App\Entities\Document;
+use Spatie\Permission\Models\Role;
 
 $factory->define(DocumentReceiver::class, function (Faker $faker) {
     
     $document = Document::all()->random();
     
-    $group_id = null;
+    $role_id = null;
     $department_id = null;
     
     switch (rand(0, 2)) {
-        case 0: // select group
-            $group = Group::all()->random();
-            $user = $group->users->random();
-            $group_id = $group->id;
+        case 0: // select role
+            $role = Role::all()->random();
+            $user = User::role($role)->get()->random();
+            $role_id = $role->id;
             break;
         case 1: // select department
             $user = Department::all()->random()->users->random();
@@ -40,7 +40,7 @@ $factory->define(DocumentReceiver::class, function (Faker $faker) {
         'view_only' => rand(0, 1),
         'seen' => rand(0, 1),
         'done' => rand(0, 1),
-        'group_id' => $group_id,
+        'role_id' => $role_id,
         'department_id' => $department_id,
     ];
 });

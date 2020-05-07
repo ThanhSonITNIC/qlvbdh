@@ -5,6 +5,7 @@ namespace App\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use Spatie\Permission\Models\Role;
 
 /**
  * Class DocumentReceiver.
@@ -27,7 +28,7 @@ class DocumentReceiver extends Model implements Transformable
         'view_only', 
         'seen', 
         'done',
-        'group_id',
+        'role_id',
         'department_id',
     ];
 
@@ -41,8 +42,8 @@ class DocumentReceiver extends Model implements Transformable
         return $this->belongsTo(Department::class);
     }
 
-    public function group(){
-        return $this->belongsTo(Group::class);
+    public function role(){
+        return $this->belongsTo(Role::class);
     }
 
     public function user(){

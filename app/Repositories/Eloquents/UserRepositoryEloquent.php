@@ -24,14 +24,18 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         'tel' => '=',
         'birthday' => '=',
         'department_id' => '=',
+        'title_id' => '=',
         'active' => '=',
 
-        'groups.id' => '=',
-        'groups.name' => 'like',
+        'roles.id' => '=',
+        'roles.name' => 'like',
 
         'department.id' => '=',
         'department.name' => 'like',
         'department.tel' => '=',
+
+        'title.id' => '=',
+        'title.name' => 'like',
     ];
 
     /**

@@ -7,11 +7,11 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class GroupUser.
+ * Class Title.
  *
  * @package namespace App\Entities;
  */
-class GroupUser extends Model implements Transformable
+class Title extends Model implements Transformable
 {
     use TransformableTrait;
 
@@ -20,18 +20,16 @@ class GroupUser extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [
-        'id', 
-        'user_id', 
-        'group_id',
-    ];
+    protected $fillable = ['id', 'name'];
 
-    public function group(){
-        return $this->belongsTo(Group::class);
-    }
+    public $timestamps = false;
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
+    public function users(){
+        return $this->hasMany(User::class);
     }
 
 }

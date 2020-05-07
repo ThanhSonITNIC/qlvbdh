@@ -22,7 +22,7 @@ class CreateDocumentReceiversTable extends Migration
 			$table->boolean('view_only')->default(true);
 			$table->boolean('seen')->default(false);
 			$table->boolean('done')->nullable();
-			$table->unsignedInteger('group_id')->nullable();
+			$table->unsignedBigInteger('role_id')->nullable();
 			$table->string('department_id', 30)->nullable();
             $table->timestamps();
 		
@@ -35,9 +35,9 @@ class CreateDocumentReceiversTable extends Migration
 				->on('documents')
 				->onUpdate('cascade')
 				->onDelete('cascade');
-			$table->foreign('group_id')
+			$table->foreign('role_id')
 				->references('id')
-				->on('groups')
+				->on(config('permission.table_names.roles'))
 				->onUpdate('cascade');
 			$table->foreign('department_id')
 				->references('id')

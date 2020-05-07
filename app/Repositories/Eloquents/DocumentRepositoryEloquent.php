@@ -38,7 +38,7 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
         'receivers.view_only' => '=',
         'receivers.seen' => '=',
         'receivers.done' => '=',
-        'receivers.group_id' => '=',
+        'receivers.role_id' => '=',
         'receivers.department_id' => '=',
 
         'type.id' => '=',

@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('tel');
             $table->date('birthday');
             $table->string('department_id', 30)->nullable();
+            $table->string('title_id', 30)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('active')->default(true);
@@ -29,6 +30,10 @@ class CreateUsersTable extends Migration
             $table->foreign('department_id')
                 ->references('id')
                 ->on('departments')
+                ->onUpdate('cascade');
+            $table->foreign('title_id')
+                ->references('id')
+                ->on('titles')
                 ->onUpdate('cascade');
         });
     }

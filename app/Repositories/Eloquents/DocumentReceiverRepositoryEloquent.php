@@ -24,7 +24,7 @@ class DocumentReceiverRepositoryEloquent extends BaseRepository implements Docum
         'view_only' => '=',
         'seen' => '=',
         'done' => '=',
-        'group_id' => '=',
+        'role_id' => '=',
         'department_id' => '=',
 
         'user.id' => '=',
@@ -39,8 +39,8 @@ class DocumentReceiverRepositoryEloquent extends BaseRepository implements Docum
         'department.name' => 'like',
         'department.tel' => '=',
 
-        'group.id' => '=',
-        'group.name' => 'like',
+        'role.id' => '=',
+        'role.name' => 'like',
     ];
 
     /**

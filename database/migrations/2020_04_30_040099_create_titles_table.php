@@ -4,9 +4,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class CreateGroupsTable.
+ * Class CreateTitlesTable.
  */
-class CreateGroupsTable extends Migration
+class CreateTitlesTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -15,9 +15,9 @@ class CreateGroupsTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('groups', function(Blueprint $table) {
-            $table->increments('id');
-			$table->string('name');
+		Schema::create('titles', function(Blueprint $table) {
+            $table->string('id', 30)->primary();
+            $table->string('name');
 		});
 	}
 
@@ -28,6 +28,6 @@ class CreateGroupsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('groups');
+		Schema::drop('titles');
 	}
 }

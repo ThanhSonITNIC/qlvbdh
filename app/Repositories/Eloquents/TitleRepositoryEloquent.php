@@ -4,36 +4,22 @@ namespace App\Repositories\Eloquents;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Contracts\Repositories\GroupRepository;
-use App\Entities\Group;
+use App\Contracts\Repositories\TitleRepository;
+use App\Entities\Title;
 
 /**
- * Class GroupRepositoryEloquent.
+ * Class TitleRepositoryEloquent.
  *
  * @package namespace App\Repositories\Eloquents;
  */
-class GroupRepositoryEloquent extends BaseRepository implements GroupRepository
+class TitleRepositoryEloquent extends BaseRepository implements TitleRepository
 {
-    /**
+        /**
      * @var array
      */
     protected $fieldSearchable = [
         'id' => '=',
         'name' => 'like',
-
-        'documents.id' => '=',
-        'documents.abstract' => 'like',
-        'documents.content' => 'like',
-        'documents.book_id' => '=',
-        'documents.type_id' => '=',
-        'documents.signer_id' => '=',
-        'documents.creator_id' => '=',
-        'documents.published_at' => '=',
-        'documents.arrival_at' => '=',
-        'documents.publisher_id' => '=',
-        'documents.attachments' => 'like',
-        'documents.due_at' => '=',
-        'documents.link_id' => '=',
 
         'users.id' => '=',
         'users.name' => 'like',
@@ -51,7 +37,7 @@ class GroupRepositoryEloquent extends BaseRepository implements GroupRepository
      */
     public function model()
     {
-        return Group::class;
+        return Title::class;
     }
 
     /**

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Contracts\Repositories\GroupUserRepository;
-use App\Http\Requests\GroupUser\{
+use App\Contracts\Repositories\TitleRepository;
+use App\Http\Requests\Title\{
     IndexRequest,
     CreateRequest,
     ShowRequest,
@@ -13,23 +13,23 @@ use App\Http\Requests\GroupUser\{
 };
 
 /**
- * Class GroupUsersController.
+ * Class TitlesController.
  *
  * @package namespace App\Http\Controllers\Api;
  */
-class GroupUsersController extends Controller
+class TitlesController extends Controller
 {
     /**
-     * @var GroupUserRepository
+     * @var TitleRepository
      */
     protected $repository;
 
     /**
-     * GroupUsersController constructor.
+     * TitlesController constructor.
      *
-     * @param GroupUserRepository $repository
+     * @param TitleRepository $repository
      */
-    public function __construct(GroupUserRepository $repository)
+    public function __construct(TitleRepository $repository)
     {
         $this->repository = $repository;
     }

@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'tel' => '0376111000', 
                 'birthday' => '1975-04-30', 
                 'department_id' => null,
+                'title_id' => null,
                 'email_verified_at' => now(),
             ],
         ]);
