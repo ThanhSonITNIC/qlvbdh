@@ -4,9 +4,12 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Prettus\Repository\Traits\Respondable;
 
 class Handler extends ExceptionHandler
 {
+    use Respondable;
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -50,6 +53,26 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException)
+        {
+            return $this->respondNotFound($exception->getMessage());
+        }
+        elseif($exception instanceof \Illuminate\Database\QueryException)
+        {
+            return $this->respondError($exception->errorInfo, 422);
+        }
+        elseif($exception instanceof \Illuminate\Database\Eloquent\RelationNotFoundException)
+        {
+            return $this->respondError($exception->getMessage(), 422);
+        }
+        elseif($exception instanceof \Prettus\Validator\Exceptions\ValidatorException)
+        {
+            return $this->respondError($exception, 400);
+        }
+        elseif($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException)
+        {
+            return $this->respondNotFound('Url not found');
+        }
         return parent::render($request, $exception);
     }
 }
