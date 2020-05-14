@@ -65,7 +65,7 @@ class Document extends Model implements Transformable
     }
 
     public function signer(){
-        return $this->belongsTo(User::class, 'signer_id');
+        return $this->belongsTo(Signer::class);
     }
 
     public function creator(){

@@ -52,11 +52,7 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
 
         'signer.id' => '=',
         'signer.name' => 'like',
-        'signer.email' => '=',
-        'signer.tel' => '=',
-        'signer.birthday' => '=',
-        'signer.department_id' => '=',
-        'signer.active' => '=',
+        'signer.description' => 'like',
 
         'creator.id' => '=',
         'creator.name' => 'like',

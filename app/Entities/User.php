@@ -64,10 +64,6 @@ class User extends Authenticatable
         return $this->hasMany(Document::class, 'creator_id');
     }
 
-    public function signedDocuments(){
-        return $this->hasMany(Document::class, 'signer_id');
-    }
-
     public function receivedDocuments(){
         return $this->belongsToMany(Document::class, DocumentReceiver::class);
     }

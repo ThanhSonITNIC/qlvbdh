@@ -41,7 +41,7 @@ class CreateDocumentsTable extends Migration
 				->onUpdate('cascade');
 			$table->foreign('signer_id')
 				->references('id')
-				->on('users')
+				->on('signers')
 				->onUpdate('cascade');
 			$table->foreign('creator_id')
 				->references('id')
