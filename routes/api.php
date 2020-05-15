@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->namespace('Api')->group(function(){
     Route::apiResource('departments', 'DepartmentsController');
     Route::apiResource('document-receivers', 'DocumentReceiversController');
     Route::apiResource('documents', 'DocumentsController');
-    Route::apiResource('documents-types', 'DocumentTypesController');
+    Route::apiResource('document-types', 'DocumentTypesController');
     Route::apiResource('publishers', 'PublishersController');
     Route::apiResource('signers', 'SignersController');
     Route::apiResource('titles', 'TitlesController');
