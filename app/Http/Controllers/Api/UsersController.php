@@ -41,7 +41,7 @@ class UsersController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        $data = $this->repository->all();
+        $data = $this->repository->paginate();
         return $this->respond($data);
     }
 
