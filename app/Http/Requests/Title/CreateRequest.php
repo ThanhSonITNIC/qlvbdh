@@ -24,7 +24,8 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'required|string|alpha_dash|max:30|unique:titles,id',
+            'name' => 'required|string',
         ];
     }
 }

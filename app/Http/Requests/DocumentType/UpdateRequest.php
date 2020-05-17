@@ -24,7 +24,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'nullable|alpha_num|max:2|unique:document_types,id,'.$this->document_type,
+            'name' => 'nullable|string',
         ];
     }
 }

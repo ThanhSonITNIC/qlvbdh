@@ -16,21 +16,17 @@ class PermissionSeeder extends Seeder
         $guard = config('auth.defaults.guard');
 
         DB::table(config('permission.table_names.permissions'))->insert([
-            ['name' => 'Quản lý chức vụ', 'guard_name' => $guard],
+            ['name' => 'Quản lý chức danh', 'guard_name' => $guard],
             ['name' => 'Quản lý người dùng', 'guard_name' => $guard],
-            ['name' => 'Quản lý nhân viên', 'guard_name' => $guard],
             ['name' => 'Quản lý phòng ban', 'guard_name' => $guard],
             ['name' => 'Quản lý nhóm', 'guard_name' => $guard],
-            ['name' => 'Chỉ định chức vụ cho người dùng', 'guard_name' => $guard],
-            ['name' => 'Thêm người dùng vào phòng ban', 'guard_name' => $guard],
-            ['name' => 'Thêm nhân viên vào phòng ban', 'guard_name' => $guard],
+            ['name' => 'Quản lý người ký', 'guard_name' => $guard],
+            ['name' => 'Quản lý nơi ban hành', 'guard_name' => $guard],
+            ['name' => 'Phân quyền', 'guard_name' => $guard],
             ['name' => 'Báo cáo thống kê', 'guard_name' => $guard],
             ['name' => 'Quản lý văn bản đến', 'guard_name' => $guard],
             ['name' => 'Quản lý văn bản đi', 'guard_name' => $guard],
             ['name' => 'Quản lý văn bản nội bộ', 'guard_name' => $guard],
-            ['name' => 'Chuyển văn bản', 'guard_name' => $guard],
-            ['name' => 'Xem văn bản', 'guard_name' => $guard],
-            ['name' => 'Trả lời văn bản', 'guard_name' => $guard],
         ]);
 
         DB::table(config('permission.table_names.roles'))->insert([
@@ -40,8 +36,51 @@ class PermissionSeeder extends Seeder
             ['name' => 'Văn thư', 'guard_name' => $guard],
         ]);
 
-        for ($i=0; $i < 100; $i++) { 
-            User::all()->random()->assignRole(Role::all()->random()->id);
+        Role::find(1)->syncPermissions([
+            'Quản lý chức danh',
+            'Quản lý người dùng',
+            'Quản lý phòng ban',
+            'Quản lý người ký',
+            'Quản lý nơi ban hành',
+            'Phân quyền',
+            'Báo cáo thống kê',
+        ]);
+
+        Role::find(3)->syncPermissions([
+            'Quản lý chức danh',
+            'Quản lý người dùng',
+            'Quản lý phòng ban',
+            'Quản lý người ký',
+            'Quản lý nơi ban hành',
+            'Phân quyền',
+            'Báo cáo thống kê',
+            'Quản lý văn bản đến',
+            'Quản lý văn bản đi',
+            'Quản lý văn bản nội bộ',
+        ]);
+
+        Role::find(4)->syncPermissions([
+            'Báo cáo thống kê',
+            'Quản lý văn bản đến',
+            'Quản lý văn bản đi',
+            'Quản lý văn bản nội bộ',
+        ]);
+
+        for ($i=0; $i < 10; $i++) { 
+            User::where('department_id', 'PKTCN')->get()->random()->assignRole();
         }
+
+        for ($i=0; $i < 10; $i++) { 
+            User::where('department_id', 'PHCHC')->get()->random()->assignRole();
+        }
+
+        for ($i=0; $i < 50; $i++) { 
+            User::whereNotIn('department_id', ['PKTCN', 'PHCHC'])
+                ->get()
+                ->random()
+                ->assignRole(Role::all()->random()->id);
+        }
+
+        User::find(1)->syncRoles('Quản trị hệ thống');
     }
 }

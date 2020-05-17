@@ -24,7 +24,15 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'nullable|numeric|unique:users,id',
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|confirmed',
+            'tel' => 'nullable|alpha_num|max:15|unique:users,tel',
+            'birthday' => 'nullable|date',
+            'department_id' => 'nullable|exists:departments,id',
+            'title_id' => 'nullable|exists:titles,id',
+            'active' => 'nullable|boolean',
         ];
     }
 }

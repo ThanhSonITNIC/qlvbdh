@@ -24,7 +24,9 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'nullable|numeric|unique:signers,id',
+            'name' => 'required|string',
+            'description' => 'nullable|string',
         ];
     }
 }

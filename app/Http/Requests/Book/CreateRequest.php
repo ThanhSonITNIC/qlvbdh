@@ -24,7 +24,8 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'nullable|numeric|unique:books,id,'.$this->book,
+            'name' => 'required|string',
         ];
     }
 }

@@ -24,7 +24,8 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'required|alpha_num|max:2|unique:document_types,id',
+            'name' => 'required|string',
         ];
     }
 }

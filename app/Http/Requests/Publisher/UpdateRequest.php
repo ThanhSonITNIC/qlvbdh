@@ -24,7 +24,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'nullable|numeric|unique:publishers,id,'.$this->publisher,
+            'name' => 'nullable|string',
         ];
     }
 }

@@ -11,7 +11,7 @@ class DocumentSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Entities\Document::class, 50)->create();
-        factory(App\Entities\DocumentReceiver::class, 100)->create();
+        factory(App\Entities\Document::class, 100)->create();
+        factory(App\Entities\DocumentReceiver::class, 50)->create();
     }
 }

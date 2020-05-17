@@ -31,9 +31,6 @@ $factory->define(DocumentReceiver::class, function (Faker $faker) {
             break;
     }
 
-    if(DocumentReceiver::where('user_id', $user->id)->where('document_id', $document->id)->first())
-        return null;
-
     return [
         'user_id' => $user->id,
         'document_id' => $document->id,

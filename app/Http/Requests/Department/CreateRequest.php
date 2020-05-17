@@ -24,7 +24,9 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id' => 'required|string|alpha_dash|max:30|unique:departments,id,'.$this->department,
+            'name' => 'required|string',
+            'tel' => 'nullable|alpha_num|max:15|unique:departments,tel,'.$this->tel,
         ];
     }
 }

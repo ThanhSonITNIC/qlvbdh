@@ -26,6 +26,7 @@ class CreateDocumentReceiversTable extends Migration
 			$table->string('department_id', 30)->nullable();
             $table->timestamps();
 		
+			$table->unique(['user_id', 'document_id']);
 			$table->foreign('user_id')
 				->references('id')
 				->on('users')
