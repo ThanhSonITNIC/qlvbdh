@@ -15,8 +15,8 @@ class DocumentTypeSeeder extends Seeder
             ['id' => 'De', 'name' => 'Văn bản đến'],
             ['id' => 'Di', 'name' => 'Văn bản đi'],
             ['id' => 'NB', 'name' => 'Văn bản nội bộ'],
-            ['id' => 'BC', 'name' => 'Báo cáo'],
-            ['id' => 'DT', 'name' => 'Dự thảo'],
+            ['id' => 'BC', 'name' => 'Văn bản báo cáo'],
+            ['id' => 'DT', 'name' => 'Văn bản dự thảo'],
         ]);
     }
 }

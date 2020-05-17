@@ -18,6 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'id',
         'name', 
         'email', 
         'password',
@@ -66,5 +67,9 @@ class User extends Authenticatable
 
     public function receivedDocuments(){
         return $this->belongsToMany(Document::class, DocumentReceiver::class);
+    }
+
+    public function getDocumentsAttribute(){
+        return $this->createdDocuments->merge($this->receivedDocuments);
     }
 }

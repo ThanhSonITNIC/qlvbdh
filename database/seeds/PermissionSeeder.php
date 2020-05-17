@@ -22,11 +22,15 @@ class PermissionSeeder extends Seeder
             ['name' => 'Quản lý nhóm', 'guard_name' => $guard],
             ['name' => 'Quản lý người ký', 'guard_name' => $guard],
             ['name' => 'Quản lý nơi ban hành', 'guard_name' => $guard],
+            ['name' => 'Quản lý loại văn bản', 'guard_name' => $guard],
             ['name' => 'Phân quyền', 'guard_name' => $guard],
             ['name' => 'Báo cáo thống kê', 'guard_name' => $guard],
             ['name' => 'Quản lý văn bản đến', 'guard_name' => $guard],
             ['name' => 'Quản lý văn bản đi', 'guard_name' => $guard],
             ['name' => 'Quản lý văn bản nội bộ', 'guard_name' => $guard],
+            ['name' => 'Quản lý văn bản báo cáo', 'guard_name' => $guard],
+            ['name' => 'Quản lý văn bản dự thảo', 'guard_name' => $guard],
+            ['name' => 'Quản lý sổ văn bản', 'guard_name' => $guard],
         ]);
 
         DB::table(config('permission.table_names.roles'))->insert([
@@ -44,6 +48,13 @@ class PermissionSeeder extends Seeder
             'Quản lý nơi ban hành',
             'Phân quyền',
             'Báo cáo thống kê',
+            'Quản lý văn bản báo cáo',
+            'Quản lý văn bản dự thảo',
+        ]);
+
+        Role::find(2)->syncPermissions([
+            'Quản lý văn bản báo cáo',
+            'Quản lý văn bản dự thảo',
         ]);
 
         Role::find(3)->syncPermissions([
@@ -57,6 +68,10 @@ class PermissionSeeder extends Seeder
             'Quản lý văn bản đến',
             'Quản lý văn bản đi',
             'Quản lý văn bản nội bộ',
+            'Quản lý loại văn bản',
+            'Quản lý văn bản báo cáo',
+            'Quản lý văn bản dự thảo',
+            'Quản lý sổ văn bản',
         ]);
 
         Role::find(4)->syncPermissions([
@@ -64,6 +79,10 @@ class PermissionSeeder extends Seeder
             'Quản lý văn bản đến',
             'Quản lý văn bản đi',
             'Quản lý văn bản nội bộ',
+            'Quản lý loại văn bản',
+            'Quản lý văn bản báo cáo',
+            'Quản lý văn bản dự thảo',
+            'Quản lý sổ văn bản',
         ]);
 
         for ($i=0; $i < 10; $i++) { 

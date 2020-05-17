@@ -13,7 +13,11 @@ class CreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->hasAnyPermission([
+            'Quản lý văn bản đến', 
+            'Quản lý văn bản đi', 
+            'Quản lý văn bản nội bộ',
+        ]);
     }
 
     /**

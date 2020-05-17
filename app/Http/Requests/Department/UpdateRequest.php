@@ -13,7 +13,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->hasPermissionTo('Quản lý phòng ban');
     }
 
     /**
@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
         return [
             'id' => 'nullable|string|alpha_dash|max:30|unique:departments,id,'.$this->department,
             'name' => 'nullable|string',
-            'tel' => 'nullable|alpha_num|max:15|unique:departments,tel,'.$this->tel,
+            'tel' => 'nullable|alpha_num|max:15',
         ];
     }
 }

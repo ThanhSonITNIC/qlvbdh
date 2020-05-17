@@ -13,7 +13,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->hasPermissionTo('Quản lý người dùng') || $this->user()->id == $this->user;
     }
 
     /**
@@ -28,7 +28,7 @@ class UpdateRequest extends FormRequest
             'name' => 'nullable|string',
             'email' => 'nullable|email|unique:users,email',
             'password' => 'nullable|confirmed',
-            'tel' => 'nullable|alpha_num|max:15|unique:users,tel',
+            'tel' => 'nullable|alpha_num|max:15',
             'birthday' => 'nullable|date',
             'department_id' => 'nullable|exists:departments,id',
             'title_id' => 'nullable|exists:titles,id',

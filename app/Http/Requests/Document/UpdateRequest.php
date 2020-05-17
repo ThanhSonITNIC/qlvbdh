@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Document;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Entities\Document;
 
 class UpdateRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Document::find($this->document)->creator_id == $this->user()->id;
     }
 
     /**
@@ -38,5 +39,18 @@ class UpdateRequest extends FormRequest
             'due_at' => 'nullable|date',
             'link_id' => 'nullable|exists:documents,id',
         ];
+    }
+
+    /**
+     * Get all of the input and files for the request.
+     *
+     * @param  array|mixed|null  $keys
+     * @return array
+     */
+    public function all($keys = null)
+    {
+        $data = parent::all($keys);
+        $data['creator_id'] = $this->user()->id;
+        return $data;
     }
 }

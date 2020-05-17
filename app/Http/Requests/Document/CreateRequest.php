@@ -3,6 +3,8 @@
 namespace App\Http\Requests\Document;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Entities\DocumentType;
+use Illuminate\Support\Str;
 
 class CreateRequest extends FormRequest
 {
@@ -13,7 +15,8 @@ class CreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        $typeName = Str::lower(DocumentType::find($this->type_id)->name);
+        return $this->user()->hasPermissionTo('Quản lý '. $typeName);
     }
 
     /**
@@ -38,5 +41,18 @@ class CreateRequest extends FormRequest
             'due_at' => 'nullable|date',
             'link_id' => 'nullable|exists:documents,id',
         ];
+    }
+
+    /**
+     * Get all of the input and files for the request.
+     *
+     * @param  array|mixed|null  $keys
+     * @return array
+     */
+    public function all($keys = null)
+    {
+        $data = parent::all($keys);
+        $data['creator_id'] = $this->user()->id;
+        return $data;
     }
 }

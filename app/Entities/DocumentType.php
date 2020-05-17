@@ -27,6 +27,10 @@ class DocumentType extends Model implements Transformable
     public $incrementing = false;
 
     protected $keyType = 'string';
+
+    public const DI = 'Di';
+    public const DEN = 'De';
+    public const NOIBO = 'NB';
     
     public function documents(){
         return $this->hasMany(Documents::class);

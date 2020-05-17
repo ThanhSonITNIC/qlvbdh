@@ -92,6 +92,7 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
      */
     public function boot()
     {
+        $this->pushCriteria(\App\Criteria\DocumentCriteria::class);
         $this->pushCriteria(app(RequestCriteria::class));
     }
     
