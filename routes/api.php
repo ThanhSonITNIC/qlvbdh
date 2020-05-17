@@ -25,21 +25,3 @@ Route::middleware('auth:sanctum')->namespace('Api')->group(function(){
     Route::apiResource('titles', 'TitlesController');
     Route::apiResource('users', 'UsersController');
 });
-
-Route::post('/sanctum/token', function (Request $request) {
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-        'device_name' => 'required'
-    ]);
-
-    $user = \App\Entities\User::where('email', $request->email)->first();
-
-    if (! $user || ! \Illuminate\Support\Facades\Hash::check($request->password, $user->password)) {
-        throw \Illuminate\Validation\ValidationException::withMessages([
-            'email' => ['The provided credentials are incorrect.'],
-        ]);
-    }
-
-    return $user->createToken($request->device_name)->plainTextToken;
-});
