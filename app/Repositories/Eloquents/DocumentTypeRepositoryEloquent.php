@@ -31,7 +31,6 @@ class DocumentTypeRepositoryEloquent extends BaseRepository implements DocumentT
         'documents.published_at' => '=',
         'documents.arrival_at' => '=',
         'documents.publisher_id' => '=',
-        'documents.attachments' => 'like',
         'documents.due_at' => '=',
         'documents.link_id' => '=',
     ];

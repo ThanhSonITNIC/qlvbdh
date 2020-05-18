@@ -23,7 +23,6 @@ $factory->define(Document::class, function (Faker $faker) {
         'published_at' => $faker->date(),
         'arrival_at' => $faker->date(),
         'publisher_id' => Publisher::all()->random()->id,
-        'attachments' => [$faker->imageUrl(), $faker->imageUrl()],
         'due_at' => $faker->date(),
         'link_id' => null,
     ];

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Contracts\Repositories\DocumentRepository;
-use App\Http\Requests\Document\{
+use App\Contracts\Repositories\AttachmentRepository;
+use App\Http\Requests\Attachment\{
     IndexRequest,
     CreateRequest,
     ShowRequest,
@@ -13,23 +13,23 @@ use App\Http\Requests\Document\{
 };
 
 /**
- * Class DocumentsController.
+ * Class AttachmentsController.
  *
  * @package namespace App\Http\Controllers\Api;
  */
-class DocumentsController extends Controller
+class AttachmentsController extends Controller
 {
     /**
-     * @var DocumentRepository
+     * @var AttachmentRepository
      */
     protected $repository;
 
     /**
-     * DocumentsController constructor.
+     * AttachmentsController constructor.
      *
-     * @param DocumentRepository $repository
+     * @param AttachmentRepository $repository
      */
-    public function __construct(DocumentRepository $repository)
+    public function __construct(AttachmentRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -41,7 +41,7 @@ class DocumentsController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        $data = $this->repository->paginate();
+        $data = $this->repository->all();
         return $this->respond($data);
     }
 
@@ -54,10 +54,6 @@ class DocumentsController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        if($request->has('attachments')){
-            $attachments = $request->file('attachments')->store('attachments');
-        }
-        dd($request->all());
         $data = $this->repository->create($request->all());
         return $this->respondCreated($data);
     }

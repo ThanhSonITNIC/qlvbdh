@@ -28,9 +28,15 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
         'published_at' => '=',
         'arrival_at' => '=',
         'publisher_id' => '=',
-        'attachments' => 'like',
         'due_at' => '=',
         'link_id' => '=',
+
+        'attachments.id' => '=',
+        'attachments.document_id' => '=',
+        'attachments.name' => 'like',
+        'attachments.ext' => '=',
+        'attachments.size' => '=',
+        'attachments.path' => 'like',
 
         'receivers.id' => '=',
         'receivers.user_id' => '=',

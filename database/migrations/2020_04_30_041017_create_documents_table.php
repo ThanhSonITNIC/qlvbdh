@@ -26,7 +26,6 @@ class CreateDocumentsTable extends Migration
 			$table->date('published_at');
 			$table->date('arrival_at')->nullable();
 			$table->unsignedInteger('publisher_id');
-			$table->json('attachments')->nullable();
 			$table->date('due_at')->nullable();
 			$table->string('link_id', 30)->nullable();
 			$table->timestamps();
