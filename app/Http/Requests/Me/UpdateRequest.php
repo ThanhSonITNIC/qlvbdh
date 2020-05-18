@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Me;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -13,7 +13,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->hasPermissionTo('Quản lý người dùng');
+        return true;
     }
 
     /**
@@ -30,9 +30,6 @@ class UpdateRequest extends FormRequest
             'password' => 'nullable|confirmed',
             'tel' => 'nullable|alpha_num|max:15',
             'birthday' => 'nullable|date',
-            'department_id' => 'nullable|exists:departments,id',
-            'title_id' => 'nullable|exists:titles,id',
-            'active' => 'nullable|boolean',
         ];
     }
 }
