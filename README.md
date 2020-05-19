@@ -50,4 +50,10 @@ CoreUI tools documentation:
 
 ### Usage
 
+``` bash
+# enable send mail
+php artisan queue:work
+
+```
+
 ### Documentation

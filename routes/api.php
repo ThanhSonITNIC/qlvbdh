@@ -28,8 +28,20 @@ Route::middleware('auth:sanctum')->namespace('Api')->group(function(){
     
     Route::get('download/attachments/{attachment}', 'AttachmentsController@download');
     
-    Route::get('me', 'MeController@show');
-    Route::put('me', 'MeController@update');
+    Route::prefix('me')->group(function(){
+        Route::get('', 'MeController@show');
+        Route::put('', 'MeController@update');
+        
+        Route::prefix('notifications')->group(function(){
+            Route::get('all', 'NotificationsController@index');
+            Route::get('read', 'NotificationsController@read');
+            Route::get('unread', 'NotificationsController@unread');
+            Route::put('read-all', 'NotificationsController@markAllAsRead');
+            Route::put('read/{notification}', 'NotificationsController@markAsRead');
+            Route::put('unread/{notification}', 'NotificationsController@markAsUnread');
+            Route::delete('{notification}', 'NotificationsController@destroy');
+        });
+    });
 });
 
 Route::post('/sanctum/token', function (Request $request) {
