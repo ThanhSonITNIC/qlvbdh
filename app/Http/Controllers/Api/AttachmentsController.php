@@ -11,6 +11,7 @@ use App\Http\Requests\Attachment\{
     UpdateRequest,
     DestroyRequest,
 };
+use App\Traits\Attachmentable;
 
 /**
  * Class AttachmentsController.
@@ -19,6 +20,8 @@ use App\Http\Requests\Attachment\{
  */
 class AttachmentsController extends Controller
 {
+    use Attachmentable;
+
     /**
      * @var AttachmentRepository
      */
@@ -54,7 +57,7 @@ class AttachmentsController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $data = $this->repository->create($request->all());
+        $data = $this->attachment($request->file('attachments'), $request->document_id);
         return $this->respondCreated($data);
     }
 
@@ -70,6 +73,19 @@ class AttachmentsController extends Controller
     {
         $data = $this->repository->find($id);
         return $this->respond($data);
+    }
+
+    /**
+     * Download attachment
+     * @param  $CLASS\ShowRequest $request
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function download(ShowRequest $request, $id)
+    {
+        $data = $this->repository->find($id);
+        return $this->downloadAttachment($data);
     }
 
     /**
@@ -96,6 +112,7 @@ class AttachmentsController extends Controller
      */
     public function destroy(DestroyRequest $request, $id)
     {
+        $this->removeAttachment($this->repository->find($id));
         $this->repository->delete($id);
         return $this->respondNoContent();
     }

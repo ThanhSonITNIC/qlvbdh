@@ -24,7 +24,11 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'document_id' => 'nullable|exists:documents,id',
+            'name' => 'nullable|string',
+            'extension' => 'nullable|string',
+            'size' => 'nullable|numeric',
+            'path' => 'nullable|string',
         ];
     }
 }

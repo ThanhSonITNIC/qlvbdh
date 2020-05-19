@@ -37,7 +37,7 @@ class CreateRequest extends FormRequest
             'published_at' => 'required|date',
             'arrival_at' => 'nullable|date',
             'publisher_id' => 'required|exists:publishers,id',
-            'attachments' => 'nullable|file',
+            'attachments.*' => 'nullable|file',
             'due_at' => 'nullable|date',
             'link_id' => 'nullable|exists:documents,id',
         ];

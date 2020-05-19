@@ -25,7 +25,9 @@ Route::middleware('auth:sanctum')->namespace('Api')->group(function(){
     Route::apiResource('signers', 'SignersController');
     Route::apiResource('titles', 'TitlesController');
     Route::apiResource('users', 'UsersController');
-
+    
+    Route::get('download/attachments/{attachment}', 'AttachmentsController@download');
+    
     Route::get('me', 'MeController@show');
     Route::put('me', 'MeController@update');
 });

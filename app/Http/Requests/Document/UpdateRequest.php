@@ -35,7 +35,6 @@ class UpdateRequest extends FormRequest
             'published_at' => 'nullable|date',
             'arrival_at' => 'nullable|date',
             'publisher_id' => 'nullable|exists:publishers,id',
-            'attachments' => 'nullable|file',
             'due_at' => 'nullable|date',
             'link_id' => 'nullable|exists:documents,id',
         ];

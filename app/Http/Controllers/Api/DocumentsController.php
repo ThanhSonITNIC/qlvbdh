@@ -11,6 +11,7 @@ use App\Http\Requests\Document\{
     UpdateRequest,
     DestroyRequest,
 };
+use App\Traits\Attachmentable;
 
 /**
  * Class DocumentsController.
@@ -19,6 +20,8 @@ use App\Http\Requests\Document\{
  */
 class DocumentsController extends Controller
 {
+    use Attachmentable;
+
     /**
      * @var DocumentRepository
      */
@@ -54,11 +57,10 @@ class DocumentsController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        if($request->has('attachments')){
-            $attachments = $request->file('attachments')->store('attachments');
-        }
-        dd($request->all());
         $data = $this->repository->create($request->all());
+        if($request->has('attachments')){
+            $this->attachments($request->file('attachments'), $data->id);
+        }
         return $this->respondCreated($data);
     }
 

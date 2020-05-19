@@ -24,7 +24,8 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'document_id' => 'required|exists:documents,id',
+            'attachments' => 'required|file',
         ];
     }
 }
