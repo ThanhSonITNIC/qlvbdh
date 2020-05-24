@@ -1,31 +1,43 @@
 <template>
   <CRow>
-    <CCol col="12" xl="8">
+    <CCol col="12">
       <CCard>
         <CCardHeader>
-          Users
+          <CIcon name="cil-grid"/>
+          Danh sách người dùng
         </CCardHeader>
         <CCardBody>
+          <SearchBox
+            :fields="searchFields"
+            @fieldChanged="searchFieldChanged"
+            @valueChanged="searchValueChanged"
+          />
           <CDataTable
             hover
             striped
+            :loading="loading"
             :items="items"
             :fields="fields"
-            :items-per-page="5"
             clickable-rows
-            :active-page="activePage"
             @row-clicked="rowClicked"
-            :pagination="{ doubleArrows: false, align: 'center'}"
-            @page-change="pageChange"
           >
-            <template #status="data">
+            <template #title="{item}">
               <td>
-                <CBadge :color="getBadge(data.item.status)">
-                  {{data.item.status}}
-                </CBadge>
+                {{item.title ? item.title.name : 'Chưa xác định'}}
+              </td>
+            </template>
+            <template #department="{item}">
+              <td>
+                {{item.department ? item.department.name : 'Chưa xác định'}}
               </td>
             </template>
           </CDataTable>
+          <CPagination
+            align="center"
+            :pages="pages"
+            :active-page.sync="currentPage"
+            :activePage="currentPage"
+          />
         </CCardBody>
       </CCard>
     </CCol>
@@ -33,47 +45,96 @@
 </template>
 
 <script>
-import usersData from './UsersData'
+import user from '../../services/users'
 export default {
   name: 'Users',
   data () {
     return {
-      items: usersData,
+      loading: true,
+      items: null,
       fields: [
-        { key: 'username', label: 'Name', _classes: 'font-weight-bold' },
-        { key: 'registered' },
-        { key: 'role' },
-        { key: 'status' }
+        { key: 'name', label: 'Tên', _classes: 'font-weight-bold'},
+        { key: 'email', label: 'Email' },
+        { key: 'tel', label: 'Số điện thoại' },
+        { key: 'birthday', label: 'Ngày sinh' },
+        { key: 'title', label: 'Chức danh' },
+        { key: 'department', label: 'Phòng ban' },
       ],
-      activePage: 1
+      searchFields: [
+        { value: '', label: 'Tất cả'},
+        { value: 'name', label: 'Tên'},
+        { value: 'email', label: 'Email'},
+        { value: 'tel', label: 'Số điện thoại'},
+        { value: 'birthday', label: 'Ngày sinh'},
+        { value: 'title.name', label: 'Chức danh'},
+        { value: 'department.name', label: 'Phòng ban'},
+      ],
+      currentPage: 1,
+      pages: 0,
+      size: 0,
+      searchValue: '',
+      searchField: '',
     }
+  },
+  created() {
+    this.fetch()
   },
   watch: {
     $route: {
       immediate: true,
       handler (route) {
         if (route.query && route.query.page) {
-          this.activePage = Number(route.query.page)
+          this.currentPage = Number(route.query.page)
         }
       }
+    },
+    currentPage: {
+      handler(page){
+        this.pageChange(page)
+        this.currentPage = page
+        this.fetch()
+      }
+    },
+  },
+  computed: {
+    query(){
+      return this.withQuery + "&" + this.pageQuery + "&" + this.searchQuery
+    },
+    pageQuery(){
+      return this.currentPage ? 'page=' + this.currentPage : ''
+    },
+    withQuery(){
+      return 'with=title;department'
+    },
+    searchQuery(){
+      return this.searchValue 
+             ? 'search=' + this.searchValue + (this.searchField ? '&searchFields=' + this.searchField : '') 
+             : ''
     }
   },
   methods: {
-    getBadge (status) {
-      switch (status) {
-        case 'Active': return 'success'
-        case 'Inactive': return 'secondary'
-        case 'Pending': return 'warning'
-        case 'Banned': return 'danger'
-        default: 'primary'
-      }
+    async fetch(){
+      this.loading = true
+      const response = await user.all(this.query)
+      this.items = response.data.data
+      this.currentPage = response.data.current_page
+      this.pages = response.data.last_page
+      this.loading = false
     },
     rowClicked (item, index) {
       this.$router.push({path: `users/${index + 1}`})
     },
     pageChange (val) {
       this.$router.push({ query: { page: val }})
-    }
+    },
+    searchFieldChanged(item){
+      this.searchField = item.value
+      this.fetch()
+    },
+    searchValueChanged(value){
+      this.searchValue = value
+      this.fetch()
+    },
   }
 }
 </script>

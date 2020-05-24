@@ -13,6 +13,8 @@ Vue.prototype.$log = console.log.bind(console)
 
 Vue.use(CKEditor)
 
+Vue.component('SearchBox', require('./components/SearchBox.vue').default);
+
 new Vue({
   el: '#app',
   router,

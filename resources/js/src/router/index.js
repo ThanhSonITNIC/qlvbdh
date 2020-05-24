@@ -32,6 +32,7 @@ const Paginations = () => import('../views/base/Paginations')
 const Popovers = () => import('../views/base/Popovers')
 const ProgressBars = () => import('../views/base/ProgressBars')
 const Tooltips = () => import('../views/base/Tooltips')
+const SearchBox = () => import('../components/SearchBox')
 
 // Views - Buttons
 const StandardButtons = () => import('../views/buttons/StandardButtons')
