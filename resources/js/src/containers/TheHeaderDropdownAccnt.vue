@@ -59,7 +59,7 @@
     <CDropdownItem>
       <CIcon name="cil-shield-alt" /> Lock Account
     </CDropdownItem>
-    <CDropdownItem>
+    <CDropdownItem @click="logout">
       <CIcon name="cil-lock-locked" /> Logout
     </CDropdownItem>
   </CDropdown>
@@ -71,6 +71,20 @@ export default {
   data () {
     return { 
       itemsCount: 42
+    }
+  },
+  methods: {
+    logout(){
+       this.$store.dispatch('auth/logout').then(response => {
+          this.redirectToLogin()
+       }).catch(error => {
+         this.redirectToLogin()
+       })
+    },
+    redirectToLogin() {
+      this.$router.push(
+        { name: "Login" }
+      );
     }
   }
 }

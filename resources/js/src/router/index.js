@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '../state/store'
 
 // Containers
 const TheContainer = () => import('../containers/TheContainer')
@@ -60,12 +61,81 @@ const User = () => import('../views/users/User')
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'hash', // https://router.vuejs.org/api/#mode
   linkActiveClass: 'active',
   scrollBehavior: () => ({ y: 0 }),
   routes: configRoutes()
 })
+
+// Before each route evaluates...
+router.beforeEach((routeTo, routeFrom, next) => {
+  // Check if auth is required on this route
+  // (including nested routes).
+  const authRequired = routeTo.matched.some((route) => route.meta.authRequired)
+
+  // If auth isn't required for the route, just continue.
+  if (!authRequired) return next()
+
+  if (store.getters['auth/loggedIn']) return next()
+
+  // Validate the local user token...
+  return store.dispatch('auth/validate').then((validUser) => {
+    // Then continue if the token still represents a valid user,
+    // otherwise redirect to login.
+    return validUser ? next() : redirectToLogin()
+  }).catch(error => {
+    return redirectToLogin()
+  })
+  
+  // eslint-disable-next-line no-unused-vars
+  function redirectToLogin() {
+    // Pass the original route to the login component
+    next({ name: 'Login', query: { redirectFrom: routeTo.fullPath } })
+  }
+})
+
+router.beforeResolve(async (routeTo, routeFrom, next) => {
+  // Create a `beforeResolve` hook, which fires whenever
+  // `beforeRouteEnter` and `beforeRouteUpdate` would. This
+  // allows us to ensure data is fetched even when params change,
+  // but the resolved route does not. We put it in `meta` to
+  // indicate that it's a hook we created, rather than part of
+  // Vue Router (yet?).
+  try {
+    // For each matched route...
+    for (const route of routeTo.matched) {
+      await new Promise((resolve, reject) => {
+        // If a `beforeResolve` hook is defined, call it with
+        // the same arguments as the `beforeEnter` hook.
+        if (route.meta && route.meta.beforeResolve) {
+          route.meta.beforeResolve(routeTo, routeFrom, (...args) => {
+            // If the user chose to redirect...
+            if (args.length) {
+              // If redirecting to the same route we're coming from...
+              // Complete the redirect.
+              next(...args)
+              reject(new Error('Redirected'))
+            } else {
+              resolve()
+            }
+          })
+        } else {
+          // Otherwise, continue resolving the route.
+          resolve()
+        }
+      })
+    }
+    // If a `beforeResolve` hook chose to redirect, just return.
+  } catch (error) {
+    return
+  }
+
+  // If we reach this point, continue resolving the route.
+  next()
+})
+
+export default router
 
 function configRoutes () {
   return [
@@ -78,6 +148,9 @@ function configRoutes () {
         {
           path: 'dashboard',
           name: 'Dashboard',
+          meta: {
+            authRequired: true
+          },
           component: Dashboard
         },
         {
@@ -334,6 +407,9 @@ function configRoutes () {
         {
           path: 'login',
           name: 'Login',
+          meta: {
+            authRequired: false
+          },
           component: Login
         },
         {

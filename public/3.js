@@ -231,6 +231,22 @@ __webpack_require__.r(__webpack_exports__);
     return {
       itemsCount: 42
     };
+  },
+  methods: {
+    logout: function logout() {
+      var _this = this;
+
+      this.$store.dispatch('auth/logout').then(function (response) {
+        _this.redirectToLogin();
+      })["catch"](function (error) {
+        _this.redirectToLogin();
+      });
+    },
+    redirectToLogin: function redirectToLogin() {
+      this.$router.push({
+        name: "Login"
+      });
+    }
   }
 });
 
@@ -811,6 +827,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "CDropdownItem",
+        { on: { click: _vm.logout } },
         [
           _c("CIcon", { attrs: { name: "cil-lock-locked" } }),
           _vm._v(" Logout\n  ")

@@ -52,21 +52,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Login'
+  name: 'Login',
+  data: function data() {
+    return {
+      email: 'thanhsonitnic@gmail.com',
+      password: 'password',
+      error: null
+    };
+  },
+  methods: {
+    login: function login() {
+      var _this = this;
+
+      this.$store.dispatch('auth/login', {
+        email: this.email,
+        password: this.password
+      }).then(function (response) {
+        _this.$router.push(_this.$route.query.redirectFrom || {
+          name: "Dashboard"
+        });
+      })["catch"](function (error) {
+        if (error.response.status == 422) {
+          _this.error = error.response.data.message; // "Sai tên đăng nhập hoặc mật khẩu!"
+        } else {
+          _this.error = "Lỗi (" + +error.response.status + ")";
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -92,6 +106,7 @@ var render = function() {
     [
       _c(
         "CRow",
+        { staticClass: "col-md-6" },
         [
           _c(
             "CCol",
@@ -101,7 +116,7 @@ var render = function() {
                 [
                   _c(
                     "CCard",
-                    { staticClass: "p-4" },
+                    { staticClass: "p-4 px-5" },
                     [
                       _c(
                         "CCardBody",
@@ -109,16 +124,23 @@ var render = function() {
                           _c(
                             "CForm",
                             [
-                              _c("h1", [_vm._v("Login")]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "text-muted" }, [
-                                _vm._v("Sign In to your account")
+                              _c("h1", { staticClass: "pb-4" }, [
+                                _vm._v("Đăng nhập")
                               ]),
+                              _vm._v(" "),
+                              _c(
+                                "CAlert",
+                                {
+                                  attrs: { show: !!_vm.error, color: "warning" }
+                                },
+                                [_vm._v(_vm._s(_vm.error))]
+                              ),
                               _vm._v(" "),
                               _c("CInput", {
                                 attrs: {
-                                  placeholder: "Username",
-                                  autocomplete: "username email"
+                                  autocomplete: "email",
+                                  placeholder: "Enter Email...",
+                                  required: ""
                                 },
                                 scopedSlots: _vm._u([
                                   {
@@ -132,7 +154,14 @@ var render = function() {
                                     },
                                     proxy: true
                                   }
-                                ])
+                                ]),
+                                model: {
+                                  value: _vm.email,
+                                  callback: function($$v) {
+                                    _vm.email = $$v
+                                  },
+                                  expression: "email"
+                                }
                               }),
                               _vm._v(" "),
                               _c("CInput", {
@@ -153,7 +182,14 @@ var render = function() {
                                     },
                                     proxy: true
                                   }
-                                ])
+                                ]),
+                                model: {
+                                  value: _vm.password,
+                                  callback: function($$v) {
+                                    _vm.password = $$v
+                                  },
+                                  expression: "password"
+                                }
                               }),
                               _vm._v(" "),
                               _c(
@@ -169,10 +205,10 @@ var render = function() {
                                       _c(
                                         "CButton",
                                         {
-                                          staticClass: "px-4",
-                                          attrs: { color: "primary" }
+                                          attrs: { color: "primary" },
+                                          on: { click: _vm.login }
                                         },
-                                        [_vm._v("Login")]
+                                        [_vm._v("Đăng nhập")]
                                       )
                                     ],
                                     1
@@ -187,20 +223,8 @@ var render = function() {
                                     [
                                       _c(
                                         "CButton",
-                                        {
-                                          staticClass: "px-0",
-                                          attrs: { color: "link" }
-                                        },
-                                        [_vm._v("Forgot password?")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "CButton",
-                                        {
-                                          staticClass: "d-md-none",
-                                          attrs: { color: "link" }
-                                        },
-                                        [_vm._v("Register now!")]
+                                        { attrs: { color: "link" } },
+                                        [_vm._v("Quên mật khẩu?")]
                                       )
                                     ],
                                     1
@@ -213,37 +237,6 @@ var render = function() {
                           )
                         ],
                         1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "CCard",
-                    {
-                      staticClass: "text-center py-5 d-sm-down-none",
-                      attrs: {
-                        color: "primary",
-                        "text-color": "white",
-                        "body-wrapper": ""
-                      }
-                    },
-                    [
-                      _c("h2", [_vm._v("Sign up")]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "CButton",
-                        {
-                          staticClass: "active mt-3",
-                          attrs: { color: "primary" }
-                        },
-                        [_vm._v("\n            Register Now!\n          ")]
                       )
                     ],
                     1

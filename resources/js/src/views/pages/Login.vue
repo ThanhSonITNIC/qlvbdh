@@ -1,16 +1,18 @@
 <template>
   <CContainer class="d-flex content-center min-vh-100">
-    <CRow>
+    <CRow class="col-md-6">
       <CCol>
         <CCardGroup>
-          <CCard class="p-4">
+          <CCard class="p-4 px-5">
             <CCardBody>
               <CForm>
-                <h1>Login</h1>
-                <p class="text-muted">Sign In to your account</p>
+                <h1 class="pb-4">Đăng nhập</h1>
+                <CAlert :show="!!error" color="warning">{{error}}</CAlert>
                 <CInput
-                  placeholder="Username"
-                  autocomplete="username email"
+                  autocomplete="email"
+                  placeholder="Enter Email..."
+                  v-model="email"
+                  required
                 >
                   <template #prepend-content><CIcon name="cil-user"/></template>
                 </CInput>
@@ -18,35 +20,20 @@
                   placeholder="Password"
                   type="password"
                   autocomplete="curent-password"
+                  v-model="password"
                 >
                   <template #prepend-content><CIcon name="cil-lock-locked"/></template>
                 </CInput>
                 <CRow>
                   <CCol col="6" class="text-left">
-                    <CButton color="primary" class="px-4">Login</CButton>
+                    <CButton color="primary" @click="login">Đăng nhập</CButton>
                   </CCol>
                   <CCol col="6" class="text-right">
-                    <CButton color="link" class="px-0">Forgot password?</CButton>
-                    <CButton color="link" class="d-md-none">Register now!</CButton>
+                    <CButton color="link">Quên mật khẩu?</CButton>
                   </CCol>
                 </CRow>
               </CForm>
             </CCardBody>
-          </CCard>
-          <CCard
-            color="primary"
-            text-color="white"
-            class="text-center py-5 d-sm-down-none"
-            body-wrapper
-          >
-            <h2>Sign up</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <CButton
-              color="primary"
-              class="active mt-3"
-            >
-              Register Now!
-            </CButton>
           </CCard>
         </CCardGroup>
       </CCol>
@@ -56,6 +43,28 @@
 
 <script>
 export default {
-  name: 'Login'
+  name: 'Login',
+  data() {
+    return {
+      email: 'thanhsonitnic@gmail.com',
+      password: 'password',
+      error: null,
+    }
+  },
+  methods: {
+    login(){
+      this.$store.dispatch('auth/login', {email: this.email, password: this.password}).then(response => {
+        this.$router.push(
+          this.$route.query.redirectFrom || { name: "Dashboard" }
+        );
+      }).catch(error => {
+        if(error.response.status == 422){
+          this.error = error.response.data.message // "Sai tên đăng nhập hoặc mật khẩu!"
+        }else{
+          this.error = "Lỗi (" + + error.response.status + ")"
+        }
+      })
+    },
+  }
 }
 </script>
