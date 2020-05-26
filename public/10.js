@@ -130,6 +130,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -258,6 +261,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         path: "users/".concat(item.id)
       });
     },
+    createUser: function createUser() {
+      this.$router.push({
+        path: "users/create"
+      });
+    },
     pageChange: function pageChange(val) {
       this.$router.push({
         query: {
@@ -359,7 +367,21 @@ var render = function() {
                 "CCardHeader",
                 [
                   _c("CIcon", { attrs: { name: "cil-grid" } }),
-                  _vm._v("\n        Danh sách người dùng\n      ")
+                  _vm._v("\n        Danh sách người dùng\n        "),
+                  _c(
+                    "CButton",
+                    {
+                      staticClass: "float-right",
+                      attrs: {
+                        size: "sm",
+                        color: "primary",
+                        variant: "outline"
+                      },
+                      on: { click: _vm.createUser }
+                    },
+                    [_c("CIcon", { attrs: { name: "cil-user-follow" } })],
+                    1
+                  )
                 ],
                 1
               ),

@@ -805,7 +805,7 @@ var render = function() {
             },
             [
               _c("CIcon", { attrs: { name: "cil-chevron-left" } }),
-              _vm._v("Trở lại\n    ")
+              _vm._v(" Trở lại\n    ")
             ],
             1
           ),
@@ -819,7 +819,7 @@ var render = function() {
             },
             [
               _c("CIcon", { attrs: { name: "cil-check" } }),
-              _vm._v("Lưu\n    ")
+              _vm._v(" Lưu\n    ")
             ],
             1
           )
@@ -924,7 +924,7 @@ var render = function() {
             },
             [
               _c("CIcon", { attrs: { name: "cil-check" } }),
-              _vm._v("Thay đổi\n    ")
+              _vm._v(" Thay đổi\n    ")
             ],
             1
           )

@@ -24,7 +24,7 @@
     </CCardBody>
     <CCardFooter>
       <CButton type="submit" @click="updatePassword" size="sm" class="float-right" color="success">
-        <CIcon name="cil-check" />Thay đổi
+        <CIcon name="cil-check" /> Thay đổi
       </CButton>
     </CCardFooter>
   </CCard>

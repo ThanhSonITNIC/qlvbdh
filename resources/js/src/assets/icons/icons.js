@@ -90,6 +90,12 @@ import {
   cilIndentDecrease,
   cilIndentIncrease,
   cilChevronLeft,
+  cilLan,
+  cilTouchApp,
+  cilInstitution,
+  cilTextSize,
+  cilNotes,
+  cilMedicalCross,
 
 } from '@coreui/icons'
 import { logo } from './logo'
@@ -98,6 +104,12 @@ export const iconsSet = Object.assign(
   {},
   { logo },
   {
+    cilMedicalCross,
+    cilNotes,
+    cilTextSize,
+    cilInstitution,
+    cilTouchApp,
+    cilLan,
     cilChevronLeft,
     cilArrowRight,
     cilBan,

@@ -5,6 +5,9 @@
         <CCardHeader>
           <CIcon name="cil-grid"/>
           Danh sách người dùng
+          <CButton size="sm" @click="createUser" class="float-right" color="primary" variant="outline">
+            <CIcon name="cil-user-follow" />
+          </CButton>
         </CCardHeader>
         <CCardBody>
           <CSearchBox
@@ -128,6 +131,9 @@ export default {
     },
     rowClicked (item, index) {
       this.$router.push({path: `users/${item.id}`})
+    },
+    createUser() {
+      this.$router.push({path: `users/create`})
     },
     pageChange (val) {
       this.$router.push({ query: { page: val }})

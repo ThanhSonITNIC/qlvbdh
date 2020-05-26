@@ -1315,13 +1315,97 @@ __webpack_require__.r(__webpack_exports__);
   _name: 'CSidebarNav',
   _children: [{
     _name: 'CSidebarNavItem',
-    name: 'Dashboard',
+    name: 'Bảng điều khiển',
     to: '/dashboard',
     icon: 'cil-speedometer',
     badge: {
       color: 'primary',
       text: 'NEW'
     }
+  }, {
+    _name: 'CSidebarNavTitle',
+    _children: ['Văn bản']
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Văn bản đến',
+    to: '/documents',
+    icon: 'cil-notes'
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Văn bản đi',
+    to: '/documents',
+    icon: 'cil-notes'
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Văn bản nội bộ',
+    to: '/documents',
+    icon: 'cil-notes'
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Báo cáo',
+    to: '/documents',
+    icon: 'cil-notes'
+  }, {
+    _name: 'CSidebarNavTitle',
+    _children: ['Điều hành']
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Báo cáo - thống kê',
+    to: '/documents',
+    icon: 'cil-notes'
+  }, {
+    _name: 'CSidebarNavTitle',
+    _children: ['Hệ thống']
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Người dùng',
+    to: '/users',
+    icon: 'cil-people'
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Chức danh',
+    to: '/titles',
+    icon: 'cil-contact'
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Phòng ban',
+    to: '/departments',
+    icon: 'cil-lan'
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Người ký',
+    to: '/signers',
+    icon: 'cil-touch-app'
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Nơi ban hành',
+    to: '/publishers',
+    icon: 'cil-institution'
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Loại văn bản',
+    to: '/document-types',
+    icon: 'cil-text-size'
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Sổ văn bản',
+    to: '/books',
+    icon: 'cil-book'
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Nhóm',
+    to: '/roles',
+    icon: 'cil-address-book'
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Quyền',
+    to: '/permissions',
+    icon: 'cil-lock-locked'
+  }, {
+    _name: 'CSidebarNavItem',
+    name: 'Cài đặt',
+    to: '/settings',
+    icon: 'cil-settings'
   }, {
     _name: 'CSidebarNavTitle',
     _children: ['Theme']

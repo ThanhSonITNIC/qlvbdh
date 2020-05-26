@@ -55,10 +55,10 @@
     </CCardBody>
     <CCardFooter>
       <CButton color="primary" size="sm" @click="goBack">
-        <CIcon name="cil-chevron-left" />Trở lại
+        <CIcon name="cil-chevron-left" /> Trở lại
       </CButton>
       <CButton type="submit" size="sm" @click="updateInfo" class="float-right" color="success">
-        <CIcon name="cil-check" />Lưu
+        <CIcon name="cil-check" /> Lưu
       </CButton>
     </CCardFooter>
   </CCard>

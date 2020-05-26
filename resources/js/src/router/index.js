@@ -32,7 +32,6 @@ const Paginations = () => import('../views/base/Paginations')
 const Popovers = () => import('../views/base/Popovers')
 const ProgressBars = () => import('../views/base/ProgressBars')
 const Tooltips = () => import('../views/base/Tooltips')
-const SearchBox = () => import('../components/SearchBox')
 
 // Views - Buttons
 const StandardButtons = () => import('../views/buttons/StandardButtons')
@@ -59,6 +58,7 @@ const Register = () => import('../views/pages/Register')
 // Users
 const Users = () => import('../views/users/Users')
 const User = () => import('../views/users/User')
+const CreateUser = () => import('../views/users/Create')
 
 Vue.use(Router)
 
@@ -204,6 +204,14 @@ function configRoutes () {
               path: '',
               name: 'Users',
               component: Users
+            },
+            {
+              path: 'create',
+              meta: {
+                label: 'Create User'
+              },
+              name: 'Create User',
+              component: CreateUser
             },
             {
               path: ':id',
