@@ -10,6 +10,8 @@ use App\Http\Requests\User\{
     ShowRequest,
     UpdateRequest,
     DestroyRequest,
+    GiveRoleRequest,
+    GivePermissionRequest,
 };
 
 /**
@@ -97,6 +99,26 @@ class UsersController extends Controller
     public function destroy(DestroyRequest $request, $id)
     {
         $this->repository->delete($id);
+        return $this->respondNoContent();
+    }
+
+    public function giveRole(GiveRoleRequest $request, $user, $role){
+        $this->repository->find($user)->assignRole($role);
+        return $this->respondNoContent();
+    }
+
+    public function revokeRole(GiveRoleRequest $request, $user, $role){
+        $this->repository->find($user)->removeRole($role);
+        return $this->respondNoContent();
+    }
+
+    public function givePermission(GiveRoleRequest $request, $user, $permission){
+        $this->repository->find($user)->givePermissionTo($permission);
+        return $this->respondNoContent();
+    }
+
+    public function revokePermission(GiveRoleRequest $request, $user, $permission){
+        $this->repository->find($user)->revokePermissionTo($permission);
         return $this->respondNoContent();
     }
 }

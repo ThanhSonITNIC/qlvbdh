@@ -30,5 +30,6 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
 
         \App\Entities\DocumentReceiver::observe(\App\Observers\ReceiverObserver::class);
+        \App\Entities\User::observe(\App\Observers\UserObserver::class);
     }
 }

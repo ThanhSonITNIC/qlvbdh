@@ -33,6 +33,7 @@ class DocumentReceiverRepositoryEloquent extends BaseRepository implements Docum
         'user.tel' => '=',
         'user.birthday' => '=',
         'user.department_id' => '=',
+        'user.title_id' => '=',
         'user.active' => '=',
 
         'department.id' => '=',

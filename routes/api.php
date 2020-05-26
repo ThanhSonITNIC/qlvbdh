@@ -25,8 +25,15 @@ Route::middleware('auth:sanctum')->namespace('Api')->group(function(){
     Route::apiResource('signers', 'SignersController');
     Route::apiResource('titles', 'TitlesController');
     Route::apiResource('users', 'UsersController');
+    Route::apiResource('roles', 'RolesController');
+    Route::apiResource('permissions', 'PermissionsController');
     
     Route::get('download/attachments/{attachment}', 'AttachmentsController@download');
+
+    Route::post('users/{user}/roles/{role}', 'UsersController@giveRole');
+    Route::delete('users/{user}/roles/{role}', 'UsersController@revokeRole');
+    Route::post('users/{user}/permissions/{permission}', 'UsersController@givePermission');
+    Route::delete('users/{user}/permissions/{permission}', 'UsersController@revokePermission');
     
     Route::prefix('me')->group(function(){
         Route::get('', 'MeController@show');

@@ -20,18 +20,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'SearchBox',
+  name: "SearchBox",
   props: {
-    fields: Array,
-    searchField: String,
-    searchValue: String
+    fields: {
+      type: Array,
+      "default": function _default() {
+        return [{
+          value: "",
+          label: "Tất cả"
+        }];
+      }
+    }
+  },
+  data: function data() {
+    return {
+      field: String,
+      value: String
+    };
+  },
+  watch: {
+    field: {
+      handler: function handler(value) {
+        this.$emit("fieldChanged", value);
+      }
+    },
+    value: {
+      handler: function handler(value) {
+        this.$emit("valueChanged", value);
+      }
+    }
+  },
+  methods: {
+    fieldChanged: function fieldChanged(value) {
+      this.field = this.fields.find(function (e) {
+        return e.value == value;
+      });
+    },
+    valueChanged: function valueChanged(value) {
+      this.value = value;
+    }
   }
 });
 
@@ -48,8 +76,42 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "CRow",
+    [
+      _c(
+        "CCol",
+        { attrs: { sm: "3" } },
+        [
+          _c("CSelect", {
+            attrs: { options: _vm.fields },
+            on: { "update:value": _vm.fieldChanged }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "CCol",
+        { attrs: { sm: "9" } },
+        [
+          _c("CInput", {
+            attrs: { placeholder: "Tìm kiếm" },
+            on: { "update:value": _vm.valueChanged }
+          })
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
 var staticRenderFns = []
+render._withStripped = true
 
 
 

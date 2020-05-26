@@ -50,7 +50,7 @@ class User extends Authenticatable implements Transformable, CanResetPassword
     protected $casts = [
         'email_verified_at' => 'datetime',
         'active' => 'boolean',
-        'birthday' => 'date',
+        'birthday' => 'date:Y-m-d',
     ];
 
     public function groups(){

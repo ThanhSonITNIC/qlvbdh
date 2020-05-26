@@ -88,7 +88,8 @@ import {
   cilListRich,
   cilLibrary,
   cilIndentDecrease,
-  cilIndentIncrease
+  cilIndentIncrease,
+  cilChevronLeft,
 
 } from '@coreui/icons'
 import { logo } from './logo'
@@ -97,6 +98,7 @@ export const iconsSet = Object.assign(
   {},
   { logo },
   {
+    cilChevronLeft,
     cilArrowRight,
     cilBan,
     cilBasket,

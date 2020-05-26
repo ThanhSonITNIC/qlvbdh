@@ -7,7 +7,7 @@
           Danh sách người dùng
         </CCardHeader>
         <CCardBody>
-          <SearchBox
+          <CSearchBox
             :fields="searchFields"
             @fieldChanged="searchFieldChanged"
             @valueChanged="searchValueChanged"
@@ -45,9 +45,14 @@
 </template>
 
 <script>
-import user from '../../services/users'
+import services from "../../services/factory"
+import CSearchBox from "../../components/SearchBox"
+
 export default {
   name: 'Users',
+  components: {
+    CSearchBox,
+  },
   data () {
     return {
       loading: true,
@@ -115,14 +120,14 @@ export default {
   methods: {
     async fetch(){
       this.loading = true
-      const response = await user.all(this.query)
+      const response = await services.user.all(this.query)
       this.items = response.data.data
       this.currentPage = response.data.current_page
       this.pages = response.data.last_page
       this.loading = false
     },
     rowClicked (item, index) {
-      this.$router.push({path: `users/${index + 1}`})
+      this.$router.push({path: `users/${item.id}`})
     },
     pageChange (val) {
       this.$router.push({ query: { page: val }})

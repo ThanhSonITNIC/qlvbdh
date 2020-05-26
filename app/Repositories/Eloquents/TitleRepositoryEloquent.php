@@ -27,6 +27,7 @@ class TitleRepositoryEloquent extends BaseRepository implements TitleRepository
         'users.tel' => '=',
         'users.birthday' => '=',
         'users.department_id' => '=',
+        'users.title_id' => '=',
         'users.active' => '=',
     ];
 

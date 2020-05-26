@@ -41,6 +41,7 @@ class DepartmentRepositoryEloquent extends BaseRepository implements DepartmentR
         'users.tel' => '=',
         'users.birthday' => '=',
         'users.department_id' => '=',
+        'users.title_id' => '=',
         'users.active' => '=',
     ];
 

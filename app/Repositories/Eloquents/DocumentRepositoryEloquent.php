@@ -66,6 +66,7 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
         'creator.tel' => '=',
         'creator.birthday' => '=',
         'creator.department_id' => '=',
+        'creator.title_id' => '=',
         'creator.active' => '=',
 
         'link.id' => '=',
