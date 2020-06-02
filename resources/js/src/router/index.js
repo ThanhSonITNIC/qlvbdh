@@ -60,6 +60,10 @@ const Users = () => import('../views/users/Users')
 const User = () => import('../views/users/User')
 const CreateUser = () => import('../views/users/Create')
 
+// Documents
+const Documents = () => import('../views/documents/Documents')
+const Document = () => import('../views/documents/Document')
+
 Vue.use(Router)
 
 const router = new Router({
@@ -145,15 +149,66 @@ function configRoutes () {
       redirect: '/dashboard',
       name: 'Home',
       component: TheContainer,
+      meta: {
+        authRequired: true
+      },
       children: [
         {
           path: 'dashboard',
           name: 'Dashboard',
-          meta: {
-            authRequired: true
-          },
           component: Dashboard
         },
+        // Books
+        {
+          path: 'books',
+          meta: {
+            label: 'Books',
+          },
+          component: {
+            render(c) {
+              return c('router-view')
+            }
+          },
+          children: [
+            {
+              path: ':book',
+              name: 'Book Details',
+              component: Documents,
+              children: [
+                {
+                  path: 'documents',
+                  name: 'Documents',
+                  component: Documents,
+                },
+              ]
+            },
+          ]
+        },
+        // Documents
+        {
+          path: 'documents',
+          meta: {
+            label: 'Documents',
+          },
+          component: {
+            render(c) {
+              return c('router-view')
+            }
+          },
+          children: [
+            {
+              path: '',
+              name: 'Documents',
+              component: Documents
+            },
+            {
+              path: ':document',
+              name: 'Document Details',
+              component: Document,
+            },
+          ]
+        },
+        //
         {
           path: 'theme',
           redirect: '/theme/colors',

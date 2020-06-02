@@ -8,7 +8,7 @@ export default {
         return axios.get(`${resource}/${id}?${query}`)
     },
     create(data){
-        return axios.post(`${resource}?${data}`)
+        return axios.post(`${resource}`, data)
     },
     update(data, id){
         return axios.put(`${resource}/${id}`, data)

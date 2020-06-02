@@ -12,339 +12,237 @@ export default [
           text: 'NEW'
         }
       },
-      {
-        _name: 'CSidebarNavTitle',
-        _children: ['Văn bản']
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Văn bản đến',
-        to: '/documents',
-        icon: 'cil-notes'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Văn bản đi',
-        to: '/documents',
-        icon: 'cil-notes'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Văn bản nội bộ',
-        to: '/documents',
-        icon: 'cil-notes'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Báo cáo',
-        to: '/documents',
-        icon: 'cil-notes'
-      },
-      {
-        _name: 'CSidebarNavTitle',
-        _children: ['Điều hành']
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Báo cáo - thống kê',
-        to: '/documents',
-        icon: 'cil-notes'
-      },
-      {
-        _name: 'CSidebarNavTitle',
-        _children: ['Hệ thống']
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Người dùng',
-        to: '/users',
-        icon: 'cil-people'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Chức danh',
-        to: '/titles',
-        icon: 'cil-contact'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Phòng ban',
-        to: '/departments',
-        icon: 'cil-lan'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Người ký',
-        to: '/signers',
-        icon: 'cil-touch-app'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Nơi ban hành',
-        to: '/publishers',
-        icon: 'cil-institution'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Loại văn bản',
-        to: '/document-types',
-        icon: 'cil-text-size'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Sổ văn bản',
-        to: '/books',
-        icon: 'cil-book'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Nhóm',
-        to: '/roles',
-        icon: 'cil-address-book'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Quyền',
-        to: '/permissions',
-        icon: 'cil-lock-locked'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Cài đặt',
-        to: '/settings',
-        icon: 'cil-settings'
-      },
-      {
-        _name: 'CSidebarNavTitle',
-        _children: ['Theme']
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Colors',
-        to: '/theme/colors',
-        icon: 'cil-drop'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Typography',
-        to: '/theme/typography',
-        icon: 'cil-pencil'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'CKEditor',
-        to: '/theme/ckeditor',
-        icon: 'cil-short-text'
-      },
-      {
-        _name: 'CSidebarNavTitle',
-        _children: ['Components']
-      },
-      {
-        _name: 'CSidebarNavDropdown',
-        name: 'Base',
-        route: '/base',
-        icon: 'cil-puzzle',
-        items: [
-          {
-            name: 'Breadcrumbs',
-            to: '/base/breadcrumbs'
-          },
-          {
-            name: 'Cards',
-            to: '/base/cards'
-          },
-          {
-            name: 'Carousels',
-            to: '/base/carousels'
-          }, 
-          {
-            name: 'Collapses',
-            to: '/base/collapses'
-          },
-          {
-            name: 'Forms',
-            to: '/base/forms'
-          },
-          {
-            name: 'Jumbotrons',
-            to: '/base/jumbotrons'
-          },
-          {
-            name: 'List Groups',
-            to: '/base/list-groups'
-          },
-          {
-            name: 'Navs',
-            to: '/base/navs'
-          },
-          {
-            name: 'Navbars',
-            to: '/base/navbars'
-          },
-          {
-            name: 'Paginations',
-            to: '/base/paginations'
-          },
-          {
-            name: 'Popovers',
-            to: '/base/popovers'
-          },
-          {
-            name: 'Progress Bars',
-            to: '/base/progress-bars'
-          },
-          {
-            name: 'Switches',
-            to: '/base/switches'
-          },
-          {
-            name: 'Tables',
-            to: '/base/tables'
-          },
-          {
-            name: 'Tabs',
-            to: '/base/tabs'
-          },
-          {
-            name: 'Tooltips',
-            to: '/base/tooltips'
-          }
-        ]
-      },
-      {
-        _name: 'CSidebarNavDropdown',
-        name: 'Buttons',
-        route: '/buttons',
-        icon: 'cil-cursor',
-        items: [
-          {
-            name: 'Buttons',
-            to: '/buttons/standard-buttons'
-          },
-          {
-            name: 'Button Dropdowns',
-            to: '/buttons/dropdowns'
-          },
-          {
-            name: 'Button Groups',
-            to: '/buttons/button-groups'
-          },
-          {
-            name: 'Brand Buttons',
-            to: '/buttons/brand-buttons'
-          }
-        ]
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Charts',
-        to: '/charts',
-        icon: 'cil-chart-pie'
-      },
-      {
-        _name: 'CSidebarNavDropdown',
-        name: 'Icons',
-        route: '/icons',
-        icon: 'cil-star',
-        items: [
-          {
-            name: 'CoreUI Icons',
-            to: '/icons/coreui-icons',
-            badge: {
-              color: 'info',
-              text: 'NEW'
-            }
-          },
-          {
-            name: 'Brands',
-            to: '/icons/brands'
-          },
-          {
-            name: 'Flags',
-            to: '/icons/flags'
-          }
-        ]
-      },
-      {
-        _name: 'CSidebarNavDropdown',
-        name: 'Notifications',
-        route: '/notifications',
-        icon: 'cil-bell',
-        items: [
-          {
-            name: 'Alerts',
-            to: '/notifications/alerts'
-          },
-          {
-            name: 'Badges',
-            to: '/notifications/badges'
-          },
-          {
-            name: 'Modals',
-            to: '/notifications/modals'
-          }
-        ]
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Widgets',
-        to: '/widgets',
-        icon: 'cil-calculator',
-        badge: {
-          color: 'primary',
-          text: 'NEW',
-          shape: 'pill'
-        }
-      },
-      {
-        _name: 'CSidebarNavDivider',
-        _class: 'm-2'
-      },
-      {
-        _name: 'CSidebarNavTitle',
-        _children: ['Extras']
-      },
-      {
-        _name: 'CSidebarNavDropdown',
-        name: 'Pages',
-        route: '/pages',
-        icon: 'cil-star',
-        items: [
-          {
-            name: 'Login',
-            to: '/pages/login'
-          },
-          {
-            name: 'Register',
-            to: '/pages/register'
-          },
-          {
-            name: 'Error 404',
-            to: '/pages/404'
-          },
-          {
-            name: 'Error 500',
-            to: '/pages/500'
-          }
-        ]
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Download CoreUI',
-        href: 'http://coreui.io/vue/',
-        icon: { name: 'cil-cloud-download', class: 'text-white' },
-        _class: 'bg-success text-white',
-        target: '_blank'
-      },
-      {
-        _name: 'CSidebarNavItem',
-        name: 'Try CoreUI PRO',
-        href: 'http://coreui.io/pro/vue/',
-        icon: { name: 'cil-layers', class: 'text-white' },
-        _class: 'bg-danger text-white',
-        target: '_blank'
-      }
+      // {
+      //   _name: 'CSidebarNavTitle',
+      //   _children: ['Theme']
+      // },
+      // {
+      //   _name: 'CSidebarNavItem',
+      //   name: 'Colors',
+      //   to: '/theme/colors',
+      //   icon: 'cil-drop'
+      // },
+      // {
+      //   _name: 'CSidebarNavItem',
+      //   name: 'Typography',
+      //   to: '/theme/typography',
+      //   icon: 'cil-pencil'
+      // },
+      // {
+      //   _name: 'CSidebarNavItem',
+      //   name: 'CKEditor',
+      //   to: '/theme/ckeditor',
+      //   icon: 'cil-short-text'
+      // },
+      // {
+      //   _name: 'CSidebarNavTitle',
+      //   _children: ['Components']
+      // },
+      // {
+      //   _name: 'CSidebarNavDropdown',
+      //   name: 'Base',
+      //   route: '/base',
+      //   icon: 'cil-puzzle',
+      //   items: [
+      //     {
+      //       name: 'Breadcrumbs',
+      //       to: '/base/breadcrumbs'
+      //     },
+      //     {
+      //       name: 'Cards',
+      //       to: '/base/cards'
+      //     },
+      //     {
+      //       name: 'Carousels',
+      //       to: '/base/carousels'
+      //     }, 
+      //     {
+      //       name: 'Collapses',
+      //       to: '/base/collapses'
+      //     },
+      //     {
+      //       name: 'Forms',
+      //       to: '/base/forms'
+      //     },
+      //     {
+      //       name: 'Jumbotrons',
+      //       to: '/base/jumbotrons'
+      //     },
+      //     {
+      //       name: 'List Groups',
+      //       to: '/base/list-groups'
+      //     },
+      //     {
+      //       name: 'Navs',
+      //       to: '/base/navs'
+      //     },
+      //     {
+      //       name: 'Navbars',
+      //       to: '/base/navbars'
+      //     },
+      //     {
+      //       name: 'Paginations',
+      //       to: '/base/paginations'
+      //     },
+      //     {
+      //       name: 'Popovers',
+      //       to: '/base/popovers'
+      //     },
+      //     {
+      //       name: 'Progress Bars',
+      //       to: '/base/progress-bars'
+      //     },
+      //     {
+      //       name: 'Switches',
+      //       to: '/base/switches'
+      //     },
+      //     {
+      //       name: 'Tables',
+      //       to: '/base/tables'
+      //     },
+      //     {
+      //       name: 'Tabs',
+      //       to: '/base/tabs'
+      //     },
+      //     {
+      //       name: 'Tooltips',
+      //       to: '/base/tooltips'
+      //     }
+      //   ]
+      // },
+      // {
+      //   _name: 'CSidebarNavDropdown',
+      //   name: 'Buttons',
+      //   route: '/buttons',
+      //   icon: 'cil-cursor',
+      //   items: [
+      //     {
+      //       name: 'Buttons',
+      //       to: '/buttons/standard-buttons'
+      //     },
+      //     {
+      //       name: 'Button Dropdowns',
+      //       to: '/buttons/dropdowns'
+      //     },
+      //     {
+      //       name: 'Button Groups',
+      //       to: '/buttons/button-groups'
+      //     },
+      //     {
+      //       name: 'Brand Buttons',
+      //       to: '/buttons/brand-buttons'
+      //     }
+      //   ]
+      // },
+      // {
+      //   _name: 'CSidebarNavItem',
+      //   name: 'Charts',
+      //   to: '/charts',
+      //   icon: 'cil-chart-pie'
+      // },
+      // {
+      //   _name: 'CSidebarNavDropdown',
+      //   name: 'Icons',
+      //   route: '/icons',
+      //   icon: 'cil-star',
+      //   items: [
+      //     {
+      //       name: 'CoreUI Icons',
+      //       to: '/icons/coreui-icons',
+      //       badge: {
+      //         color: 'info',
+      //         text: 'NEW'
+      //       }
+      //     },
+      //     {
+      //       name: 'Brands',
+      //       to: '/icons/brands'
+      //     },
+      //     {
+      //       name: 'Flags',
+      //       to: '/icons/flags'
+      //     }
+      //   ]
+      // },
+      // {
+      //   _name: 'CSidebarNavDropdown',
+      //   name: 'Notifications',
+      //   route: '/notifications',
+      //   icon: 'cil-bell',
+      //   items: [
+      //     {
+      //       name: 'Alerts',
+      //       to: '/notifications/alerts'
+      //     },
+      //     {
+      //       name: 'Badges',
+      //       to: '/notifications/badges'
+      //     },
+      //     {
+      //       name: 'Modals',
+      //       to: '/notifications/modals'
+      //     }
+      //   ]
+      // },
+      // {
+      //   _name: 'CSidebarNavItem',
+      //   name: 'Widgets',
+      //   to: '/widgets',
+      //   icon: 'cil-calculator',
+      //   badge: {
+      //     color: 'primary',
+      //     text: 'NEW',
+      //     shape: 'pill'
+      //   }
+      // },
+      // {
+      //   _name: 'CSidebarNavDivider',
+      //   _class: 'm-2'
+      // },
+      // {
+      //   _name: 'CSidebarNavTitle',
+      //   _children: ['Extras']
+      // },
+      // {
+      //   _name: 'CSidebarNavDropdown',
+      //   name: 'Pages',
+      //   route: '/pages',
+      //   icon: 'cil-star',
+      //   items: [
+      //     {
+      //       name: 'Login',
+      //       to: '/pages/login'
+      //     },
+      //     {
+      //       name: 'Register',
+      //       to: '/pages/register'
+      //     },
+      //     {
+      //       name: 'Error 404',
+      //       to: '/pages/404'
+      //     },
+      //     {
+      //       name: 'Error 500',
+      //       to: '/pages/500'
+      //     }
+      //   ]
+      // },
+      // {
+      //   _name: 'CSidebarNavItem',
+      //   name: 'Download CoreUI',
+      //   href: 'http://coreui.io/vue/',
+      //   icon: { name: 'cil-cloud-download', class: 'text-white' },
+      //   _class: 'bg-success text-white',
+      //   target: '_blank'
+      // },
+      // {
+      //   _name: 'CSidebarNavItem',
+      //   name: 'Try CoreUI PRO',
+      //   href: 'http://coreui.io/pro/vue/',
+      //   icon: { name: 'cil-layers', class: 'text-white' },
+      //   _class: 'bg-danger text-white',
+      //   target: '_blank'
+      // }
     ]
   }
 ]

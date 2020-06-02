@@ -41,7 +41,7 @@ class DocumentReceiversController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        $data = $this->repository->all();
+        $data = $this->repository->paginate($request->limit ?: null);
         return $this->respond($data);
     }
 

@@ -29,9 +29,9 @@ class DepartmentRepositoryEloquent extends BaseRepository implements DepartmentR
         'documents.type_id' => '=',
         'documents.signer_id' => '=',
         'documents.creator_id' => '=',
-        'documents.published_at' => '=',
-        'documents.arrival_at' => '=',
-        'documents.publisher_id' => '=',
+        'documents.published_at' => 'like',
+        'documents.arrival_at' => 'like',
+        'documents.publisher_id' => 'like',
         'documents.due_at' => '=',
         'documents.link_id' => '=',
 

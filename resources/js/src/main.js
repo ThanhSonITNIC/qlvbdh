@@ -29,5 +29,4 @@ new Vue({
   components: {
     App
   },
-  // mixins: [helper]
 })

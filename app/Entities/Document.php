@@ -40,9 +40,9 @@ class Document extends Model implements Transformable
     public $incrementing = false;
 
     protected $casts = [
-        'published_at' => 'date',
-        'arrival_at' => 'date',
-        'due_at' => 'date',
+        'published_at' => 'date:Y-m-d',
+        'arrival_at' => 'date:Y-m-d',
+        'due_at' => 'date:Y-m-d',
     ];
 
     public function receivers(){

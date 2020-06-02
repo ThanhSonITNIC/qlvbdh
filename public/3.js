@@ -261,7 +261,28 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_nav */ "./resources/js/src/containers/_nav.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_nav */ "./resources/js/src/containers/_nav.js");
+/* harmony import */ var _services_factory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/factory */ "./resources/js/src/services/factory.js");
+
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -295,9 +316,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'TheSidebar',
-  nav: _nav__WEBPACK_IMPORTED_MODULE_0__["default"],
+  name: "TheSidebar",
+  nav: _nav__WEBPACK_IMPORTED_MODULE_1__["default"],
+  created: function created() {
+    this.fetchDocument();
+  },
   computed: {
     show: function show() {
       return this.$store.state.sidebarShow;
@@ -305,6 +330,118 @@ __webpack_require__.r(__webpack_exports__);
     minimize: function minimize() {
       return this.$store.state.sidebarMinimize;
     }
+  },
+  methods: {
+    fetchDocument: function fetchDocument() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _services_factory__WEBPACK_IMPORTED_MODULE_2__["default"].book.all().then(function (response) {
+                  var _this$$options$nav$0$;
+
+                  var document = [{
+                    _name: "CSidebarNavTitle",
+                    _children: ["Sổ văn bản"]
+                  }].concat(_toConsumableArray(response.data.map(function (item) {
+                    return {
+                      _name: "CSidebarNavItem",
+                      name: item.name,
+                      to: "/books/".concat(item.id, "/documents"),
+                      icon: "cil-notes"
+                    };
+                  })));
+
+                  (_this$$options$nav$0$ = _this.$options.nav[0]._children).push.apply(_this$$options$nav$0$, _toConsumableArray(document).concat(_toConsumableArray(_this.operating), _toConsumableArray(_this.system)));
+
+                  _this.RFKey += 1;
+                });
+
+              case 2:
+                response = _context.sent;
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
+  },
+  data: function data() {
+    return {
+      RFKey: 0,
+      // key for rerender sidebar
+      operating: [{
+        _name: "CSidebarNavTitle",
+        _children: ["Điều hành"]
+      }, {
+        _name: "CSidebarNavItem",
+        name: "Báo cáo - thống kê",
+        to: "/documents",
+        icon: "cil-notes"
+      }],
+      system: [{
+        _name: "CSidebarNavTitle",
+        _children: ["Hệ thống"]
+      }, {
+        _name: "CSidebarNavItem",
+        name: "Người dùng",
+        to: "/users",
+        icon: "cil-people"
+      }, {
+        _name: "CSidebarNavItem",
+        name: "Chức danh",
+        to: "/titles",
+        icon: "cil-contact"
+      }, {
+        _name: "CSidebarNavItem",
+        name: "Phòng ban",
+        to: "/departments",
+        icon: "cil-lan"
+      }, {
+        _name: "CSidebarNavItem",
+        name: "Người ký",
+        to: "/signers",
+        icon: "cil-touch-app"
+      }, {
+        _name: "CSidebarNavItem",
+        name: "Nơi ban hành",
+        to: "/publishers",
+        icon: "cil-institution"
+      }, {
+        _name: "CSidebarNavItem",
+        name: "Loại văn bản",
+        to: "/document-types",
+        icon: "cil-text-size"
+      }, {
+        _name: "CSidebarNavItem",
+        name: "Sổ văn bản",
+        to: "/books",
+        icon: "cil-book"
+      }, {
+        _name: "CSidebarNavItem",
+        name: "Nhóm",
+        to: "/roles",
+        icon: "cil-address-book"
+      }, {
+        _name: "CSidebarNavItem",
+        name: "Quyền",
+        to: "/permissions",
+        icon: "cil-lock-locked"
+      }, {
+        _name: "CSidebarNavItem",
+        name: "Cài đặt",
+        to: "/settings",
+        icon: "cil-settings"
+      }]
+    };
   }
 });
 
@@ -899,6 +1036,7 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("CRenderFunction", {
+        key: _vm.RFKey,
         attrs: { flat: "", "content-to-render": _vm.$options.nav }
       }),
       _vm._v(" "),
@@ -1322,278 +1460,677 @@ __webpack_require__.r(__webpack_exports__);
       color: 'primary',
       text: 'NEW'
     }
-  }, {
-    _name: 'CSidebarNavTitle',
-    _children: ['Văn bản']
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Văn bản đến',
-    to: '/documents',
-    icon: 'cil-notes'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Văn bản đi',
-    to: '/documents',
-    icon: 'cil-notes'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Văn bản nội bộ',
-    to: '/documents',
-    icon: 'cil-notes'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Báo cáo',
-    to: '/documents',
-    icon: 'cil-notes'
-  }, {
-    _name: 'CSidebarNavTitle',
-    _children: ['Điều hành']
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Báo cáo - thống kê',
-    to: '/documents',
-    icon: 'cil-notes'
-  }, {
-    _name: 'CSidebarNavTitle',
-    _children: ['Hệ thống']
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Người dùng',
-    to: '/users',
-    icon: 'cil-people'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Chức danh',
-    to: '/titles',
-    icon: 'cil-contact'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Phòng ban',
-    to: '/departments',
-    icon: 'cil-lan'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Người ký',
-    to: '/signers',
-    icon: 'cil-touch-app'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Nơi ban hành',
-    to: '/publishers',
-    icon: 'cil-institution'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Loại văn bản',
-    to: '/document-types',
-    icon: 'cil-text-size'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Sổ văn bản',
-    to: '/books',
-    icon: 'cil-book'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Nhóm',
-    to: '/roles',
-    icon: 'cil-address-book'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Quyền',
-    to: '/permissions',
-    icon: 'cil-lock-locked'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Cài đặt',
-    to: '/settings',
-    icon: 'cil-settings'
-  }, {
-    _name: 'CSidebarNavTitle',
-    _children: ['Theme']
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Colors',
-    to: '/theme/colors',
-    icon: 'cil-drop'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Typography',
-    to: '/theme/typography',
-    icon: 'cil-pencil'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'CKEditor',
-    to: '/theme/ckeditor',
-    icon: 'cil-short-text'
-  }, {
-    _name: 'CSidebarNavTitle',
-    _children: ['Components']
-  }, {
-    _name: 'CSidebarNavDropdown',
-    name: 'Base',
-    route: '/base',
-    icon: 'cil-puzzle',
-    items: [{
-      name: 'Breadcrumbs',
-      to: '/base/breadcrumbs'
-    }, {
-      name: 'Cards',
-      to: '/base/cards'
-    }, {
-      name: 'Carousels',
-      to: '/base/carousels'
-    }, {
-      name: 'Collapses',
-      to: '/base/collapses'
-    }, {
-      name: 'Forms',
-      to: '/base/forms'
-    }, {
-      name: 'Jumbotrons',
-      to: '/base/jumbotrons'
-    }, {
-      name: 'List Groups',
-      to: '/base/list-groups'
-    }, {
-      name: 'Navs',
-      to: '/base/navs'
-    }, {
-      name: 'Navbars',
-      to: '/base/navbars'
-    }, {
-      name: 'Paginations',
-      to: '/base/paginations'
-    }, {
-      name: 'Popovers',
-      to: '/base/popovers'
-    }, {
-      name: 'Progress Bars',
-      to: '/base/progress-bars'
-    }, {
-      name: 'Switches',
-      to: '/base/switches'
-    }, {
-      name: 'Tables',
-      to: '/base/tables'
-    }, {
-      name: 'Tabs',
-      to: '/base/tabs'
-    }, {
-      name: 'Tooltips',
-      to: '/base/tooltips'
-    }]
-  }, {
-    _name: 'CSidebarNavDropdown',
-    name: 'Buttons',
-    route: '/buttons',
-    icon: 'cil-cursor',
-    items: [{
-      name: 'Buttons',
-      to: '/buttons/standard-buttons'
-    }, {
-      name: 'Button Dropdowns',
-      to: '/buttons/dropdowns'
-    }, {
-      name: 'Button Groups',
-      to: '/buttons/button-groups'
-    }, {
-      name: 'Brand Buttons',
-      to: '/buttons/brand-buttons'
-    }]
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Charts',
-    to: '/charts',
-    icon: 'cil-chart-pie'
-  }, {
-    _name: 'CSidebarNavDropdown',
-    name: 'Icons',
-    route: '/icons',
-    icon: 'cil-star',
-    items: [{
-      name: 'CoreUI Icons',
-      to: '/icons/coreui-icons',
-      badge: {
-        color: 'info',
-        text: 'NEW'
-      }
-    }, {
-      name: 'Brands',
-      to: '/icons/brands'
-    }, {
-      name: 'Flags',
-      to: '/icons/flags'
-    }]
-  }, {
-    _name: 'CSidebarNavDropdown',
-    name: 'Notifications',
-    route: '/notifications',
-    icon: 'cil-bell',
-    items: [{
-      name: 'Alerts',
-      to: '/notifications/alerts'
-    }, {
-      name: 'Badges',
-      to: '/notifications/badges'
-    }, {
-      name: 'Modals',
-      to: '/notifications/modals'
-    }]
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Widgets',
-    to: '/widgets',
-    icon: 'cil-calculator',
-    badge: {
-      color: 'primary',
-      text: 'NEW',
-      shape: 'pill'
-    }
-  }, {
-    _name: 'CSidebarNavDivider',
-    _class: 'm-2'
-  }, {
-    _name: 'CSidebarNavTitle',
-    _children: ['Extras']
-  }, {
-    _name: 'CSidebarNavDropdown',
-    name: 'Pages',
-    route: '/pages',
-    icon: 'cil-star',
-    items: [{
-      name: 'Login',
-      to: '/pages/login'
-    }, {
-      name: 'Register',
-      to: '/pages/register'
-    }, {
-      name: 'Error 404',
-      to: '/pages/404'
-    }, {
-      name: 'Error 500',
-      to: '/pages/500'
-    }]
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Download CoreUI',
-    href: 'http://coreui.io/vue/',
-    icon: {
-      name: 'cil-cloud-download',
-      "class": 'text-white'
-    },
-    _class: 'bg-success text-white',
-    target: '_blank'
-  }, {
-    _name: 'CSidebarNavItem',
-    name: 'Try CoreUI PRO',
-    href: 'http://coreui.io/pro/vue/',
-    icon: {
-      name: 'cil-layers',
-      "class": 'text-white'
-    },
-    _class: 'bg-danger text-white',
-    target: '_blank'
-  }]
+  } // {
+  //   _name: 'CSidebarNavTitle',
+  //   _children: ['Theme']
+  // },
+  // {
+  //   _name: 'CSidebarNavItem',
+  //   name: 'Colors',
+  //   to: '/theme/colors',
+  //   icon: 'cil-drop'
+  // },
+  // {
+  //   _name: 'CSidebarNavItem',
+  //   name: 'Typography',
+  //   to: '/theme/typography',
+  //   icon: 'cil-pencil'
+  // },
+  // {
+  //   _name: 'CSidebarNavItem',
+  //   name: 'CKEditor',
+  //   to: '/theme/ckeditor',
+  //   icon: 'cil-short-text'
+  // },
+  // {
+  //   _name: 'CSidebarNavTitle',
+  //   _children: ['Components']
+  // },
+  // {
+  //   _name: 'CSidebarNavDropdown',
+  //   name: 'Base',
+  //   route: '/base',
+  //   icon: 'cil-puzzle',
+  //   items: [
+  //     {
+  //       name: 'Breadcrumbs',
+  //       to: '/base/breadcrumbs'
+  //     },
+  //     {
+  //       name: 'Cards',
+  //       to: '/base/cards'
+  //     },
+  //     {
+  //       name: 'Carousels',
+  //       to: '/base/carousels'
+  //     }, 
+  //     {
+  //       name: 'Collapses',
+  //       to: '/base/collapses'
+  //     },
+  //     {
+  //       name: 'Forms',
+  //       to: '/base/forms'
+  //     },
+  //     {
+  //       name: 'Jumbotrons',
+  //       to: '/base/jumbotrons'
+  //     },
+  //     {
+  //       name: 'List Groups',
+  //       to: '/base/list-groups'
+  //     },
+  //     {
+  //       name: 'Navs',
+  //       to: '/base/navs'
+  //     },
+  //     {
+  //       name: 'Navbars',
+  //       to: '/base/navbars'
+  //     },
+  //     {
+  //       name: 'Paginations',
+  //       to: '/base/paginations'
+  //     },
+  //     {
+  //       name: 'Popovers',
+  //       to: '/base/popovers'
+  //     },
+  //     {
+  //       name: 'Progress Bars',
+  //       to: '/base/progress-bars'
+  //     },
+  //     {
+  //       name: 'Switches',
+  //       to: '/base/switches'
+  //     },
+  //     {
+  //       name: 'Tables',
+  //       to: '/base/tables'
+  //     },
+  //     {
+  //       name: 'Tabs',
+  //       to: '/base/tabs'
+  //     },
+  //     {
+  //       name: 'Tooltips',
+  //       to: '/base/tooltips'
+  //     }
+  //   ]
+  // },
+  // {
+  //   _name: 'CSidebarNavDropdown',
+  //   name: 'Buttons',
+  //   route: '/buttons',
+  //   icon: 'cil-cursor',
+  //   items: [
+  //     {
+  //       name: 'Buttons',
+  //       to: '/buttons/standard-buttons'
+  //     },
+  //     {
+  //       name: 'Button Dropdowns',
+  //       to: '/buttons/dropdowns'
+  //     },
+  //     {
+  //       name: 'Button Groups',
+  //       to: '/buttons/button-groups'
+  //     },
+  //     {
+  //       name: 'Brand Buttons',
+  //       to: '/buttons/brand-buttons'
+  //     }
+  //   ]
+  // },
+  // {
+  //   _name: 'CSidebarNavItem',
+  //   name: 'Charts',
+  //   to: '/charts',
+  //   icon: 'cil-chart-pie'
+  // },
+  // {
+  //   _name: 'CSidebarNavDropdown',
+  //   name: 'Icons',
+  //   route: '/icons',
+  //   icon: 'cil-star',
+  //   items: [
+  //     {
+  //       name: 'CoreUI Icons',
+  //       to: '/icons/coreui-icons',
+  //       badge: {
+  //         color: 'info',
+  //         text: 'NEW'
+  //       }
+  //     },
+  //     {
+  //       name: 'Brands',
+  //       to: '/icons/brands'
+  //     },
+  //     {
+  //       name: 'Flags',
+  //       to: '/icons/flags'
+  //     }
+  //   ]
+  // },
+  // {
+  //   _name: 'CSidebarNavDropdown',
+  //   name: 'Notifications',
+  //   route: '/notifications',
+  //   icon: 'cil-bell',
+  //   items: [
+  //     {
+  //       name: 'Alerts',
+  //       to: '/notifications/alerts'
+  //     },
+  //     {
+  //       name: 'Badges',
+  //       to: '/notifications/badges'
+  //     },
+  //     {
+  //       name: 'Modals',
+  //       to: '/notifications/modals'
+  //     }
+  //   ]
+  // },
+  // {
+  //   _name: 'CSidebarNavItem',
+  //   name: 'Widgets',
+  //   to: '/widgets',
+  //   icon: 'cil-calculator',
+  //   badge: {
+  //     color: 'primary',
+  //     text: 'NEW',
+  //     shape: 'pill'
+  //   }
+  // },
+  // {
+  //   _name: 'CSidebarNavDivider',
+  //   _class: 'm-2'
+  // },
+  // {
+  //   _name: 'CSidebarNavTitle',
+  //   _children: ['Extras']
+  // },
+  // {
+  //   _name: 'CSidebarNavDropdown',
+  //   name: 'Pages',
+  //   route: '/pages',
+  //   icon: 'cil-star',
+  //   items: [
+  //     {
+  //       name: 'Login',
+  //       to: '/pages/login'
+  //     },
+  //     {
+  //       name: 'Register',
+  //       to: '/pages/register'
+  //     },
+  //     {
+  //       name: 'Error 404',
+  //       to: '/pages/404'
+  //     },
+  //     {
+  //       name: 'Error 500',
+  //       to: '/pages/500'
+  //     }
+  //   ]
+  // },
+  // {
+  //   _name: 'CSidebarNavItem',
+  //   name: 'Download CoreUI',
+  //   href: 'http://coreui.io/vue/',
+  //   icon: { name: 'cil-cloud-download', class: 'text-white' },
+  //   _class: 'bg-success text-white',
+  //   target: '_blank'
+  // },
+  // {
+  //   _name: 'CSidebarNavItem',
+  //   name: 'Try CoreUI PRO',
+  //   href: 'http://coreui.io/pro/vue/',
+  //   icon: { name: 'cil-layers', class: 'text-white' },
+  //   _class: 'bg-danger text-white',
+  //   target: '_blank'
+  // }
+  ]
 }]);
+
+/***/ }),
+
+/***/ "./resources/js/src/services/attachment.js":
+/*!*************************************************!*\
+  !*** ./resources/js/src/services/attachment.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = '/api/attachments';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(query) {
+    return axios.get("".concat(resource, "?").concat(query));
+  },
+  get: function get(id, query) {
+    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  },
+  create: function create(data) {
+    return axios.post("".concat(resource), data);
+  },
+  update: function update(data, id) {
+    return axios.put("".concat(resource, "/").concat(id), data);
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("".concat(resource, "/").concat(id));
+  },
+  download: function download(id, filename) {
+    return axios.get("/api/download/attachments/".concat(id), {
+      responseType: 'blob'
+    }).then(function (response) {
+      var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+      var fileLink = document.createElement('a');
+      fileLink.href = fileURL;
+      fileLink.setAttribute('download', filename);
+      document.body.appendChild(fileLink);
+      fileLink.click();
+      return response;
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/src/services/book.js":
+/*!*******************************************!*\
+  !*** ./resources/js/src/services/book.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = '/api/books';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(query) {
+    return axios.get("".concat(resource, "?").concat(query));
+  },
+  get: function get(id, query) {
+    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  },
+  create: function create(data) {
+    return axios.post("".concat(resource), data);
+  },
+  update: function update(data, id) {
+    return axios.put("".concat(resource, "/").concat(id), data);
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("".concat(resource, "/").concat(id));
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/src/services/department.js":
+/*!*************************************************!*\
+  !*** ./resources/js/src/services/department.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = '/api/departments';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(query) {
+    return axios.get("".concat(resource, "?").concat(query));
+  },
+  get: function get(id, query) {
+    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  },
+  create: function create(data) {
+    return axios.post("".concat(resource), data);
+  },
+  update: function update(data, id) {
+    return axios.put("".concat(resource, "/").concat(id), data);
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("".concat(resource, "/").concat(id));
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/src/services/document.js":
+/*!***********************************************!*\
+  !*** ./resources/js/src/services/document.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = '/api/documents';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(query) {
+    return axios.get("".concat(resource, "?").concat(query));
+  },
+  get: function get(id, query) {
+    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  },
+  create: function create(data) {
+    return axios.post("".concat(resource), data);
+  },
+  update: function update(data, id) {
+    return axios.put("".concat(resource, "/").concat(id), data);
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("".concat(resource, "/").concat(id));
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/src/services/documentType.js":
+/*!***************************************************!*\
+  !*** ./resources/js/src/services/documentType.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = '/api/document-types';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(query) {
+    return axios.get("".concat(resource, "?").concat(query));
+  },
+  get: function get(id, query) {
+    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  },
+  create: function create(data) {
+    return axios.post("".concat(resource), data);
+  },
+  update: function update(data, id) {
+    return axios.put("".concat(resource, "/").concat(id), data);
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("".concat(resource, "/").concat(id));
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/src/services/factory.js":
+/*!**********************************************!*\
+  !*** ./resources/js/src/services/factory.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./auth */ "./resources/js/src/services/auth.js");
+/* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user */ "./resources/js/src/services/user.js");
+/* harmony import */ var _title__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./title */ "./resources/js/src/services/title.js");
+/* harmony import */ var _role__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./role */ "./resources/js/src/services/role.js");
+/* harmony import */ var _permission__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./permission */ "./resources/js/src/services/permission.js");
+/* harmony import */ var _department__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./department */ "./resources/js/src/services/department.js");
+/* harmony import */ var _documentType__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./documentType */ "./resources/js/src/services/documentType.js");
+/* harmony import */ var _book__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./book */ "./resources/js/src/services/book.js");
+/* harmony import */ var _document__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./document */ "./resources/js/src/services/document.js");
+/* harmony import */ var _signer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./signer */ "./resources/js/src/services/signer.js");
+/* harmony import */ var _publisher__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./publisher */ "./resources/js/src/services/publisher.js");
+/* harmony import */ var _attachment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./attachment */ "./resources/js/src/services/attachment.js");
+/* harmony import */ var _receiver__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./receiver */ "./resources/js/src/services/receiver.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  auth: _auth__WEBPACK_IMPORTED_MODULE_0__["default"],
+  user: _user__WEBPACK_IMPORTED_MODULE_1__["default"],
+  title: _title__WEBPACK_IMPORTED_MODULE_2__["default"],
+  role: _role__WEBPACK_IMPORTED_MODULE_3__["default"],
+  permission: _permission__WEBPACK_IMPORTED_MODULE_4__["default"],
+  department: _department__WEBPACK_IMPORTED_MODULE_5__["default"],
+  documentType: _documentType__WEBPACK_IMPORTED_MODULE_6__["default"],
+  book: _book__WEBPACK_IMPORTED_MODULE_7__["default"],
+  document: _document__WEBPACK_IMPORTED_MODULE_8__["default"],
+  signer: _signer__WEBPACK_IMPORTED_MODULE_9__["default"],
+  publisher: _publisher__WEBPACK_IMPORTED_MODULE_10__["default"],
+  attachment: _attachment__WEBPACK_IMPORTED_MODULE_11__["default"],
+  receiver: _receiver__WEBPACK_IMPORTED_MODULE_12__["default"]
+});
+
+/***/ }),
+
+/***/ "./resources/js/src/services/permission.js":
+/*!*************************************************!*\
+  !*** ./resources/js/src/services/permission.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = '/api/permissions';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(query) {
+    return axios.get("".concat(resource, "?").concat(query));
+  },
+  get: function get(id, query) {
+    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  },
+  create: function create(data) {
+    return axios.post("".concat(resource), data);
+  },
+  update: function update(data, id) {
+    return axios.put("".concat(resource, "/").concat(id), data);
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("".concat(resource, "/").concat(id));
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/src/services/publisher.js":
+/*!************************************************!*\
+  !*** ./resources/js/src/services/publisher.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = '/api/publishers';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(query) {
+    return axios.get("".concat(resource, "?").concat(query));
+  },
+  get: function get(id, query) {
+    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  },
+  create: function create(data) {
+    return axios.post("".concat(resource), data);
+  },
+  update: function update(data, id) {
+    return axios.put("".concat(resource, "/").concat(id), data);
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("".concat(resource, "/").concat(id));
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/src/services/receiver.js":
+/*!***********************************************!*\
+  !*** ./resources/js/src/services/receiver.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = '/api/document-receivers';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(query) {
+    return axios.get("".concat(resource, "?").concat(query));
+  },
+  get: function get(id, query) {
+    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  },
+  create: function create(data) {
+    return axios.post("".concat(resource), data);
+  },
+  update: function update(data, id) {
+    return axios.put("".concat(resource, "/").concat(id), data);
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("".concat(resource, "/").concat(id));
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/src/services/role.js":
+/*!*******************************************!*\
+  !*** ./resources/js/src/services/role.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = '/api/roles';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(query) {
+    return axios.get("".concat(resource, "?").concat(query));
+  },
+  get: function get(id, query) {
+    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  },
+  create: function create(data) {
+    return axios.post("".concat(resource), data);
+  },
+  update: function update(data, id) {
+    return axios.put("".concat(resource, "/").concat(id), data);
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("".concat(resource, "/").concat(id));
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/src/services/signer.js":
+/*!*********************************************!*\
+  !*** ./resources/js/src/services/signer.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = '/api/signers';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(query) {
+    return axios.get("".concat(resource, "?").concat(query));
+  },
+  get: function get(id, query) {
+    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  },
+  create: function create(data) {
+    return axios.post("".concat(resource), data);
+  },
+  update: function update(data, id) {
+    return axios.put("".concat(resource, "/").concat(id), data);
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("".concat(resource, "/").concat(id));
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/src/services/title.js":
+/*!********************************************!*\
+  !*** ./resources/js/src/services/title.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = '/api/titles';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(query) {
+    return axios.get("".concat(resource, "?").concat(query));
+  },
+  get: function get(id, query) {
+    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  },
+  create: function create(data) {
+    return axios.post("".concat(resource), data);
+  },
+  update: function update(data, id) {
+    return axios.put("".concat(resource, "/").concat(id), data);
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("".concat(resource, "/").concat(id));
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/src/services/user.js":
+/*!*******************************************!*\
+  !*** ./resources/js/src/services/user.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = '/api/users';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(query) {
+    return axios.get("".concat(resource, "?").concat(query));
+  },
+  get: function get(id, query) {
+    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  },
+  create: function create(data) {
+    return axios.post("".concat(resource), data);
+  },
+  update: function update(data, id) {
+    return axios.put("".concat(resource, "/").concat(id), data);
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("".concat(resource, "/").concat(id));
+  },
+  giveRole: function giveRole(role, id) {
+    return axios.post("".concat(resource, "/").concat(id, "/roles/").concat(role));
+  },
+  revokeRole: function revokeRole(role, id) {
+    return axios["delete"]("".concat(resource, "/").concat(id, "/roles/").concat(role));
+  },
+  givePermission: function givePermission(permission, id) {
+    return axios.post("".concat(resource, "/").concat(id, "/permissions/").concat(permission));
+  },
+  revokePermission: function revokePermission(permission, id) {
+    return axios["delete"]("".concat(resource, "/").concat(id, "/permissions/").concat(permission));
+  }
+});
 
 /***/ })
 

@@ -231,7 +231,7 @@ const hexToRgba = (color, opacity = 100) => {
 /*!*************************************************!*\
   !*** ./node_modules/@coreui/utils/src/index.js ***!
   \*************************************************/
-/*! exports provided: default, deepObjectsMerge, getColor, getStyle, hexToRgb, hexToRgba, makeUid, pickByKeys, rgbToHex */
+/*! exports provided: default, deepObjectsMerge, getColor, getStyle, hexToRgb, hexToRgba, makeUid, omitByKeys, pickByKeys, rgbToHex */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -254,11 +254,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _make_uid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./make-uid */ "./node_modules/@coreui/utils/src/make-uid.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "makeUid", function() { return _make_uid__WEBPACK_IMPORTED_MODULE_5__["default"]; });
 
-/* harmony import */ var _pick_by_keys__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pick-by-keys */ "./node_modules/@coreui/utils/src/pick-by-keys.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "pickByKeys", function() { return _pick_by_keys__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+/* harmony import */ var _omit_by_keys__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./omit-by-keys */ "./node_modules/@coreui/utils/src/omit-by-keys.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "omitByKeys", function() { return _omit_by_keys__WEBPACK_IMPORTED_MODULE_6__["default"]; });
 
-/* harmony import */ var _rgb_to_hex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./rgb-to-hex */ "./node_modules/@coreui/utils/src/rgb-to-hex.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "rgbToHex", function() { return _rgb_to_hex__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+/* harmony import */ var _pick_by_keys__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pick-by-keys */ "./node_modules/@coreui/utils/src/pick-by-keys.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "pickByKeys", function() { return _pick_by_keys__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+/* harmony import */ var _rgb_to_hex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./rgb-to-hex */ "./node_modules/@coreui/utils/src/rgb-to-hex.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "rgbToHex", function() { return _rgb_to_hex__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+
 
 
 
@@ -276,8 +280,9 @@ const utils = {
   hexToRgb: _hex_to_rgb__WEBPACK_IMPORTED_MODULE_3__["default"],
   hexToRgba: _hex_to_rgba__WEBPACK_IMPORTED_MODULE_4__["default"],
   makeUid: _make_uid__WEBPACK_IMPORTED_MODULE_5__["default"],
-  pickByKeys: _pick_by_keys__WEBPACK_IMPORTED_MODULE_6__["default"],
-  rgbToHex: _rgb_to_hex__WEBPACK_IMPORTED_MODULE_7__["default"]
+  omitByKeys: _omit_by_keys__WEBPACK_IMPORTED_MODULE_6__["default"],
+  pickByKeys: _pick_by_keys__WEBPACK_IMPORTED_MODULE_7__["default"],
+  rgbToHex: _rgb_to_hex__WEBPACK_IMPORTED_MODULE_8__["default"]
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (utils);
@@ -302,6 +307,28 @@ const makeUid = () => {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (makeUid);
+
+/***/ }),
+
+/***/ "./node_modules/@coreui/utils/src/omit-by-keys.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@coreui/utils/src/omit-by-keys.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const omitByKeys = (originalObject, keys) => {
+  var newObj = {}
+  var objKeys = Object.keys(originalObject)
+  for (var i = 0; i < objKeys.length; i++) {
+    !keys.includes(objKeys[i]) && (newObj[objKeys[i]] = originalObject[objKeys[i]])
+  }
+  return newObj
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (omitByKeys);
 
 /***/ }),
 

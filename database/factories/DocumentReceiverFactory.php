@@ -9,6 +9,8 @@ use App\Entities\Department;
 use App\Entities\Document;
 use Spatie\Permission\Models\Role;
 
+
+
 $factory->define(DocumentReceiver::class, function (Faker $faker) {
     
     $document = Document::all()->random();

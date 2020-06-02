@@ -100,6 +100,6 @@ class PermissionSeeder extends Seeder
                 ->assignRole(Role::all()->random()->id);
         }
 
-        User::find(1)->syncRoles('Quản trị hệ thống');
+        User::find(1)->assignRole('Quản trị hệ thống');
     }
 }
