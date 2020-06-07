@@ -108,14 +108,6 @@ export default {
     async fetch() {
       this.loading = true;
 
-      const attachmentResponse = await services.attachment.all(
-        `search=document_id:${this.documentId}`
-      );
-      this.attachments = this.formatKeys(attachmentResponse.data, {
-        id: "id",
-        name: "name"
-      });
-
       const departmentResponse = await services.department.all();
       this.departments = departmentResponse.data;
 

@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->namespace('Api')->group(function(){
     Route::apiResource('books', 'BooksController');
     Route::apiResource('departments', 'DepartmentsController');
-    Route::apiResource('document-receivers', 'DocumentReceiversController');
     Route::apiResource('documents', 'DocumentsController');
     Route::apiResource('attachments', 'AttachmentsController');
     Route::apiResource('document-types', 'DocumentTypesController');
@@ -27,6 +26,10 @@ Route::middleware('auth:sanctum')->namespace('Api')->group(function(){
     Route::apiResource('users', 'UsersController');
     Route::apiResource('roles', 'RolesController');
     Route::apiResource('permissions', 'PermissionsController');
+
+    Route::apiResource('document-receivers', 'DocumentReceiversController');
+    Route::post('document-receivers-m', 'DocumentReceiversController@stores');
+    Route::delete('document-receivers-m', 'DocumentReceiversController@destroys');
     
     Route::get('download/attachments/{attachment}', 'AttachmentsController@download');
 

@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Contracts\Repositories\DocumentReceiverRepository;
+use App\Contracts\Repositories\DepartmentRepository;
 use App\Http\Requests\DocumentReceiver\{
     IndexRequest,
     CreateRequest,
+    CreatesRequest,
     ShowRequest,
     UpdateRequest,
     DestroyRequest,
+    DestroysRequest,
 };
 
 /**
@@ -25,13 +28,22 @@ class DocumentReceiversController extends Controller
     protected $repository;
 
     /**
+     * @var DepartmentRepository
+     */
+    protected $departmentRepository;
+
+    /**
      * DocumentReceiversController constructor.
      *
      * @param DocumentReceiverRepository $repository
      */
-    public function __construct(DocumentReceiverRepository $repository)
+    public function __construct(
+        DocumentReceiverRepository $repository, 
+        DepartmentRepository $departmentRepository
+    )
     {
         $this->repository = $repository;
+        $this->departmentRepository = $departmentRepository;
     }
 
     /**
@@ -41,7 +53,7 @@ class DocumentReceiversController extends Controller
      */
     public function index(IndexRequest $request)
     {
-        $data = $this->repository->paginate($request->limit ?: null);
+        $data = $this->repository->all();
         return $this->respond($data);
     }
 
@@ -99,4 +111,55 @@ class DocumentReceiversController extends Controller
         $this->repository->delete($id);
         return $this->respondNoContent();
     }
+
+    /**
+     * Remove multiple receivers
+     *
+     * @param  $CLASS\DestroyRequest $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroys(DestroysRequest $request){
+        if($request->has('department_id'))
+        {
+            $usersInDepartment = $this->departmentRepository->find($request->department_id)->users;
+
+            foreach ($usersInDepartment as $user) {
+                $this->repository->deleteWhere([
+                    'user_id' => $user->id,
+                    'document_id' => $request->document_id,
+                ]);
+            }
+        }elseif($request->has('user_id')){
+            $this->repository->deleteWhere([
+                'user_id' => $request->user_id,
+                'document_id' => $request->document_id,
+            ]);
+        }
+
+        return $this->respondNoContent();
+    }
+
+    /**
+     * Store multiple receivers
+     *
+     * @param  $CLASS\CreatesRequest $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function stores(CreatesRequest $request)
+    {
+        $usersInDepartment = $this->departmentRepository->find($request->department_id)->users;
+
+        foreach ($usersInDepartment as $user) {
+            $this->repository->create([
+                'user_id' => $user->id,
+                'document_id' => $request->document_id,
+                'department_id' => $request->department_id
+            ]);
+        }
+
+        return $this->respondCreated(null);
+    }
+
 }
