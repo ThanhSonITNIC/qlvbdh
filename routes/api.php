@@ -20,12 +20,15 @@ Route::middleware('auth:sanctum')->namespace('Api')->group(function(){
     Route::apiResource('documents', 'DocumentsController');
     Route::apiResource('attachments', 'AttachmentsController');
     Route::apiResource('document-types', 'DocumentTypesController');
-    Route::apiResource('publishers', 'PublishersController');
+    Route::apiResource('organizes', 'OrganizesController');
     Route::apiResource('signers', 'SignersController');
     Route::apiResource('titles', 'TitlesController');
     Route::apiResource('users', 'UsersController');
     Route::apiResource('roles', 'RolesController');
     Route::apiResource('permissions', 'PermissionsController');
+
+    Route::apiResource('document-organizes', 'DocumentOrganizesController');
+    Route::delete('document-organizes-m', 'DocumentOrganizesController@destroys');
 
     Route::apiResource('document-receivers', 'DocumentReceiversController');
     Route::post('document-receivers-m', 'DocumentReceiversController@stores');

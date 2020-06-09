@@ -628,6 +628,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publisher__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./publisher */ "./resources/js/src/services/publisher.js");
 /* harmony import */ var _attachment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./attachment */ "./resources/js/src/services/attachment.js");
 /* harmony import */ var _receiver__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./receiver */ "./resources/js/src/services/receiver.js");
+/* harmony import */ var _recipient__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./recipient */ "./resources/js/src/services/recipient.js");
+
 
 
 
@@ -654,7 +656,8 @@ __webpack_require__.r(__webpack_exports__);
   signer: _signer__WEBPACK_IMPORTED_MODULE_9__["default"],
   publisher: _publisher__WEBPACK_IMPORTED_MODULE_10__["default"],
   attachment: _attachment__WEBPACK_IMPORTED_MODULE_11__["default"],
-  receiver: _receiver__WEBPACK_IMPORTED_MODULE_12__["default"]
+  receiver: _receiver__WEBPACK_IMPORTED_MODULE_12__["default"],
+  recipient: _recipient__WEBPACK_IMPORTED_MODULE_13__["default"]
 });
 
 /***/ }),
@@ -698,7 +701,7 @@ var resource = '/api/permissions';
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var resource = '/api/publishers';
+var resource = '/api/organizes';
 /* harmony default export */ __webpack_exports__["default"] = ({
   all: function all(query) {
     return axios.get("".concat(resource, "?").concat(query));
@@ -747,6 +750,39 @@ var resource = '/api/document-receivers';
   },
   creates: function creates(data) {
     return data.user_id ? this.create(data) : axios.post("".concat(resource, "-m"), data);
+  },
+  deletes: function deletes(query) {
+    return axios["delete"]("".concat(resource, "-m?").concat(query));
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/src/services/recipient.js":
+/*!************************************************!*\
+  !*** ./resources/js/src/services/recipient.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = '/api/document-organizes';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(query) {
+    return axios.get("".concat(resource, "?").concat(query));
+  },
+  get: function get(id, query) {
+    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  },
+  create: function create(data) {
+    return axios.post("".concat(resource), data);
+  },
+  update: function update(data, id) {
+    return axios.put("".concat(resource, "/").concat(id), data);
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("".concat(resource, "/").concat(id));
   },
   deletes: function deletes(query) {
     return axios["delete"]("".concat(resource, "-m?").concat(query));

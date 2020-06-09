@@ -32,7 +32,4 @@ class Department extends Model implements Transformable
         return $this->hasMany(User::class);
     }
 
-    public function documents(){
-        return $this->belongsToMany(Document::class, DocumentReceiver::class);
-    }
 }

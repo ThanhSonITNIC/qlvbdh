@@ -154,8 +154,7 @@ class DocumentReceiversController extends Controller
         foreach ($usersInDepartment as $user) {
             $this->repository->create([
                 'user_id' => $user->id,
-                'document_id' => $request->document_id,
-                'department_id' => $request->department_id
+                'document_id' => $request->document_id
             ]);
         }
 

@@ -18,7 +18,7 @@ class CreateDocumentReceiversTable extends Migration
 		Schema::create('document_receivers', function(Blueprint $table) {
             $table->increments('id');
 			$table->unsignedInteger('user_id');
-			$table->string('document_id', 30);
+			$table->unsignedInteger('document_id');
 			$table->boolean('view_only')->default(true);
 			$table->boolean('seen')->default(false);
 			$table->boolean('done')->nullable();

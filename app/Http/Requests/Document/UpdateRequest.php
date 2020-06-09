@@ -25,7 +25,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'nullable|string|alpha_dash|max:30|unique:documents,id,'.$this->document,
+            'id' => 'nullable|numeric|unique:documents,id,'.$this->document,
+            'symbol' => 'nullable|string|max:30|unique:documents,symbol,'.$this->document,
             'abstract' => 'nullable|string',
             'content' => 'nullable|string',
             'book_id' => 'nullable|exists:books,id',
@@ -33,8 +34,8 @@ class UpdateRequest extends FormRequest
             'signer_id' => 'nullable|exists:signers,id',
             'creator_id' => 'nullable|exists:users,id',
             'published_at' => 'nullable|date',
-            'arrival_at' => 'nullable|date',
-            'publisher_id' => 'nullable|exists:publishers,id',
+            'sign_at' => 'nullable|date',
+            'publisher_id' => 'nullable|exists:organizes,id',
             'due_at' => 'nullable|date',
             'link_id' => 'nullable|exists:documents,id',
         ];

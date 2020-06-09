@@ -4,7 +4,7 @@ namespace App\Criteria;
 
 use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Contracts\RepositoryInterface;
-use App\Entities\DocumentType;
+use App\Entities\Book;
 
 /**
  * Class DocumentCriteria.
@@ -26,15 +26,15 @@ class DocumentCriteria implements CriteriaInterface
         $model = $model->where(function($model){
             $model = $model->where(function($model){
                 if(auth()->user()->hasPermissionTo('Quản lý văn bản đến')){
-                    $model->orWhere('type_id', DocumentType::DEN);
+                    $model->orWhere('book_id', Book::DEN);
                 }
         
                 if(auth()->user()->hasPermissionTo('Quản lý văn bản đi')){
-                    $model->orWhere('type_id', DocumentType::DI);
+                    $model->orWhere('book_id', Book::DI);
                 }
         
                 if(auth()->user()->hasPermissionTo('Quản lý văn bản nội bộ')){
-                    $model->orWhere('type_id', DocumentType::NOIBO);
+                    $model->orWhere('book_id', Book::NOIBO);
                 }
             });
     

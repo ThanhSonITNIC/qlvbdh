@@ -11,7 +11,7 @@
             color="primary"
             variant="outline"
           >
-            <CIcon name="cil-user-follow" />
+            <CIcon name="cil-plus" />
           </CButton>
         </CCardHeader>
         <CCardBody>
@@ -62,22 +62,22 @@ export default {
       loading: true,
       items: null,
       fields: [
-        { key: "id", label: "Mã", _classes: "font-weight-bold" },
+        { key: "symbol", label: "Số ký hiệu", _classes: "font-weight-bold" },
         { key: "abstract", label: "Trích dẫn", _classes: "w-50" },
         { key: "type", label: "Loại" },
         { key: "publisher", label: "Nơi ban hành" },
         { key: "published_at", label: "Ngày ban hành" }
       ],
       searchFields: [
-        { value: "id", label: "Mã" },
+        { value: "symbol", label: "Số ký hiệu" },
         { value: "abstract", label: "Trích dẫn" },
-        { value: "content", label: "Nội dung" },
         { value: "type.name", label: "Loại" },
         { value: "creator.name", label: "Người soạn" },
         { value: "signer.name", label: "Người ký" },
         { value: "published_at", label: "Ngày ban hành" },
-        { value: "arrival_at", label: "Ngày đến" },
+        { value: "sign_at", label: "Ngày ký" },
         { value: "publisher.name", label: "Nơi ban hành" },
+        { value: "organizes.name", label: "Nơi nhận" },
         { value: "due_at", label: "Hạn xử lý" },
         { value: "link.id", label: "Văn bản liên kết" }
       ],
@@ -85,7 +85,7 @@ export default {
       pages: 0,
       size: 0,
       searchValue: "",
-      searchField: "id",
+      searchField: "symbol",
       bookId: null
     };
   },

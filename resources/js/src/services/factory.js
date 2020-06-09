@@ -11,6 +11,7 @@ import signer from "./signer";
 import publisher from "./publisher";
 import attachment from "./attachment";
 import receiver from "./receiver";
+import recipient from "./recipient";
 
 export default {
     auth,
@@ -26,4 +27,5 @@ export default {
     publisher,
     attachment,
     receiver,
+    recipient,
 }

@@ -1,4 +1,4 @@
-const resource = '/api/publishers';
+const resource = '/api/organizes';
 
 export default {
     all(query){

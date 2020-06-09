@@ -26,6 +26,7 @@ class AttachmentRepositoryEloquent extends BaseRepository implements AttachmentR
        'path' => 'like',
 
        'document.id' => '=',
+       'document.symbol' => 'like',
        'document.abstract' => 'like',
        'document.content' => 'like',
        'document.book_id' => '=',
@@ -33,7 +34,7 @@ class AttachmentRepositoryEloquent extends BaseRepository implements AttachmentR
        'document.signer_id' => '=',
        'document.creator_id' => '=',
        'document.published_at' => 'like',
-       'document.arrival_at' => 'like',
+       'document.sign_at' => 'like',
        'document.publisher_id' => 'like',
        'document.due_at' => '=',
        'document.link_id' => '=',

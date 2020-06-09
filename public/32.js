@@ -81,8 +81,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       loading: true,
       items: null,
       fields: [{
-        key: "id",
-        label: "Mã",
+        key: "symbol",
+        label: "Số ký hiệu",
         _classes: "font-weight-bold"
       }, {
         key: "abstract",
@@ -99,14 +99,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         label: "Ngày ban hành"
       }],
       searchFields: [{
-        value: "id",
-        label: "Mã"
+        value: "symbol",
+        label: "Số ký hiệu"
       }, {
         value: "abstract",
         label: "Trích dẫn"
-      }, {
-        value: "content",
-        label: "Nội dung"
       }, {
         value: "type.name",
         label: "Loại"
@@ -120,11 +117,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         value: "published_at",
         label: "Ngày ban hành"
       }, {
-        value: "arrival_at",
-        label: "Ngày đến"
+        value: "sign_at",
+        label: "Ngày ký"
       }, {
         value: "publisher.name",
         label: "Nơi ban hành"
+      }, {
+        value: "organizes.name",
+        label: "Nơi nhận"
       }, {
         value: "due_at",
         label: "Hạn xử lý"
@@ -136,7 +136,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       pages: 0,
       size: 0,
       searchValue: "",
-      searchField: "id",
+      searchField: "symbol",
       bookId: null
     };
   },
@@ -283,7 +283,7 @@ var render = function() {
                       },
                       on: { click: _vm.createUser }
                     },
-                    [_c("CIcon", { attrs: { name: "cil-user-follow" } })],
+                    [_c("CIcon", { attrs: { name: "cil-plus" } })],
                     1
                   )
                 ],

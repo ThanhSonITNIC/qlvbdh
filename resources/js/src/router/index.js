@@ -63,6 +63,7 @@ const CreateUser = () => import('../views/users/Create')
 // Documents
 const Documents = () => import('../views/documents/Documents')
 const Document = () => import('../views/documents/Document')
+const DocumentCreate = () => import('../views/documents/Create')
 
 Vue.use(Router)
 
@@ -147,7 +148,7 @@ function configRoutes () {
     {
       path: '/',
       redirect: '/dashboard',
-      name: 'Home',
+      name: 'Trang chủ',
       component: TheContainer,
       meta: {
         authRequired: true
@@ -162,7 +163,7 @@ function configRoutes () {
         {
           path: 'books',
           meta: {
-            label: 'Books',
+            label: 'Sổ văn bản',
           },
           component: {
             render(c) {
@@ -172,12 +173,12 @@ function configRoutes () {
           children: [
             {
               path: ':book',
-              name: 'Book Details',
+              name: 'Chi tiết sổ',
               component: Documents,
               children: [
                 {
                   path: 'documents',
-                  name: 'Documents',
+                  name: 'Danh sách văn bản',
                   component: Documents,
                 },
               ]
@@ -188,7 +189,7 @@ function configRoutes () {
         {
           path: 'documents',
           meta: {
-            label: 'Documents',
+            label: 'Văn bản',
           },
           component: {
             render(c) {
@@ -198,12 +199,17 @@ function configRoutes () {
           children: [
             {
               path: '',
-              name: 'Documents',
+              name: 'Danh sách',
               component: Documents
             },
             {
+              path: 'create',
+              name: 'Tạo mới',
+              component: DocumentCreate
+            },
+            {
               path: ':document',
-              name: 'Document Details',
+              name: 'Chi tiết',
               component: Document,
             },
           ]
@@ -247,7 +253,7 @@ function configRoutes () {
         {
           path: 'users',
           meta: {
-            label: 'Users'
+            label: 'Người dùng'
           },
           component: {
             render(c) {
@@ -257,13 +263,13 @@ function configRoutes () {
           children: [
             {
               path: '',
-              name: 'Users',
+              name: 'Danh sách',
               component: Users
             },
             {
               path: 'create',
               meta: {
-                label: 'Create User'
+                label: 'Tạo mới'
               },
               name: 'Create User',
               component: CreateUser
@@ -271,7 +277,7 @@ function configRoutes () {
             {
               path: ':id',
               meta: {
-                label: 'User Details'
+                label: 'Chi tiết'
               },
               name: 'User',
               component: User

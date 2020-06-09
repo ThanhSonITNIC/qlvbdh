@@ -24,6 +24,10 @@ class Book extends Model implements Transformable
 
     public $timestamps = false;
 
+    public const DI = 2;
+    public const DEN = 1;
+    public const NOIBO = 3;
+
     public function documents(){
         return $this->hasMany(Document::class);
     }

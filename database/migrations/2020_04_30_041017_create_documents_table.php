@@ -16,18 +16,19 @@ class CreateDocumentsTable extends Migration
 	public function up()
 	{
 		Schema::create('documents', function(Blueprint $table) {
-            $table->string('id', 30)->primary();
+            $table->increments('id');
+			$table->string('symbol', 30)->nullable();
 			$table->text('abstract')->nullable();
 			$table->text('content')->nullable();
 			$table->unsignedInteger('book_id');
 			$table->string('type_id', 2);
-			$table->unsignedInteger('signer_id');
+			$table->unsignedInteger('signer_id')->nullable();
+			$table->date('sign_at')->nullable();
 			$table->unsignedInteger('creator_id');
 			$table->date('published_at');
-			$table->date('arrival_at')->nullable();
-			$table->unsignedInteger('publisher_id');
+			$table->string('publisher_id', 30);
 			$table->date('due_at')->nullable();
-			$table->string('link_id', 30)->nullable();
+			$table->unsignedInteger('link_id')->nullable();
 			$table->timestamps();
 			
 			$table->foreign('book_id')
@@ -48,7 +49,7 @@ class CreateDocumentsTable extends Migration
 				->onUpdate('cascade');
 			$table->foreign('publisher_id')
 				->references('id')
-				->on('publishers')
+				->on('organizes')
 				->onUpdate('cascade');
 		});
 

@@ -22,31 +22,32 @@ class Document extends Model implements Transformable
      */
     protected $fillable = [
         'id',
+        'symbol',
         'abstract',
         'content',
         'book_id',
         'type_id',
         'signer_id',
+        'sign_at',
         'creator_id',
         'published_at',
-        'arrival_at',
         'publisher_id',
         'due_at',
         'link_id',
     ];
 
-    protected $keyType = 'string';
-
-    public $incrementing = false;
-
     protected $casts = [
         'published_at' => 'date:Y-m-d',
-        'arrival_at' => 'date:Y-m-d',
+        'sign_at' => 'date:Y-m-d',
         'due_at' => 'date:Y-m-d',
     ];
 
     public function receivers(){
         return $this->hasMany(DocumentReceiver::class);
+    }
+
+    public function organizes(){
+        return $this->belongsToMany(Organize::class, DocumentOrganize::class);
     }
 
     public function type(){
@@ -62,7 +63,7 @@ class Document extends Model implements Transformable
     }
 
     public function publisher(){
-        return $this->belongsTo(Publisher::class);
+        return $this->belongsTo(Organize::class, 'publisher_id');
     }
 
     public function signer(){

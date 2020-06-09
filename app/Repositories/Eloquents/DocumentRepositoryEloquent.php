@@ -19,6 +19,7 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
      */
     protected $fieldSearchable = [
         'id' => '=',
+        'symbol' => 'like',
         'abstract' => 'like',
         'content' => 'like',
         'book_id' => '=',
@@ -26,7 +27,7 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
         'signer_id' => '=',
         'creator_id' => '=',
         'published_at' => 'like',
-        'arrival_at' => 'like',
+        'sign_at' => 'like',
         'publisher_id' => 'like',
         'due_at' => '=',
         'link_id' => '=',
@@ -46,6 +47,9 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
         'receivers.done' => '=',
         'receivers.role_id' => '=',
         'receivers.department_id' => '=',
+
+        'organizes.id' => '=',
+        'organizes.name' => 'like',
 
         'type.id' => '=',
         'type.name' => 'like',
@@ -70,6 +74,7 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
         'creator.active' => '=',
 
         'link.id' => '=',
+        'link.symbol' => 'like',
         'link.abstract' => 'like',
         'link.content' => 'like',
         'link.book_id' => '=',
@@ -77,7 +82,7 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
         'link.signer_id' => '=',
         'link.creator_id' => '=',
         'link.published_at' => 'like',
-        'link.arrival_at' => 'like',
+        'link.sign_at' => 'like',
         'link.publisher_id' => 'like',
         'link.attachments' => 'like',
         'link.due_at' => '=',

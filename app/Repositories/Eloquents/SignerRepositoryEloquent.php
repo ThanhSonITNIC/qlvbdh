@@ -23,6 +23,7 @@ class SignerRepositoryEloquent extends BaseRepository implements SignerRepositor
         'description' => 'like',
 
         'documents.id' => '=',
+        'documents.symbol' => 'like',
         'documents.abstract' => 'like',
         'documents.content' => 'like',
         'documents.book_id' => '=',
@@ -30,7 +31,7 @@ class SignerRepositoryEloquent extends BaseRepository implements SignerRepositor
         'documents.signer_id' => '=',
         'documents.creator_id' => '=',
         'documents.published_at' => 'like',
-        'documents.arrival_at' => 'like',
+        'documents.sign_at' => 'like',
         'documents.publisher_id' => 'like',
         'documents.due_at' => '=',
         'documents.link_id' => '=',

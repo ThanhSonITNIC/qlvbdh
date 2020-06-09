@@ -28,8 +28,6 @@ class DocumentReceiver extends Model implements Transformable
         'view_only', 
         'seen', 
         'done',
-        'role_id',
-        'department_id',
     ];
 
     protected $casts = [
@@ -37,14 +35,6 @@ class DocumentReceiver extends Model implements Transformable
         'seen' => 'boolean',
         'done' => 'boolean',
     ];
-
-    public function department(){
-        return $this->belongsTo(Department::class);
-    }
-
-    public function role(){
-        return $this->belongsTo(Role::class);
-    }
 
     public function user(){
         return $this->belongsTo(User::class);
