@@ -107,6 +107,9 @@ export default {
         .then(response => {
           this.fetchReceivers();
           this.fetchHandlers();
+        })
+        .catch(error => {
+          this.toastHttpError(error);
         });
     },
     addViewer(item) {
@@ -117,13 +120,20 @@ export default {
         })
         .then(response => {
           this.fetchReceivers();
+        })
+        .catch(error => {
+          this.toastHttpError(error);
         });
     },
     onHandlerDeselected(item) {
-      services.receiver.update({ view_only: true }, item.id);
+      services.receiver.update({ view_only: true }, item.id).catch(error => {
+        this.toastHttpError(error);
+      });
     },
     onHandlerSelected(item) {
-      services.receiver.update({ view_only: false }, item.id);
+      services.receiver.update({ view_only: false }, item.id).catch(error => {
+        this.toastHttpError(error);
+      });
     },
     formatReceiverForTree(array, keysMap = { id: "id" }) {
       return array.map(function(obj) {

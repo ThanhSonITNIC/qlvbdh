@@ -53,13 +53,10 @@ export default {
       await services.user
         .update(this.password, this.userId)
         .then(response => {
-          this.$toast.open({ message: "Đã thay đổi", type: "success" });
+          this.$toast.success({ message: "Đã thay đổi", type: "success" });
         })
         .catch(error => {
-          this.$toast.open({
-            message: error.response.data.message,
-            type: "error"
-          });
+          this.toastHttpError(error);
         });
     }
   }

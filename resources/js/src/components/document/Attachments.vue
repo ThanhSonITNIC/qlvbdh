@@ -72,13 +72,10 @@ export default {
       services.attachment
         .download(item.id, item.name)
         .then(response => {
-          this.$toast.open({ message: "Đã tải xuống", type: "success" });
+          this.$toast.success("Đã tải xuống");
         })
         .catch(error => {
-          this.$toast.open({
-            message: error.response.data.message,
-            type: "error"
-          });
+          this.toastHttpError(error);
         });
     },
     deleteAttachment(id, index) {
@@ -86,13 +83,10 @@ export default {
         .delete(id)
         .then(response => {
           this.attachments.splice(index, 1);
-          this.$toast.open({ message: "Đã xóa", type: "success" });
+          this.$toast.success("Đã xóa");
         })
         .catch(error => {
-          this.$toast.open({
-            message: error.response.data.message,
-            type: "error"
-          });
+          this.toastHttpError(error);
         });
     },
     handleFileUpload(files, e) {
@@ -111,13 +105,10 @@ export default {
         })
         .then(response => {
           this.attachments.push(response.data);
-          this.$toast.open({ message: "Đã tải lên", type: "success" });
+          this.$toast.success("Đã tải lên");
         })
         .catch(error => {
-          this.$toast.open({
-            message: error.response.data.message,
-            type: "error"
-          });
+          this.toastHttpError(error);
         });
     }
   }

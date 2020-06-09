@@ -22,8 +22,8 @@
 <script>
 import CInfo from "../../components/user/Info";
 import CPassword from "../../components/user/Password";
-import CRole from "../../components/user/Role";
-import CPermission from "../../components/user/Permission";
+import CRole from "../../components/user/TreeRole";
+import CPermission from "../../components/user/TreePermission";
 
 export default {
   name: "User",

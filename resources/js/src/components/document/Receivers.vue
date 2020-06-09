@@ -134,26 +134,20 @@ export default {
       services.receiver
         .update({ view_only: value }, id)
         .then(response => {
-          this.$toast.open({ message: "Đã cập nhật", type: "success" });
+          this.$toast.success("Đã cập nhật");
         })
         .catch(error => {
-          this.$toast.open({
-            message: error.response.data.message,
-            type: "error"
-          });
+          this.toastHttpError(error);
         });
     },
     updateDone(id, value) {
       services.receiver
         .update({ done: value }, id)
         .then(response => {
-          this.$toast.open({ message: "Đã cập nhật", type: "success" });
+          this.$toast.success("Đã cập nhật");
         })
         .catch(error => {
-          this.$toast.open({
-            message: error.response.data.message,
-            type: "error"
-          });
+          this.toastHttpError(error);
         });
     },
     remove(receiver, index) {
@@ -161,13 +155,10 @@ export default {
         .delete(receiver.id)
         .then(response => {
           this.receivers.splice(index, 1);
-          this.$toast.open({ message: "Đã xóa", type: "success" });
+          this.$toast.success("Đã xóa");
         })
         .catch(error => {
-          this.$toast.open({
-            message: error.response.data.message,
-            type: "error"
-          });
+          this.toastHttpError(error);
         });
     }
   },

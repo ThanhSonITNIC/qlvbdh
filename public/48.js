@@ -174,15 +174,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           path: "/documents/".concat(response.data.id)
         });
 
-        _this2.$toast.open({
-          message: "Đã tạo văn bản",
-          type: "success"
-        });
+        _this2.$toast.success("Đã tạo văn bản");
       })["catch"](function (error) {
-        _this2.$toast.open({
-          message: error.response.data.message,
-          type: "error"
-        });
+        _this2.toastHttpError(error);
       });
     }
   }

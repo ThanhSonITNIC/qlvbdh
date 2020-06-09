@@ -131,14 +131,11 @@ export default {
       await services.document
         .update(this.document, this.documentId)
         .then(response => {
-          this.$toast.open({ message: "Đã lưu", type: "success" });
+          this.$toast.success("Đã lưu");
           this.$emit("update", response.data);
         })
         .catch(error => {
-          this.$toast.open({
-            message: error.response.data.message,
-            type: "error"
-          });
+          this.toastHttpError(error);
         });
     }
   }

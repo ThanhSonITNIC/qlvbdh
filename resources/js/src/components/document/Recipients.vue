@@ -71,15 +71,21 @@ export default {
       return recipientResponse;
     },
     addRecipient(item) {
-      services.recipient.create({
-        organize_id: item.id,
-        document_id: this.documentId
-      });
+      services.recipient
+        .create({
+          organize_id: item.id,
+          document_id: this.documentId
+        })
+        .catch(error => {
+          this.toastHttpError(error);
+        });
     },
     removeRecipient(item) {
-      services.recipient.deletes(
-        `document_id=${this.documentId}&organize_id=${item.id}`
-      );
+      services.recipient
+        .deletes(`document_id=${this.documentId}&organize_id=${item.id}`)
+        .catch(error => {
+          this.toastHttpError(error);
+        });
     }
   }
 };

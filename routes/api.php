@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->namespace('Api')->group(function(){
+Route::middleware('auth:sanctum', 'auth.active')->namespace('Api')->group(function(){
     Route::apiResource('books', 'BooksController');
     Route::apiResource('departments', 'DepartmentsController');
     Route::apiResource('documents', 'DocumentsController');

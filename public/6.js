@@ -112,15 +112,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].attachment.download(item.id, item.name).then(function (response) {
-        _this2.$toast.open({
-          message: "Đã tải xuống",
-          type: "success"
-        });
+        _this2.$toast.success("Đã tải xuống");
       })["catch"](function (error) {
-        _this2.$toast.open({
-          message: error.response.data.message,
-          type: "error"
-        });
+        _this2.toastHttpError(error);
       });
     },
     deleteAttachment: function deleteAttachment(id, index) {
@@ -129,15 +123,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].attachment["delete"](id).then(function (response) {
         _this3.attachments.splice(index, 1);
 
-        _this3.$toast.open({
-          message: "Đã xóa",
-          type: "success"
-        });
+        _this3.$toast.success("Đã xóa");
       })["catch"](function (error) {
-        _this3.$toast.open({
-          message: error.response.data.message,
-          type: "error"
-        });
+        _this3.toastHttpError(error);
       });
     },
     handleFileUpload: function handleFileUpload(files, e) {
@@ -157,15 +145,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }).then(function (response) {
         _this4.attachments.push(response.data);
 
-        _this4.$toast.open({
-          message: "Đã tải lên",
-          type: "success"
-        });
+        _this4.$toast.success("Đã tải lên");
       })["catch"](function (error) {
-        _this4.$toast.open({
-          message: error.response.data.message,
-          type: "error"
-        });
+        _this4.toastHttpError(error);
       });
     }
   }
@@ -377,17 +359,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.next = 2;
                 return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.update(_this3.document, _this3.documentId).then(function (response) {
-                  _this3.$toast.open({
-                    message: "Đã lưu",
-                    type: "success"
-                  });
+                  _this3.$toast.success("Đã lưu");
 
                   _this3.$emit("update", response.data);
                 })["catch"](function (error) {
-                  _this3.$toast.open({
-                    message: error.response.data.message,
-                    type: "error"
-                  });
+                  _this3.toastHttpError(error);
                 });
 
               case 2:
@@ -551,13 +527,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     addRecipient: function addRecipient(item) {
+      var _this4 = this;
+
       _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].recipient.create({
         organize_id: item.id,
         document_id: this.documentId
+      })["catch"](function (error) {
+        _this4.toastHttpError(error);
       });
     },
     removeRecipient: function removeRecipient(item) {
-      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].recipient.deletes("document_id=".concat(this.documentId, "&organize_id=").concat(item.id));
+      var _this5 = this;
+
+      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].recipient.deletes("document_id=".concat(this.documentId, "&organize_id=").concat(item.id))["catch"](function (error) {
+        _this5.toastHttpError(error);
+      });
     }
   }
 });
@@ -790,6 +774,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this6.fetchReceivers();
 
         _this6.fetchHandlers();
+      })["catch"](function (error) {
+        _this6.toastHttpError(error);
       });
     },
     addViewer: function addViewer(item) {
@@ -799,17 +785,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         document_id: this.documentId
       })).then(function (response) {
         _this7.fetchReceivers();
+      })["catch"](function (error) {
+        _this7.toastHttpError(error);
       });
     },
     onHandlerDeselected: function onHandlerDeselected(item) {
+      var _this8 = this;
+
       _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].receiver.update({
         view_only: true
-      }, item.id);
+      }, item.id)["catch"](function (error) {
+        _this8.toastHttpError(error);
+      });
     },
     onHandlerSelected: function onHandlerSelected(item) {
+      var _this9 = this;
+
       _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].receiver.update({
         view_only: false
-      }, item.id);
+      }, item.id)["catch"](function (error) {
+        _this9.toastHttpError(error);
+      });
     },
     formatReceiverForTree: function formatReceiverForTree(array) {
       var keysMap = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {

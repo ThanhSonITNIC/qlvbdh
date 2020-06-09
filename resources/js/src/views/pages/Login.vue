@@ -8,13 +8,10 @@
               <CForm>
                 <h1 class="pb-4">Đăng nhập</h1>
                 <CAlert :show="!!error" color="warning">{{error}}</CAlert>
-                <CInput
-                  autocomplete="email"
-                  placeholder="Enter Email..."
-                  v-model="email"
-                  required
-                >
-                  <template #prepend-content><CIcon name="cil-user"/></template>
+                <CInput autocomplete="email" placeholder="Enter Email..." v-model="email" required>
+                  <template #prepend-content>
+                    <CIcon name="cil-user" />
+                  </template>
                 </CInput>
                 <CInput
                   placeholder="Password"
@@ -22,7 +19,9 @@
                   autocomplete="curent-password"
                   v-model="password"
                 >
-                  <template #prepend-content><CIcon name="cil-lock-locked"/></template>
+                  <template #prepend-content>
+                    <CIcon name="cil-lock-locked" />
+                  </template>
                 </CInput>
                 <CRow>
                   <CCol col="6" class="text-left">
@@ -43,28 +42,30 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: "Login",
   data() {
     return {
-      email: 'thanhsonitnic@gmail.com',
-      password: 'password',
-      error: null,
-    }
+      email: "thanhsonitnic@gmail.com",
+      password: "password",
+      error: null
+    };
   },
   methods: {
-    login(){
-      this.$store.dispatch('auth/login', {email: this.email, password: this.password}).then(response => {
-        this.$router.push(
-          this.$route.query.redirectFrom || { name: "Dashboard" }
-        );
-      }).catch(error => {
-        if(error.response.status == 422){
-          this.error = error.response.data.message // "Sai tên đăng nhập hoặc mật khẩu!"
-        }else{
-          this.error = "Lỗi (" + + error.response.status + ")"
-        }
-      })
-    },
+    login() {
+      this.$store
+        .dispatch("auth/login", { email: this.email, password: this.password })
+        .then(response => {
+          this.$router.push(
+            this.$route.query.redirectFrom || { name: "Dashboard" }
+          );
+        })
+        .then(response => {
+          this.$toast.success("Đăng nhập thành công");
+        })
+        .catch(error => {
+          this.toastHttpError(error);
+        });
+    }
   }
-}
+};
 </script>

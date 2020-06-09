@@ -51,13 +51,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Login',
+  name: "Login",
   data: function data() {
     return {
-      email: 'thanhsonitnic@gmail.com',
-      password: 'password',
+      email: "thanhsonitnic@gmail.com",
+      password: "password",
       error: null
     };
   },
@@ -65,19 +64,17 @@ __webpack_require__.r(__webpack_exports__);
     login: function login() {
       var _this = this;
 
-      this.$store.dispatch('auth/login', {
+      this.$store.dispatch("auth/login", {
         email: this.email,
         password: this.password
       }).then(function (response) {
         _this.$router.push(_this.$route.query.redirectFrom || {
           name: "Dashboard"
         });
+      }).then(function (response) {
+        _this.$toast.success("Đăng nhập thành công");
       })["catch"](function (error) {
-        if (error.response.status == 422) {
-          _this.error = error.response.data.message; // "Sai tên đăng nhập hoặc mật khẩu!"
-        } else {
-          _this.error = "Lỗi (" + +error.response.status + ")";
-        }
+        _this.toastHttpError(error);
       });
     }
   }

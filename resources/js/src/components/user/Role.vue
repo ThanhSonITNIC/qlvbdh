@@ -57,10 +57,7 @@ export default {
         ? services.user.giveRole(roleId, this.userId)
         : services.user.revokeRole(roleId, this.userId);
       roleRequest.catch(error => {
-        this.$toast.open({
-          message: error.response.data.message,
-          type: "error"
-        });
+        this.toastHttpError(error);
       });
       return roleRequest;
     }

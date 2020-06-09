@@ -121,13 +121,10 @@ export default {
         .create(this.document)
         .then(response => {
           this.$router.push({ path: `/documents/${response.data.id}` });
-          this.$toast.open({ message: "Đã tạo văn bản", type: "success" });
+          this.$toast.success("Đã tạo văn bản");
         })
         .catch(error => {
-          this.$toast.open({
-            message: error.response.data.message,
-            type: "error"
-          });
+          this.toastHttpError(error);
         });
     },
   }

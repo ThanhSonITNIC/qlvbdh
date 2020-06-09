@@ -28,8 +28,6 @@ class PermissionSeeder extends Seeder
             ['name' => 'Quản lý văn bản đến', 'guard_name' => $guard],
             ['name' => 'Quản lý văn bản đi', 'guard_name' => $guard],
             ['name' => 'Quản lý văn bản nội bộ', 'guard_name' => $guard],
-            ['name' => 'Quản lý văn bản báo cáo', 'guard_name' => $guard],
-            ['name' => 'Quản lý văn bản dự thảo', 'guard_name' => $guard],
             ['name' => 'Quản lý sổ văn bản', 'guard_name' => $guard],
         ]);
 
@@ -48,13 +46,6 @@ class PermissionSeeder extends Seeder
             'Quản lý nơi ban hành',
             'Phân quyền',
             'Báo cáo thống kê',
-            'Quản lý văn bản báo cáo',
-            'Quản lý văn bản dự thảo',
-        ]);
-
-        Role::find(2)->syncPermissions([
-            'Quản lý văn bản báo cáo',
-            'Quản lý văn bản dự thảo',
         ]);
 
         Role::find(3)->syncPermissions([
@@ -69,8 +60,6 @@ class PermissionSeeder extends Seeder
             'Quản lý văn bản đi',
             'Quản lý văn bản nội bộ',
             'Quản lý loại văn bản',
-            'Quản lý văn bản báo cáo',
-            'Quản lý văn bản dự thảo',
             'Quản lý sổ văn bản',
         ]);
 
@@ -80,8 +69,6 @@ class PermissionSeeder extends Seeder
             'Quản lý văn bản đi',
             'Quản lý văn bản nội bộ',
             'Quản lý loại văn bản',
-            'Quản lý văn bản báo cáo',
-            'Quản lý văn bản dự thảo',
             'Quản lý sổ văn bản',
         ]);
 

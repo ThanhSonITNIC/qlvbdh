@@ -117,13 +117,10 @@ export default {
         .create(this.user)
         .then(response => {
           this.$router.push({ path: `/users/${response.data.id}` });
-          this.$toast.open({ message: "Đã tạo tài khoản", type: "success" });
+          this.$toast.success("Đã tạo tài khoản");
         })
         .catch(error => {
-          this.$toast.open({
-            message: error.response.data.message,
-            type: "error"
-          });
+          this.toastHttpError(error);
         });
     }
   }

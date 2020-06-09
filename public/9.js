@@ -168,15 +168,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     path: "/users/".concat(response.data.id)
                   });
 
-                  _this2.$toast.open({
-                    message: "Đã tạo tài khoản",
-                    type: "success"
-                  });
+                  _this2.$toast.success("Đã tạo tài khoản");
                 })["catch"](function (error) {
-                  _this2.$toast.open({
-                    message: error.response.data.message,
-                    type: "error"
-                  });
+                  _this2.toastHttpError(error);
                 });
 
               case 2:

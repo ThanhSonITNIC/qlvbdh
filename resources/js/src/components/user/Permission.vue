@@ -54,10 +54,7 @@ export default {
         ? services.user.givePermission(permissionId, this.userId)
         : services.user.revokePermission(permissionId, this.userId);
       permissionRequest.catch(error => {
-        this.$toast.open({
-          message: error.response.data.message,
-          type: "error"
-        });
+        this.toastHttpError(error);
       });
       return permissionRequest;
     }
