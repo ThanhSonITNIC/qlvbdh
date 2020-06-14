@@ -8,14 +8,21 @@
         <CPassword :userId="userId" />
       </CCol>
     </CRow>
-    <CRow>
-      <CCol col="6">
-        <CRole :userId="userId" />
-      </CCol>
-      <CCol col="6">
-        <CPermission :userId="userId" />
-      </CCol>
-    </CRow>
+      <CCard>
+        <CCardHeader>
+          <strong>Phân quyền</strong>
+        </CCardHeader>
+        <CCardBody>
+          <CRow>
+            <CCol col="6">
+              <CRole :userId="userId" />
+            </CCol>
+            <CCol col="6">
+              <CPermission :userId="userId" />
+            </CCol>
+          </CRow>
+        </CCardBody>
+      </CCard>
   </div>
 </template>
 

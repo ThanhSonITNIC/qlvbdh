@@ -1,23 +1,17 @@
 <template>
-  <CCard>
-    <CCardHeader>
-      <strong>Phân nhóm</strong>
-    </CCardHeader>
-    <CCardBody>
-      <CRow class="form-group">
-        <CCol sm="12">
-          <treeselect
-            @select="addRole"
-            @deselect="removeRole"
-            v-model="roles"
-            :multiple="true"
-            :options="roleOptions"
-            :clearable="false"
-          ></treeselect>
-        </CCol>
-      </CRow>
-    </CCardBody>
-  </CCard>
+  <CRow class="form-group">
+    <CCol sm="12">
+      <label>Phân theo nhóm</label>
+      <treeselect
+        @select="addRole"
+        @deselect="removeRole"
+        v-model="roles"
+        :multiple="true"
+        :options="roleOptions"
+        :clearable="false"
+      ></treeselect>
+    </CCol>
+  </CRow>
 </template>
 
 <script>

@@ -314,12 +314,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
  // import the component
 
  // import the styles
@@ -457,12 +451,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
  // import the component
 
  // import the styles
@@ -575,6 +563,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_user_Password__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/user/Password */ "./resources/js/src/components/user/Password.vue");
 /* harmony import */ var _components_user_TreeRole__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/user/TreeRole */ "./resources/js/src/components/user/TreeRole.vue");
 /* harmony import */ var _components_user_TreePermission__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/user/TreePermission */ "./resources/js/src/components/user/TreePermission.vue");
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -957,45 +952,30 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "CCard",
+    "CRow",
+    { staticClass: "form-group" },
     [
-      _c("CCardHeader", [_c("strong", [_vm._v("Phân quyền")])]),
-      _vm._v(" "),
       _c(
-        "CCardBody",
+        "CCol",
+        { attrs: { sm: "12" } },
         [
-          _c(
-            "CRow",
-            { staticClass: "form-group" },
-            [
-              _c(
-                "CCol",
-                { attrs: { sm: "12" } },
-                [
-                  _c("treeselect", {
-                    attrs: {
-                      multiple: true,
-                      options: _vm.permissionOptions,
-                      clearable: false
-                    },
-                    on: {
-                      select: _vm.addPermission,
-                      deselect: _vm.removePermission
-                    },
-                    model: {
-                      value: _vm.permissions,
-                      callback: function($$v) {
-                        _vm.permissions = $$v
-                      },
-                      expression: "permissions"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          )
+          _c("label", [_vm._v("Phân theo chức năng")]),
+          _vm._v(" "),
+          _c("treeselect", {
+            attrs: {
+              multiple: true,
+              options: _vm.permissionOptions,
+              clearable: false
+            },
+            on: { select: _vm.addPermission, deselect: _vm.removePermission },
+            model: {
+              value: _vm.permissions,
+              callback: function($$v) {
+                _vm.permissions = $$v
+              },
+              expression: "permissions"
+            }
+          })
         ],
         1
       )
@@ -1026,42 +1006,30 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "CCard",
+    "CRow",
+    { staticClass: "form-group" },
     [
-      _c("CCardHeader", [_c("strong", [_vm._v("Phân nhóm")])]),
-      _vm._v(" "),
       _c(
-        "CCardBody",
+        "CCol",
+        { attrs: { sm: "12" } },
         [
-          _c(
-            "CRow",
-            { staticClass: "form-group" },
-            [
-              _c(
-                "CCol",
-                { attrs: { sm: "12" } },
-                [
-                  _c("treeselect", {
-                    attrs: {
-                      multiple: true,
-                      options: _vm.roleOptions,
-                      clearable: false
-                    },
-                    on: { select: _vm.addRole, deselect: _vm.removeRole },
-                    model: {
-                      value: _vm.roles,
-                      callback: function($$v) {
-                        _vm.roles = $$v
-                      },
-                      expression: "roles"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          )
+          _c("label", [_vm._v("Phân theo nhóm")]),
+          _vm._v(" "),
+          _c("treeselect", {
+            attrs: {
+              multiple: true,
+              options: _vm.roleOptions,
+              clearable: false
+            },
+            on: { select: _vm.addRole, deselect: _vm.removeRole },
+            model: {
+              value: _vm.roles,
+              callback: function($$v) {
+                _vm.roles = $$v
+              },
+              expression: "roles"
+            }
+          })
         ],
         1
       )
@@ -1115,19 +1083,33 @@ var render = function() {
       ),
       _vm._v(" "),
       _c(
-        "CRow",
+        "CCard",
         [
-          _c(
-            "CCol",
-            { attrs: { col: "6" } },
-            [_c("CRole", { attrs: { userId: _vm.userId } })],
-            1
-          ),
+          _c("CCardHeader", [_c("strong", [_vm._v("Phân quyền")])]),
           _vm._v(" "),
           _c(
-            "CCol",
-            { attrs: { col: "6" } },
-            [_c("CPermission", { attrs: { userId: _vm.userId } })],
+            "CCardBody",
+            [
+              _c(
+                "CRow",
+                [
+                  _c(
+                    "CCol",
+                    { attrs: { col: "6" } },
+                    [_c("CRole", { attrs: { userId: _vm.userId } })],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "CCol",
+                    { attrs: { col: "6" } },
+                    [_c("CPermission", { attrs: { userId: _vm.userId } })],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
             1
           )
         ],

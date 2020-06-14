@@ -1,23 +1,17 @@
 <template>
-  <CCard>
-    <CCardHeader>
-      <strong>Phân quyền</strong>
-    </CCardHeader>
-    <CCardBody>
-      <CRow class="form-group">
-        <CCol sm="12">
-          <treeselect
-            @select="addPermission"
-            @deselect="removePermission"
-            v-model="permissions"
-            :multiple="true"
-            :options="permissionOptions"
-            :clearable="false"
-          ></treeselect>
-        </CCol>
-      </CRow>
-    </CCardBody>
-  </CCard>
+  <CRow class="form-group">
+    <CCol sm="12">
+      <label>Phân theo chức năng</label>
+      <treeselect
+        @select="addPermission"
+        @deselect="removePermission"
+        v-model="permissions"
+        :multiple="true"
+        :options="permissionOptions"
+        :clearable="false"
+      ></treeselect>
+    </CCol>
+  </CRow>
 </template>
 
 <script>
