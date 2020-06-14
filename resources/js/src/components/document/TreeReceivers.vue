@@ -5,8 +5,8 @@
     </CCardHeader>
     <CCardBody>
       <CRow class="form-group">
-        <CCol sm="6">
-          <label>Chọn xem</label>
+        <CCol sm="12">
+          <!-- <label>Chọn xem</label> -->
           <treeselect
             @select="addViewer"
             @deselect="removeViewer"
@@ -16,7 +16,7 @@
             :clearable="false"
           ></treeselect>
         </CCol>
-        <CCol sm="6">
+        <!-- <CCol sm="6">
           <label>Chọn xử lý</label>
           <treeselect
             @select="onHandlerSelected"
@@ -26,7 +26,7 @@
             :options="handlerOptions"
             :clearable="false"
           ></treeselect>
-        </CCol>
+        </CCol> -->
       </CRow>
     </CCardBody>
   </CCard>

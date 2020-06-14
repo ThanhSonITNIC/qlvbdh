@@ -1893,10 +1893,8 @@ var render = function() {
             [
               _c(
                 "CCol",
-                { attrs: { sm: "6" } },
+                { attrs: { sm: "12" } },
                 [
-                  _c("label", [_vm._v("Chọn xem")]),
-                  _vm._v(" "),
                   _c("treeselect", {
                     attrs: {
                       multiple: true,
@@ -1910,34 +1908,6 @@ var render = function() {
                         _vm.viewers = $$v
                       },
                       expression: "viewers"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "CCol",
-                { attrs: { sm: "6" } },
-                [
-                  _c("label", [_vm._v("Chọn xử lý")]),
-                  _vm._v(" "),
-                  _c("treeselect", {
-                    attrs: {
-                      multiple: true,
-                      options: _vm.handlerOptions,
-                      clearable: false
-                    },
-                    on: {
-                      select: _vm.onHandlerSelected,
-                      deselect: _vm.onHandlerDeselected
-                    },
-                    model: {
-                      value: _vm.handlers,
-                      callback: function($$v) {
-                        _vm.handlers = $$v
-                      },
-                      expression: "handlers"
                     }
                   })
                 ],
