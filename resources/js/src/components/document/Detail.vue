@@ -1,7 +1,8 @@
 <template>
   <CCard>
     <CCardHeader>
-      <strong>Chi tiết văn bản</strong>
+      <strong v-if="documentId">Chi tiết văn bản</strong>
+      <strong v-else>Tạo văn bản</strong>
     </CCardHeader>
     <CCardBody>
       <CForm>
@@ -129,8 +130,17 @@
       </CForm>
     </CCardBody>
     <CCardFooter>
-      <CButton type="submit" size="sm" @click="updateDocument" class="float-right" color="success">
+      <CButton
+        v-if="documentId"
+        size="sm"
+        @click="updateDocument"
+        class="float-right"
+        color="success"
+      >
         <CIcon name="cil-check" /> Lưu
+      </CButton>
+      <CButton v-else size="sm" @click="createDocument" class="float-right" color="success">
+        <CIcon name="cil-plus" /> Tạo
       </CButton>
     </CCardFooter>
   </CCard>
@@ -147,7 +157,7 @@ export default {
   name: "Detail",
   props: {
     documentId: {
-      required: true
+      required: false
     }
   },
   components: { Treeselect },
@@ -159,8 +169,19 @@ export default {
       writers: [],
       publishers: [],
       document: {
-        id: null,
-        creator: {},
+        book_id: null,
+        type_id: null,
+        symbol: null,
+        writer_id: null,
+        abstract: null,
+        publisher_id: null,
+        published_at: null,
+        signer_id: null,
+        sign_at: null,
+        creator: {
+          id: this.$store.state.auth.currentUser.id,
+          name: this.$store.state.auth.currentUser.name
+        },
         writer: {}
       }
     };
@@ -170,6 +191,14 @@ export default {
       handler() {
         this.init();
       }
+    },
+    $route: {
+      immediate: true,
+      handler(route) {
+        if (route.query && route.query.book) {
+          this.document.book_id = Number.parseInt(route.query.book);
+        }
+      }
     }
   },
   created() {
@@ -177,7 +206,7 @@ export default {
   },
   methods: {
     init() {
-      this.fetchDocument();
+      !this.documentId || this.fetchDocument();
       this.fetchTypes();
       this.fetchBooks();
       this.fetchPublishers();
@@ -246,6 +275,17 @@ export default {
         .then(response => {
           this.$toast.success("Đã lưu");
           this.$emit("update", response.data);
+        })
+        .catch(error => {
+          this.toastHttpError(error);
+        });
+    },
+    createDocument() {
+      services.document
+        .create(this.document)
+        .then(response => {
+          this.$router.push({ path: `/documents/${response.data.id}` });
+          this.$toast.success("Đã tạo văn bản");
         })
         .catch(error => {
           this.toastHttpError(error);

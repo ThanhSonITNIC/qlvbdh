@@ -5,7 +5,7 @@
     </CCardHeader>
     <CCardBody>
       <CRow class="form-group">
-        <CCol v-if="!isOutcome" sm="12">
+        <CCol v-if="isOutcome" sm="12">
           <label>Văn bản đến</label>
           <treeselect
             v-model="linkToDocument"
@@ -21,13 +21,14 @@
             >{{ node.raw.label || getSymbol(node.raw.id) }}</div>
           </treeselect>
         </CCol>
-        <CCol v-if="isOutcome" sm="12">
+        <CCol v-else sm="12">
           <label>Danh sách đã liên kết</label>
           <treeselect
             v-model="documentsLinked"
             :options="linkedDocuments"
             :multiple="true"
             :openOnClick="false"
+            :clearable="false"
             disabled
             placeholder=""
           >
@@ -133,9 +134,9 @@ export default {
       if (this.documents.map(item => item.id).includes(document.id)) return;
       this.documents.push(document);
     },
-    linkTo(id) {
+    linkTo(document) {
       services.document
-        .update({ link_id: id }, this.documentId)
+        .update({ link_id: document.id }, this.documentId)
         .catch(error => {
           this.toastHttpError(error);
         });

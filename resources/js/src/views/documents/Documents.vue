@@ -6,7 +6,7 @@
           <CIcon name="cil-grid" />Danh sách văn bản
           <CButton
             size="sm"
-            @click="createUser"
+            @click="goCreate"
             class="float-right"
             color="primary"
             variant="outline"
@@ -148,8 +148,11 @@ export default {
     rowClicked(item, index) {
       this.$router.push({ path: `/documents/${item.id}` });
     },
-    createUser() {
-      this.$router.push({ path: `/documents/create` });
+    goCreate() {
+      this.$router.push({
+        path: `/documents/create`,
+        query: { book: this.bookId }
+      });
     },
     pageChange(val) {
       this.$router.push({ query: { page: val } });

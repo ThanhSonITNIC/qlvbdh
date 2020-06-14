@@ -1,7 +1,7 @@
 import authService from '../../services/auth'
 
 export const state = {
-    currentUser: sessionStorage.getItem('authUser'),
+    currentUser: JSON.parse(sessionStorage.getItem('authUser')),
 }
 
 export const mutations = {

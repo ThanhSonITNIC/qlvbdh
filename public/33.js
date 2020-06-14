@@ -214,9 +214,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         path: "/documents/".concat(item.id)
       });
     },
-    createUser: function createUser() {
+    goCreate: function goCreate() {
       this.$router.push({
-        path: "/documents/create"
+        path: "/documents/create",
+        query: {
+          book: this.bookId
+        }
       });
     },
     pageChange: function pageChange(val) {
@@ -278,7 +281,7 @@ var render = function() {
                         color: "primary",
                         variant: "outline"
                       },
-                      on: { click: _vm.createUser }
+                      on: { click: _vm.goCreate }
                     },
                     [_c("CIcon", { attrs: { name: "cil-plus" } })],
                     1
