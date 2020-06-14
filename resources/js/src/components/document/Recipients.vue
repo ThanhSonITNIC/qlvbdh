@@ -46,7 +46,6 @@ export default {
   },
   watch: {
     documentId: {
-      immediate: true,
       handler() {
         this.init();
       }

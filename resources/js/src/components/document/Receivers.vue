@@ -60,7 +60,6 @@ export default {
   },
   watch: {
     documentId: {
-      immediate: true,
       handler() {
         this.init();
       }
@@ -180,7 +179,6 @@ export default {
     hanlderQuery() {
       return `search=document_id:${this.documentId};view_only:false&with=user&searchJoin=and`;
     }
-  },
-  watch: {}
+  }
 };
 </script>

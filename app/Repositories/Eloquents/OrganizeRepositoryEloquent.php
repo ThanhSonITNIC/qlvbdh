@@ -29,10 +29,10 @@ class OrganizeRepositoryEloquent extends BaseRepository implements OrganizeRepos
         'publishedDocuments.type_id' => '=',
         'publishedDocuments.signer_id' => '=',
         'publishedDocuments.creator_id' => '=',
+        'publishedDocuments.writer_id' => '=',
         'publishedDocuments.published_at' => 'like',
         'publishedDocuments.sign_at' => 'like',
         'publishedDocuments.publisher_id' => 'like',
-        'publishedDocuments.due_at' => '=',
         'publishedDocuments.link_id' => '=',
 
         'receivedDocuments.id' => '=',
@@ -43,10 +43,10 @@ class OrganizeRepositoryEloquent extends BaseRepository implements OrganizeRepos
         'receivedDocuments.type_id' => '=',
         'receivedDocuments.signer_id' => '=',
         'receivedDocuments.creator_id' => '=',
+        'receivedDocuments.writer_id' => '=',
         'receivedDocuments.published_at' => 'like',
         'receivedDocuments.sign_at' => 'like',
         'receivedDocuments.publisher_id' => 'like',
-        'receivedDocuments.due_at' => '=',
         'receivedDocuments.link_id' => '=',
     ];
 

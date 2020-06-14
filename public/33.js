@@ -86,7 +86,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _classes: "font-weight-bold"
       }, {
         key: "abstract",
-        label: "Trích dẫn",
+        label: "Trích yếu",
         _classes: "w-50"
       }, {
         key: "type",
@@ -103,7 +103,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         label: "Số ký hiệu"
       }, {
         value: "abstract",
-        label: "Trích dẫn"
+        label: "Trích yếu"
       }, {
         value: "type.name",
         label: "Loại"
@@ -125,9 +125,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, {
         value: "organizes.name",
         label: "Nơi nhận"
-      }, {
-        value: "due_at",
-        label: "Hạn xử lý"
       }, {
         value: "linkTo.symbol",
         label: "Liên kết văn bản đến"

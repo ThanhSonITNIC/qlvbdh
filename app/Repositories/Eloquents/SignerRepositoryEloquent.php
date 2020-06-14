@@ -30,10 +30,10 @@ class SignerRepositoryEloquent extends BaseRepository implements SignerRepositor
         'documents.type_id' => '=',
         'documents.signer_id' => '=',
         'documents.creator_id' => '=',
+        'documents.writer_id' => '=',
         'documents.published_at' => 'like',
         'documents.sign_at' => 'like',
         'documents.publisher_id' => 'like',
-        'documents.due_at' => '=',
         'documents.link_id' => '=',
     ];
 

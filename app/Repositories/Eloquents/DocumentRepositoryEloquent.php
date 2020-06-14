@@ -29,7 +29,6 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
         'published_at' => 'like',
         'sign_at' => 'like',
         'publisher_id' => 'like',
-        'due_at' => '=',
         'link_id' => '=',
 
         'attachments.id' => '=',
@@ -81,11 +80,11 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
         'linkTo.type_id' => '=',
         'linkTo.signer_id' => '=',
         'linkTo.creator_id' => '=',
+        'linkTo.writer_id' => '=',
         'linkTo.published_at' => 'like',
         'linkTo.sign_at' => 'like',
         'linkTo.publisher_id' => 'like',
         'linkTo.attachments' => 'like',
-        'linkTo.due_at' => '=',
         'linkTo.link_id' => '=',
 
         'linked.id' => '=',
@@ -96,11 +95,11 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
         'linked.type_id' => '=',
         'linked.signer_id' => '=',
         'linked.creator_id' => '=',
+        'linked.writer_id' => '=',
         'linked.published_at' => 'like',
         'linked.sign_at' => 'like',
         'linked.publisher_id' => 'like',
         'linked.attachments' => 'like',
-        'linked.due_at' => '=',
         'linked.link_id' => '=',
     ];
 

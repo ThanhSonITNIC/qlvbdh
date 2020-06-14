@@ -12,7 +12,7 @@
 import services from "../../services/factory";
 import CDetail from "../../components/document/Detail";
 import CAttachments from "../../components/document/Attachments";
-import CReceivers from "../../components/document/TreeReceivers";
+import CReceivers from "../../components/document/Receivers";
 import CRecipients from "../../components/document/Recipients";
 import CLinkDocument from "../../components/document/CLinkDocument";
 

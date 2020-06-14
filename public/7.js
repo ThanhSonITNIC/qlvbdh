@@ -813,7 +813,7 @@ var render = function() {
             },
             [
               _c("CIcon", { attrs: { name: "cil-check" } }),
-              _vm._v("Lưu\n    ")
+              _vm._v(" Lưu\n    ")
             ],
             1
           )

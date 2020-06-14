@@ -25,9 +25,9 @@ class CreateDocumentsTable extends Migration
 			$table->unsignedInteger('signer_id')->nullable();
 			$table->date('sign_at')->nullable();
 			$table->unsignedInteger('creator_id');
+			$table->unsignedInteger('writer_id')->nullable();
 			$table->date('published_at');
 			$table->string('publisher_id', 30);
-			$table->date('due_at')->nullable();
 			$table->unsignedInteger('link_id')->nullable();
 			$table->timestamps();
 			
@@ -44,6 +44,10 @@ class CreateDocumentsTable extends Migration
 				->on('signers')
 				->onUpdate('cascade');
 			$table->foreign('creator_id')
+				->references('id')
+				->on('users')
+				->onUpdate('cascade');
+			$table->foreign('writer_id')
 				->references('id')
 				->on('users')
 				->onUpdate('cascade');

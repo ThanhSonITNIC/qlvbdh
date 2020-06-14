@@ -32,25 +32,11 @@ class UpdateRequest extends FormRequest
             'book_id' => 'nullable|exists:books,id',
             'type_id' => 'nullable|exists:document_types,id',
             'signer_id' => 'nullable|exists:signers,id',
-            'creator_id' => 'nullable|exists:users,id',
+            'writer_id' => 'nullable|exists:users,id',
             'published_at' => 'nullable|date',
             'sign_at' => 'nullable|date',
             'publisher_id' => 'nullable|exists:organizes,id',
-            'due_at' => 'nullable|date',
             'link_id' => 'nullable|exists:documents,id',
         ];
-    }
-
-    /**
-     * Get all of the input and files for the request.
-     *
-     * @param  array|mixed|null  $keys
-     * @return array
-     */
-    public function all($keys = null)
-    {
-        $data = parent::all($keys);
-        $data['creator_id'] = $this->user()->id;
-        return $data;
     }
 }

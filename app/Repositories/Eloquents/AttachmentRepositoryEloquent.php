@@ -33,10 +33,10 @@ class AttachmentRepositoryEloquent extends BaseRepository implements AttachmentR
        'document.type_id' => '=',
        'document.signer_id' => '=',
        'document.creator_id' => '=',
+       'document.writer_id' => '=',
        'document.published_at' => 'like',
        'document.sign_at' => 'like',
        'document.publisher_id' => 'like',
-       'document.due_at' => '=',
        'document.link_id' => '=',
    ];
    

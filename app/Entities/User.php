@@ -69,11 +69,15 @@ class User extends Authenticatable implements Transformable, CanResetPassword
         return $this->hasMany(Document::class, 'creator_id');
     }
 
+    public function wroteDocuments(){
+        return $this->hasMany(Document::class, 'writer_id');
+    }
+
     public function receivedDocuments(){
         return $this->belongsToMany(Document::class, DocumentReceiver::class);
     }
 
     public function getDocumentsAttribute(){
-        return $this->createdDocuments->merge($this->receivedDocuments);
+        return $this->createdDocuments->merge($this->receivedDocuments)->merge($this->wroteDocuments());
     }
 }

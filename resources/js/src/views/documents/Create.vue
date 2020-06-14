@@ -31,7 +31,7 @@
           </CCol>
         </CRow>
         <CTextarea
-          label="Trích dẫn"
+          label="Trích yếu"
           placeholder="Content..."
           rows="5"
           :value.sync="document.abstract"

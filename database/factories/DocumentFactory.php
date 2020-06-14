@@ -23,7 +23,7 @@ $factory->define(Document::class, function (Faker $faker) {
         'published_at' => $faker->date(),
         'sign_at' => $faker->date(),
         'publisher_id' => Organize::all()->random()->id,
-        'due_at' => $faker->date(),
+        'writer_id' => $pHCHCUsers->first() ? $pHCHCUsers->random()->id : 1,
         'link_id' => null,
     ];
 });

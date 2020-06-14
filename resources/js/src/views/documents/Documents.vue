@@ -63,14 +63,14 @@ export default {
       items: null,
       fields: [
         { key: "symbol", label: "Số ký hiệu", _classes: "font-weight-bold" },
-        { key: "abstract", label: "Trích dẫn", _classes: "w-50" },
+        { key: "abstract", label: "Trích yếu", _classes: "w-50" },
         { key: "type", label: "Loại" },
         { key: "publisher", label: "Nơi ban hành" },
         { key: "published_at", label: "Ngày ban hành" }
       ],
       searchFields: [
         { value: "symbol", label: "Số ký hiệu" },
-        { value: "abstract", label: "Trích dẫn" },
+        { value: "abstract", label: "Trích yếu" },
         { value: "type.name", label: "Loại" },
         { value: "creator.name", label: "Người soạn" },
         { value: "signer.name", label: "Người ký" },
@@ -78,7 +78,6 @@ export default {
         { value: "sign_at", label: "Ngày ký" },
         { value: "publisher.name", label: "Nơi ban hành" },
         { value: "organizes.name", label: "Nơi nhận" },
-        { value: "due_at", label: "Hạn xử lý" },
         { value: "linkTo.symbol", label: "Liên kết văn bản đến" }
       ],
       currentPage: 1,

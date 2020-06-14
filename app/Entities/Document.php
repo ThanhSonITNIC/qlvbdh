@@ -30,16 +30,15 @@ class Document extends Model implements Transformable
         'signer_id',
         'sign_at',
         'creator_id',
+        'writer_id',
         'published_at',
         'publisher_id',
-        'due_at',
         'link_id',
     ];
 
     protected $casts = [
         'published_at' => 'date:Y-m-d',
         'sign_at' => 'date:Y-m-d',
-        'due_at' => 'date:Y-m-d',
     ];
 
     public function receivers(){
@@ -72,6 +71,10 @@ class Document extends Model implements Transformable
 
     public function creator(){
         return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function writer(){
+        return $this->belongsTo(User::class, 'writer_id');
     }
 
     public function linkTo(){

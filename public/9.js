@@ -290,7 +290,7 @@ var render = function() {
               _vm._v(" "),
               _c("CTextarea", {
                 attrs: {
-                  label: "Trích dẫn",
+                  label: "Trích yếu",
                   placeholder: "Content...",
                   rows: "5",
                   value: _vm.document.abstract

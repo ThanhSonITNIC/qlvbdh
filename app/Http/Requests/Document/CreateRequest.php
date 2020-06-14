@@ -35,11 +35,11 @@ class CreateRequest extends FormRequest
             'type_id' => 'required|exists:document_types,id',
             'signer_id' => 'required|exists:signers,id',
             'creator_id' => 'required|exists:users,id',
+            'writer_id' => 'nullable|exists:users,id',
             'published_at' => 'required|date',
             'sign_at' => 'nullable|date',
             'publisher_id' => 'required|exists:organizes,id',
             'attachments.*' => 'nullable|file',
-            'due_at' => 'nullable|date',
             'link_id' => 'nullable|exists:documents,id',
         ];
     }

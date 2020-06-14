@@ -29,6 +29,7 @@
             :multiple="true"
             :openOnClick="false"
             disabled
+            placeholder=""
           >
             <CButton
               @click="redirectToDocument(node.raw.id)"
@@ -78,7 +79,6 @@ export default {
   },
   watch: {
     documentId: {
-      immediate: true,
       handler() {
         this.init();
       }
