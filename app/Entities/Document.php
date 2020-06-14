@@ -74,8 +74,12 @@ class Document extends Model implements Transformable
         return $this->belongsTo(User::class, 'creator_id');
     }
 
-    public function link(){
+    public function linkTo(){
         return $this->belongsTo(Document::class, 'link_id');
+    }
+
+    public function linked(){
+        return $this->hasMany(Document::class, 'link_id');
     }
 
 }

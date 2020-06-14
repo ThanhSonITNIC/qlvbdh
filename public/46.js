@@ -1,522 +1,230 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[46],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/widgets/Widgets.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/views/widgets/Widgets.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/users/Users.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/views/users/Users.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _WidgetsBrand__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WidgetsBrand */ "./resources/js/src/views/widgets/WidgetsBrand.vue");
-/* harmony import */ var _WidgetsDropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WidgetsDropdown */ "./resources/js/src/views/widgets/WidgetsDropdown.vue");
-/* harmony import */ var _charts_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../charts/index.js */ "./resources/js/src/views/charts/index.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _services_factory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/factory */ "./resources/js/src/services/factory.js");
+/* harmony import */ var _components_SearchBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/SearchBox */ "./resources/js/src/components/SearchBox.vue");
 
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Widgets',
+  name: 'Users',
   components: {
-    CChartLineSimple: _charts_index_js__WEBPACK_IMPORTED_MODULE_2__["CChartLineSimple"],
-    CChartBarSimple: _charts_index_js__WEBPACK_IMPORTED_MODULE_2__["CChartBarSimple"],
-    WidgetsBrand: _WidgetsBrand__WEBPACK_IMPORTED_MODULE_0__["default"],
-    WidgetsDropdown: _WidgetsDropdown__WEBPACK_IMPORTED_MODULE_1__["default"]
+    CSearchBox: _components_SearchBox__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  data: function data() {
+    return {
+      loading: true,
+      items: null,
+      fields: [{
+        key: 'name',
+        label: 'Tên',
+        _classes: 'font-weight-bold'
+      }, {
+        key: 'email',
+        label: 'Email'
+      }, {
+        key: 'tel',
+        label: 'Số điện thoại'
+      }, {
+        key: 'birthday',
+        label: 'Ngày sinh'
+      }, {
+        key: 'title',
+        label: 'Chức danh'
+      }, {
+        key: 'department',
+        label: 'Phòng ban'
+      }],
+      searchFields: [{
+        value: '',
+        label: 'Tất cả'
+      }, {
+        value: 'name',
+        label: 'Tên'
+      }, {
+        value: 'email',
+        label: 'Email'
+      }, {
+        value: 'tel',
+        label: 'Số điện thoại'
+      }, {
+        value: 'birthday',
+        label: 'Ngày sinh'
+      }, {
+        value: 'title.name',
+        label: 'Chức danh'
+      }, {
+        value: 'department.name',
+        label: 'Phòng ban'
+      }],
+      currentPage: 1,
+      pages: 0,
+      size: 0,
+      searchValue: '',
+      searchField: ''
+    };
+  },
+  created: function created() {
+    this.fetch();
+  },
+  watch: {
+    $route: {
+      immediate: true,
+      handler: function handler(route) {
+        if (route.query && route.query.page) {
+          this.currentPage = Number(route.query.page);
+        }
+      }
+    },
+    currentPage: {
+      handler: function handler(page) {
+        this.pageChange(page);
+        this.currentPage = page;
+        this.fetch();
+      }
+    }
+  },
+  computed: {
+    query: function query() {
+      return this.withQuery + "&" + this.pageQuery + "&" + this.searchQuery;
+    },
+    pageQuery: function pageQuery() {
+      return this.currentPage ? 'page=' + this.currentPage : '';
+    },
+    withQuery: function withQuery() {
+      return 'with=title;department';
+    },
+    searchQuery: function searchQuery() {
+      return this.searchValue ? 'search=' + this.searchValue + (this.searchField ? '&searchFields=' + this.searchField : '') : '';
+    }
+  },
+  methods: {
+    fetch: function fetch() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _this.loading = true;
+                _context.next = 3;
+                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].user.all(_this.query);
+
+              case 3:
+                response = _context.sent;
+                _this.items = response.data.data;
+                _this.currentPage = response.data.current_page;
+                _this.pages = response.data.last_page;
+                _this.loading = false;
+
+              case 8:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    rowClicked: function rowClicked(item, index) {
+      this.$router.push({
+        path: "users/".concat(item.id)
+      });
+    },
+    createUser: function createUser() {
+      this.$router.push({
+        path: "users/create"
+      });
+    },
+    pageChange: function pageChange(val) {
+      this.$router.push({
+        query: {
+          page: val
+        }
+      });
+    },
+    searchFieldChanged: function searchFieldChanged(item) {
+      this.searchField = item.value;
+      this.fetch();
+    },
+    searchValueChanged: function searchValueChanged(value) {
+      this.searchValue = value;
+      this.fetch();
+    }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/widgets/Widgets.vue?vue&type=template&id=f1b894d6&":
-/*!*****************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/views/widgets/Widgets.vue?vue&type=template&id=f1b894d6& ***!
-  \*****************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/users/Users.vue?vue&type=template&id=489dfb87&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/views/users/Users.vue?vue&type=template&id=489dfb87& ***!
+  \*************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -529,986 +237,116 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "CRow",
     [
       _c(
-        "CRow",
+        "CCol",
+        { attrs: { col: "12" } },
         [
           _c(
-            "CCol",
-            { attrs: { sm: "6", lg: "3" } },
+            "CCard",
             [
               _c(
-                "CWidgetProgress",
-                { attrs: { footer: "Lorem ipsum dolor sit amet enim." } },
+                "CCardHeader",
                 [
-                  _c("div", { staticClass: "h4 m-0" }, [_vm._v("89.9%")]),
+                  _c("CIcon", { attrs: { name: "cil-grid" } }),
+                  _vm._v("\n        Danh sách người dùng\n        "),
+                  _c(
+                    "CButton",
+                    {
+                      staticClass: "float-right",
+                      attrs: {
+                        size: "sm",
+                        color: "primary",
+                        variant: "outline"
+                      },
+                      on: { click: _vm.createUser }
+                    },
+                    [_c("CIcon", { attrs: { name: "cil-user-follow" } })],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "CCardBody",
+                [
+                  _c("CSearchBox", {
+                    attrs: { fields: _vm.searchFields },
+                    on: {
+                      fieldChanged: _vm.searchFieldChanged,
+                      valueChanged: _vm.searchValueChanged
+                    }
+                  }),
                   _vm._v(" "),
-                  _c("div", { staticClass: "card-header-actions" }, [
-                    _c(
-                      "a",
+                  _c("CDataTable", {
+                    attrs: {
+                      hover: "",
+                      striped: "",
+                      loading: _vm.loading,
+                      items: _vm.items,
+                      fields: _vm.fields,
+                      "clickable-rows": ""
+                    },
+                    on: { "row-clicked": _vm.rowClicked },
+                    scopedSlots: _vm._u([
                       {
-                        staticClass: "card-header-action position-absolute",
-                        staticStyle: { right: "5px", top: "5px" },
-                        attrs: {
-                          href: "https://coreui.io/vue/docs/components/widgets",
-                          rel: "noreferrer noopener",
-                          target: "_blank"
+                        key: "title",
+                        fn: function(ref) {
+                          var item = ref.item
+                          return [
+                            _c("td", [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(
+                                    item.title
+                                      ? item.title.name
+                                      : "Chưa xác định"
+                                  ) +
+                                  "\n            "
+                              )
+                            ])
+                          ]
                         }
                       },
-                      [
-                        _c("small", { staticClass: "text-muted" }, [
-                          _vm._v("docs")
-                        ])
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [_vm._v("Lorem ipsum...")]),
-                  _vm._v(" "),
-                  _c("CProgress", {
-                    staticClass: "progress-xs my-3 mb-0",
-                    attrs: { color: "success", value: 25 }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", lg: "3" } },
-            [
-              _c("CWidgetProgress", {
-                attrs: {
-                  header: "12.124",
-                  text: "Lorem ipsum...",
-                  footer: "Lorem ipsum dolor sit amet enim.",
-                  color: "info",
-                  value: 25
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", lg: "3" } },
-            [
-              _c("CWidgetProgress", {
-                attrs: {
-                  header: "$98.111,00",
-                  text: "Lorem ipsum...",
-                  footer: "Lorem ipsum dolor sit amet enim.",
-                  color: "warning",
-                  value: 25
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", lg: "3" } },
-            [
-              _c("CWidgetProgress", {
-                attrs: {
-                  header: "2 TB",
-                  text: "Lorem ipsum...",
-                  footer: "Lorem ipsum dolor sit amet enim.",
-                  color: "danger",
-                  value: 25
-                }
-              })
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "CRow",
-        [
-          _c(
-            "CCol",
-            { attrs: { sm: "6", lg: "3" } },
-            [
-              _c("CWidgetProgress", {
-                attrs: {
-                  header: "89.9%",
-                  text: "Lorem ipsum...",
-                  footer: "Lorem ipsum dolor sit amet enim.",
-                  color: "success",
-                  inverse: "",
-                  value: 25
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", lg: "3" } },
-            [
-              _c("CWidgetProgress", {
-                attrs: {
-                  header: "12.124",
-                  text: "Lorem ipsum...",
-                  footer: "Lorem ipsum dolor sit amet enim.",
-                  color: "info",
-                  inverse: "",
-                  value: 25
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", lg: "3" } },
-            [
-              _c("CWidgetProgress", {
-                attrs: {
-                  header: "$98.111,00",
-                  text: "Lorem ipsum...",
-                  footer: "Lorem ipsum dolor sit amet enim.",
-                  color: "warning",
-                  inverse: "",
-                  value: 25
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", lg: "3" } },
-            [
-              _c("CWidgetProgress", {
-                attrs: {
-                  header: "2 TB",
-                  text: "Lorem ipsum...",
-                  footer: "Lorem ipsum dolor sit amet enim.",
-                  color: "danger",
-                  inverse: "",
-                  value: 25
-                }
-              })
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "CRow",
-        [
-          _c(
-            "CCol",
-            { attrs: { col: "12", sm: "6", lg: "3" } },
-            [
-              _c(
-                "CWidgetIcon",
-                {
-                  attrs: {
-                    header: "$1.999,50",
-                    text: "Income",
-                    color: "primary"
-                  }
-                },
-                [_c("CIcon", { attrs: { name: "cil-settings", width: "24" } })],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { col: "12", sm: "6", lg: "3" } },
-            [
-              _c(
-                "CWidgetIcon",
-                {
-                  attrs: { header: "$1.999,50", text: "Income", color: "info" }
-                },
-                [_c("CIcon", { attrs: { name: "cil-laptop", width: "24" } })],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { col: "12", sm: "6", lg: "3" } },
-            [
-              _c(
-                "CWidgetIcon",
-                {
-                  attrs: {
-                    header: "$1.999,50",
-                    text: "Income",
-                    color: "warning"
-                  }
-                },
-                [_c("CIcon", { attrs: { name: "cil-moon", width: "24" } })],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { col: "12", sm: "6", lg: "3" } },
-            [
-              _c(
-                "CWidgetIcon",
-                {
-                  attrs: {
-                    header: "$1.999,50",
-                    text: "Income",
-                    color: "danger"
-                  }
-                },
-                [_c("CIcon", { attrs: { name: "cil-bell", width: "24" } })],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "CRow",
-        [
-          _c(
-            "CCol",
-            { attrs: { col: "12", sm: "6", lg: "3" } },
-            [
-              _c(
-                "CWidgetIcon",
-                {
-                  attrs: {
-                    header: "$1.999,50",
-                    text: "Income",
-                    color: "primary",
-                    "icon-padding": false
-                  }
-                },
-                [_c("CIcon", { attrs: { name: "cil-settings", width: "24" } })],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { col: "12", sm: "6", lg: "3" } },
-            [
-              _c(
-                "CWidgetIcon",
-                {
-                  attrs: {
-                    header: "$1.999,50",
-                    text: "Income",
-                    color: "info",
-                    "icon-padding": false
-                  }
-                },
-                [_c("CIcon", { attrs: { name: "cil-laptop", width: "24" } })],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { col: "12", sm: "6", lg: "3" } },
-            [
-              _c(
-                "CWidgetIcon",
-                {
-                  attrs: {
-                    header: "$1.999,50",
-                    text: "Income",
-                    color: "warning",
-                    "icon-padding": false
-                  }
-                },
-                [_c("CIcon", { attrs: { name: "cil-moon", width: "24" } })],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { col: "12", sm: "6", lg: "3" } },
-            [
-              _c(
-                "CWidgetIcon",
-                {
-                  attrs: {
-                    header: "$1.999,50",
-                    text: "Income",
-                    color: "danger",
-                    "icon-padding": false
-                  }
-                },
-                [_c("CIcon", { attrs: { name: "cil-bell", width: "24" } })],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "CRow",
-        [
-          _c(
-            "CCol",
-            { attrs: { col: "12", sm: "6", lg: "4" } },
-            [
-              _c(
-                "CWidgetIcon",
-                {
-                  attrs: {
-                    header: "$1.999,50",
-                    text: "Income",
-                    color: "primary",
-                    "icon-padding": false
-                  }
-                },
-                [
-                  _c("CIcon", {
-                    staticClass: "mx-5 ",
-                    attrs: { name: "cil-settings", width: "24" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { col: "12", sm: "6", lg: "4" } },
-            [
-              _c(
-                "CWidgetIcon",
-                {
-                  attrs: {
-                    header: "$1.999,50",
-                    text: "Income",
-                    color: "info",
-                    "icon-padding": false
-                  }
-                },
-                [
-                  _c("CIcon", {
-                    staticClass: "mx-5 ",
-                    attrs: { name: "cil-laptop", width: "24" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { col: "12", sm: "6", lg: "4" } },
-            [
-              _c(
-                "CWidgetIcon",
-                {
-                  attrs: {
-                    header: "$1.999,50",
-                    text: "Income",
-                    color: "warning",
-                    "icon-padding": false
-                  },
-                  scopedSlots: _vm._u([
-                    {
-                      key: "footer",
-                      fn: function() {
-                        return [
-                          _c(
-                            "CCardFooter",
-                            { staticClass: "card-footer px-3 py-2" },
-                            [
-                              _c(
-                                "CLink",
-                                {
-                                  staticClass:
-                                    "font-weight-bold font-xs btn-block text-muted",
-                                  attrs: { href: "https://coreui.io/" }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n              View more\n              "
-                                  ),
-                                  _c("CIcon", {
-                                    staticClass: "float-right",
-                                    attrs: {
-                                      name: "cil-arrowRight",
-                                      width: "16"
-                                    }
-                                  })
-                                ],
-                                1
+                      {
+                        key: "department",
+                        fn: function(ref) {
+                          var item = ref.item
+                          return [
+                            _c("td", [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(
+                                    item.department
+                                      ? item.department.name
+                                      : "Chưa xác định"
+                                  ) +
+                                  "\n            "
                               )
-                            ],
-                            1
-                          )
-                        ]
+                            ])
+                          ]
+                        }
+                      }
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c("CPagination", {
+                    attrs: {
+                      align: "center",
+                      pages: _vm.pages,
+                      "active-page": _vm.currentPage,
+                      activePage: _vm.currentPage
+                    },
+                    on: {
+                      "update:activePage": function($event) {
+                        _vm.currentPage = $event
                       },
-                      proxy: true
+                      "update:active-page": function($event) {
+                        _vm.currentPage = $event
+                      }
                     }
-                  ])
-                },
-                [
-                  _c("CIcon", {
-                    staticClass: "mx-5 ",
-                    attrs: { name: "cil-moon", width: "24" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("WidgetsBrand", { attrs: { noCharts: "" } }),
-      _vm._v(" "),
-      _c("WidgetsBrand"),
-      _vm._v(" "),
-      _c(
-        "CCardGroup",
-        { staticClass: "mb-4" },
-        [
-          _c(
-            "CWidgetProgressIcon",
-            { attrs: { header: "87.500", text: "Visitors", color: "info" } },
-            [_c("CIcon", { attrs: { name: "cil-people", height: "36" } })],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CWidgetProgressIcon",
-            { attrs: { header: "385", text: "New Clients", color: "success" } },
-            [_c("CIcon", { attrs: { name: "cil-userFollow", height: "36" } })],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CWidgetProgressIcon",
-            {
-              attrs: { header: "1238", text: "Products sold", color: "warning" }
-            },
-            [_c("CIcon", { attrs: { name: "cil-basket", height: "36" } })],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CWidgetProgressIcon",
-            { attrs: { header: "28%", text: "Returning Visitors" } },
-            [_c("CIcon", { attrs: { name: "cil-chartPie", height: "36" } })],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CWidgetProgressIcon",
-            {
-              attrs: { header: "5:34:11", text: "Avg. Time", color: "danger" }
-            },
-            [_c("CIcon", { attrs: { name: "cil-speedometer", height: "36" } })],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "CCardGroup",
-        { staticClass: "mb-4" },
-        [
-          _c(
-            "CWidgetProgressIcon",
-            {
-              attrs: {
-                header: "87.500",
-                text: "Visitors",
-                color: "info",
-                inverse: ""
-              }
-            },
-            [_c("CIcon", { attrs: { name: "cil-people", height: "36" } })],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CWidgetProgressIcon",
-            {
-              attrs: {
-                header: "385",
-                text: "New Clients",
-                color: "success",
-                inverse: ""
-              }
-            },
-            [_c("CIcon", { attrs: { name: "cil-userFollow", height: "36" } })],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CWidgetProgressIcon",
-            {
-              attrs: {
-                header: "1238",
-                text: "Products sold",
-                color: "warning",
-                inverse: ""
-              }
-            },
-            [_c("CIcon", { attrs: { name: "cil-basket", height: "36" } })],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CWidgetProgressIcon",
-            {
-              attrs: {
-                header: "28%",
-                text: "Returning Visitors",
-                color: "primary",
-                inverse: ""
-              }
-            },
-            [_c("CIcon", { attrs: { name: "cil-chartPie", height: "36" } })],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CWidgetProgressIcon",
-            {
-              attrs: {
-                header: "5:34:11",
-                text: "Avg. Time",
-                color: "danger",
-                inverse: ""
-              }
-            },
-            [_c("CIcon", { attrs: { name: "cil-speedometer", height: "36" } })],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "CRow",
-        [
-          _c(
-            "CCol",
-            { attrs: { sm: "6", md: "2" } },
-            [
-              _c(
-                "CWidgetProgressIcon",
-                {
-                  attrs: { header: "87.500", text: "Visitors", color: "info" }
-                },
-                [_c("CIcon", { attrs: { name: "cil-people", height: "36" } })],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", md: "2" } },
-            [
-              _c(
-                "CWidgetProgressIcon",
-                {
-                  attrs: {
-                    header: "385",
-                    text: "New Clients",
-                    color: "success"
-                  }
-                },
-                [
-                  _c("CIcon", {
-                    attrs: { name: "cil-userFollow", height: "36" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", md: "2" } },
-            [
-              _c(
-                "CWidgetProgressIcon",
-                {
-                  attrs: {
-                    header: "1238",
-                    text: "Products sold",
-                    color: "warning"
-                  }
-                },
-                [_c("CIcon", { attrs: { name: "cil-basket", height: "36" } })],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", md: "2" } },
-            [
-              _c(
-                "CWidgetProgressIcon",
-                {
-                  attrs: {
-                    header: "28%",
-                    text: "Returning Visitors",
-                    color: "primary"
-                  }
-                },
-                [
-                  _c("CIcon", { attrs: { name: "cil-chartPie", height: "36" } })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", md: "2" } },
-            [
-              _c(
-                "CWidgetProgressIcon",
-                {
-                  attrs: {
-                    header: "5:34:11",
-                    text: "Avg. Time",
-                    color: "danger"
-                  }
-                },
-                [
-                  _c("CIcon", {
-                    attrs: { name: "cil-speedometer", height: "36" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", md: "2" } },
-            [
-              _c(
-                "CWidgetProgressIcon",
-                { attrs: { header: "972", text: "comments", color: "info" } },
-                [_c("CIcon", { attrs: { name: "cil-speech", height: "36" } })],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "CRow",
-        [
-          _c(
-            "CCol",
-            { attrs: { sm: "6", md: "2" } },
-            [
-              _c(
-                "CWidgetProgressIcon",
-                {
-                  attrs: {
-                    header: "87.500",
-                    text: "Visitors",
-                    color: "info",
-                    inverse: ""
-                  }
-                },
-                [_c("CIcon", { attrs: { name: "cil-people", height: "36" } })],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", md: "2" } },
-            [
-              _c(
-                "CWidgetProgressIcon",
-                {
-                  attrs: {
-                    header: "385",
-                    text: "New Clients",
-                    color: "success",
-                    inverse: ""
-                  }
-                },
-                [
-                  _c("CIcon", {
-                    attrs: { name: "cil-userFollow", height: "36" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", md: "2" } },
-            [
-              _c(
-                "CWidgetProgressIcon",
-                {
-                  attrs: {
-                    header: "1238",
-                    text: "Products sold",
-                    color: "warning",
-                    inverse: ""
-                  }
-                },
-                [_c("CIcon", { attrs: { name: "cil-basket", height: "36" } })],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", md: "2" } },
-            [
-              _c(
-                "CWidgetProgressIcon",
-                {
-                  attrs: {
-                    header: "28%",
-                    text: "Returning Visitors",
-                    color: "primary",
-                    inverse: ""
-                  }
-                },
-                [
-                  _c("CIcon", { attrs: { name: "cil-chartPie", height: "36" } })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", md: "2" } },
-            [
-              _c(
-                "CWidgetProgressIcon",
-                {
-                  attrs: {
-                    header: "5:34:11",
-                    text: "Avg. Time",
-                    color: "danger",
-                    inverse: ""
-                  }
-                },
-                [
-                  _c("CIcon", {
-                    attrs: { name: "cil-speedometer", height: "36" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "6", md: "2" } },
-            [
-              _c(
-                "CWidgetProgressIcon",
-                {
-                  attrs: {
-                    header: "972",
-                    text: "comments",
-                    color: "info",
-                    inverse: ""
-                  }
-                },
-                [_c("CIcon", { attrs: { name: "cil-speech", height: "36" } })],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("WidgetsDropdown"),
-      _vm._v(" "),
-      _c(
-        "CRow",
-        [
-          _c(
-            "CCol",
-            { attrs: { sm: "4", lg: "2" } },
-            [
-              _c(
-                "CWidgetSimple",
-                { attrs: { header: "title", text: "1,123" } },
-                [
-                  _c("CChartLineSimple", {
-                    staticStyle: { height: "40px" },
-                    attrs: { "border-color": "danger" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "4", lg: "2" } },
-            [
-              _c(
-                "CWidgetSimple",
-                { attrs: { header: "title", text: "1,123" } },
-                [
-                  _c("CChartLineSimple", {
-                    staticStyle: { height: "40px" },
-                    attrs: { "border-color": "primary" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "4", lg: "2" } },
-            [
-              _c(
-                "CWidgetSimple",
-                { attrs: { header: "title", text: "1,123" } },
-                [
-                  _c("CChartLineSimple", {
-                    staticStyle: { height: "40px" },
-                    attrs: { "border-color": "success" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "4", lg: "2" } },
-            [
-              _c(
-                "CWidgetSimple",
-                { attrs: { header: "title", text: "1,123" } },
-                [
-                  _c("CChartBarSimple", {
-                    staticStyle: { height: "40px" },
-                    attrs: { "background-color": "danger" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "4", lg: "2" } },
-            [
-              _c(
-                "CWidgetSimple",
-                { attrs: { header: "title", text: "1,123" } },
-                [
-                  _c("CChartBarSimple", {
-                    staticStyle: { height: "40px" },
-                    attrs: { "background-color": "primary" }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CCol",
-            { attrs: { sm: "4", lg: "2" } },
-            [
-              _c(
-                "CWidgetSimple",
-                { attrs: { header: "title", text: "1,123" } },
-                [
-                  _c("CChartBarSimple", {
-                    staticStyle: { height: "40px" },
-                    attrs: { "background-color": "success" }
                   })
                 ],
                 1
@@ -1530,17 +368,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/src/views/widgets/Widgets.vue":
-/*!****************************************************!*\
-  !*** ./resources/js/src/views/widgets/Widgets.vue ***!
-  \****************************************************/
+/***/ "./resources/js/src/views/users/Users.vue":
+/*!************************************************!*\
+  !*** ./resources/js/src/views/users/Users.vue ***!
+  \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Widgets_vue_vue_type_template_id_f1b894d6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Widgets.vue?vue&type=template&id=f1b894d6& */ "./resources/js/src/views/widgets/Widgets.vue?vue&type=template&id=f1b894d6&");
-/* harmony import */ var _Widgets_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Widgets.vue?vue&type=script&lang=js& */ "./resources/js/src/views/widgets/Widgets.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Users_vue_vue_type_template_id_489dfb87___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Users.vue?vue&type=template&id=489dfb87& */ "./resources/js/src/views/users/Users.vue?vue&type=template&id=489dfb87&");
+/* harmony import */ var _Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Users.vue?vue&type=script&lang=js& */ "./resources/js/src/views/users/Users.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1550,9 +388,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Widgets_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Widgets_vue_vue_type_template_id_f1b894d6___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Widgets_vue_vue_type_template_id_f1b894d6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Users_vue_vue_type_template_id_489dfb87___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Users_vue_vue_type_template_id_489dfb87___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1562,38 +400,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/src/views/widgets/Widgets.vue"
+component.options.__file = "resources/js/src/views/users/Users.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/src/views/widgets/Widgets.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/src/views/widgets/Widgets.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************/
+/***/ "./resources/js/src/views/users/Users.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/src/views/users/Users.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Widgets_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Widgets.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/widgets/Widgets.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Widgets_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Users.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/users/Users.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/src/views/widgets/Widgets.vue?vue&type=template&id=f1b894d6&":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/src/views/widgets/Widgets.vue?vue&type=template&id=f1b894d6& ***!
-  \***********************************************************************************/
+/***/ "./resources/js/src/views/users/Users.vue?vue&type=template&id=489dfb87&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/src/views/users/Users.vue?vue&type=template&id=489dfb87& ***!
+  \*******************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Widgets_vue_vue_type_template_id_f1b894d6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Widgets.vue?vue&type=template&id=f1b894d6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/widgets/Widgets.vue?vue&type=template&id=f1b894d6&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Widgets_vue_vue_type_template_id_f1b894d6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_489dfb87___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Users.vue?vue&type=template&id=489dfb87& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/users/Users.vue?vue&type=template&id=489dfb87&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_489dfb87___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Widgets_vue_vue_type_template_id_f1b894d6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_489dfb87___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

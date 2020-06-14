@@ -54,10 +54,21 @@ export default {
       file: {}
     };
   },
+  watch: {
+    documentId: {
+      immediate: true,
+      handler() {
+        this.init();
+      }
+    }
+  },
   created() {
-    this.fetch();
+    this.init();
   },
   methods: {
+    init(){
+      this.fetch();
+    },
     async fetch() {
       const attachmentResponse = await services.attachment.all(
         `search=document_id:${this.documentId}`

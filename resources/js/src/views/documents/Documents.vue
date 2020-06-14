@@ -79,7 +79,7 @@ export default {
         { value: "publisher.name", label: "Nơi ban hành" },
         { value: "organizes.name", label: "Nơi nhận" },
         { value: "due_at", label: "Hạn xử lý" },
-        { value: "link.id", label: "Văn bản liên kết" }
+        { value: "linkTo.symbol", label: "Liên kết văn bản đến" }
       ],
       currentPage: 1,
       pages: 0,

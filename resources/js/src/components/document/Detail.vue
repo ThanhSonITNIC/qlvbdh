@@ -104,11 +104,20 @@ export default {
       }
     };
   },
-  created() {
-    this.fetchData();
-    this.fetchDocument();
+  watch: {
+    documentId: {
+      immediate: true,
+      handler() {
+        this.init();
+      }
+    }
   },
+  created() {},
   methods: {
+    init() {
+      this.fetchData();
+      this.fetchDocument();
+    },
     async fetchData() {
       const bookResponse = await services.book.all();
       this.books = this.formatKeys(bookResponse.data);

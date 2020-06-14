@@ -58,6 +58,14 @@ export default {
       handlerOptions: []
     };
   },
+  watch: {
+    documentId: {
+      immediate: true,
+      handler() {
+        this.init();
+      }
+    }
+  },
   created() {
     this.init();
   },

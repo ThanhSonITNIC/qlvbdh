@@ -4,6 +4,7 @@
     <CAttachments :documentId.sync="documentId" />
     <CReceivers v-if="!isDocumentOutcome" :documentId.sync="documentId" />
     <CRecipients v-if="isDocumentOutcome" :documentId.sync="documentId" />
+    <CLinkDocument :isOutcome="isDocumentOutcome" :documentId.sync="documentId" @redirectTo="redirectTo" />
   </div>
 </template>
 
@@ -13,6 +14,7 @@ import CDetail from "../../components/document/Detail";
 import CAttachments from "../../components/document/Attachments";
 import CReceivers from "../../components/document/TreeReceivers";
 import CRecipients from "../../components/document/Recipients";
+import CLinkDocument from "../../components/document/CLinkDocument";
 
 export default {
   name: "Document",
@@ -20,7 +22,8 @@ export default {
     CDetail,
     CAttachments,
     CReceivers,
-    CRecipients
+    CRecipients,
+    CLinkDocument,
   },
   data() {
     return {
@@ -34,21 +37,23 @@ export default {
       handler(route) {
         if (route.params && route.params.document) {
           this.documentId = route.params.document;
+          this.init();
         }
       }
     },
-    documentId: {
-      handler() {
-        this.$router.push({ path: `/documents/${this.documentId}` });
-      }
-    }
   },
   created() {
-    this.fetch();
+    this.init();
   },
   methods: {
+    init(){
+      this.fetch()
+    },
     async fetch() {
-      const documentResponse = await services.document.get(this.documentId);
+      const documentResponse = await services.document.get(this.documentId).catch(error => {
+        this.toastHttpError(error);
+        this.goBack()
+      });
       this.document = documentResponse.data;
     },
     rowClicked(item, index) {
@@ -56,7 +61,13 @@ export default {
     },
     onUpdateDetail(document) {
       this.document = document;
-    }
+    },
+    redirectTo(id){
+      this.$router.push({ path: `/documents/${id}` });
+    },
+    goBack() {
+      this.$router.go(-1)
+    },
   },
   computed: {
     isDocumentOutcome() {

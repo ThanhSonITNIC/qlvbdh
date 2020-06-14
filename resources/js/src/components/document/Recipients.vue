@@ -44,6 +44,14 @@ export default {
       organizeOptions: []
     };
   },
+  watch: {
+    documentId: {
+      immediate: true,
+      handler() {
+        this.init();
+      }
+    }
+  },
   created() {
     this.init();
   },
