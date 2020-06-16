@@ -31,13 +31,13 @@ class Document extends Model implements Transformable
         'sign_at',
         'creator_id',
         'writer_id',
-        'published_at',
+        'effective_at',
         'publisher_id',
         'link_id',
     ];
 
     protected $casts = [
-        'published_at' => 'date:Y-m-d',
+        'effective_at' => 'date:Y-m-d',
         'sign_at' => 'date:Y-m-d',
     ];
 

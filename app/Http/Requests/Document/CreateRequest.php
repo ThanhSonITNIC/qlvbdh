@@ -36,7 +36,7 @@ class CreateRequest extends FormRequest
             'signer_id' => 'required|exists:signers,id',
             'creator_id' => 'required|exists:users,id',
             'writer_id' => 'nullable|exists:users,id',
-            'published_at' => 'required|date',
+            'effective_at' => 'required|date',
             'sign_at' => 'nullable|date',
             'publisher_id' => 'required|exists:organizes,id',
             'attachments.*' => 'nullable|file',

@@ -33,7 +33,7 @@ class UpdateRequest extends FormRequest
             'type_id' => 'nullable|exists:document_types,id',
             'signer_id' => 'nullable|exists:signers,id',
             'writer_id' => 'nullable|exists:users,id',
-            'published_at' => 'nullable|date',
+            'effective_at' => 'nullable|date',
             'sign_at' => 'nullable|date',
             'publisher_id' => 'nullable|exists:organizes,id',
             'link_id' => 'nullable|exists:documents,id',

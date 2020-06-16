@@ -80,55 +80,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       loading: true,
       items: null,
-      fields: [{
-        key: "symbol",
-        label: "Số ký hiệu",
-        _classes: "font-weight-bold"
-      }, {
-        key: "abstract",
-        label: "Trích yếu",
-        _classes: "w-50"
-      }, {
-        key: "type",
-        label: "Loại"
-      }, {
-        key: "publisher",
-        label: "Nơi ban hành"
-      }, {
-        key: "published_at",
-        label: "Ngày ban hành"
-      }],
-      searchFields: [{
-        value: "symbol",
-        label: "Số ký hiệu"
-      }, {
-        value: "abstract",
-        label: "Trích yếu"
-      }, {
-        value: "type.name",
-        label: "Loại"
-      }, {
-        value: "creator.name",
-        label: "Người soạn"
-      }, {
-        value: "signer.name",
-        label: "Người ký"
-      }, {
-        value: "published_at",
-        label: "Ngày ban hành"
-      }, {
-        value: "sign_at",
-        label: "Ngày ký"
-      }, {
-        value: "publisher.name",
-        label: "Nơi ban hành"
-      }, {
-        value: "organizes.name",
-        label: "Nơi nhận"
-      }, {
-        value: "linkTo.symbol",
-        label: "Liên kết văn bản đến"
-      }],
       currentPage: 1,
       pages: 0,
       size: 0,
@@ -178,6 +129,62 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     searchQuery: function searchQuery() {
       return "search=book.id:".concat(this.bookId) + (this.searchField && this.searchValue ? ";" + (this.searchField + ":" + this.searchValue) : "") + "&searchJoin=and";
+    },
+    isDocumentsIncome: function isDocumentsIncome() {
+      return this.bookId == 1;
+    },
+    fields: function fields() {
+      return [{
+        key: "symbol",
+        label: "Số ký hiệu",
+        _classes: "font-weight-bold"
+      }, {
+        key: "abstract",
+        label: "Trích yếu",
+        _classes: "w-50"
+      }, {
+        key: "type",
+        label: "Loại"
+      }, {
+        key: "publisher",
+        label: "Nơi ban hành"
+      }, {
+        key: "effective_at",
+        label: this.isDocumentsIncome ? "Ngày nhận" : "Ngày ban hành"
+      }];
+    },
+    searchFields: function searchFields() {
+      return [{
+        value: "symbol",
+        label: "Số ký hiệu"
+      }, {
+        value: "abstract",
+        label: "Trích yếu"
+      }, {
+        value: "type.name",
+        label: "Loại"
+      }, {
+        value: "creator.name",
+        label: "Người soạn"
+      }, {
+        value: "signer.name",
+        label: "Người ký"
+      }, {
+        value: "effective_at",
+        label: this.isDocumentsIncome ? "Ngày nhận" : "Ngày ban hành"
+      }, {
+        value: "sign_at",
+        label: "Ngày ký"
+      }, {
+        value: "publisher.name",
+        label: "Nơi ban hành"
+      }, {
+        value: "organizes.name",
+        label: "Nơi nhận"
+      }, {
+        value: "linkTo.symbol",
+        label: "Liên kết văn bản đến"
+      }];
     }
   },
   methods: {

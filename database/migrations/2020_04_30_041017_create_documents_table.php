@@ -26,7 +26,7 @@ class CreateDocumentsTable extends Migration
 			$table->date('sign_at')->nullable();
 			$table->unsignedInteger('creator_id');
 			$table->unsignedInteger('writer_id')->nullable();
-			$table->date('published_at');
+			$table->date('effective_at');
 			$table->string('publisher_id', 30);
 			$table->unsignedInteger('link_id')->nullable();
 			$table->timestamps();

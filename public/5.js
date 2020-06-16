@@ -369,7 +369,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, {
         _name: "CSidebarNavItem",
         name: "Báo cáo - thống kê",
-        to: "/documents",
+        to: "/statistic",
         icon: "cil-notes"
       }],
       system: [{

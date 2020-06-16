@@ -20,7 +20,7 @@ $factory->define(Document::class, function (Faker $faker) {
         'type_id' => DocumentType::all()->random()->id,
         'signer_id' =>  Signer::all()->random()->id,
         'creator_id' => $pHCHCUsers->first() ? $pHCHCUsers->random()->id : 1,
-        'published_at' => $faker->date(),
+        'effective_at' => $faker->date(),
         'sign_at' => $faker->date(),
         'publisher_id' => Organize::all()->random()->id,
         'writer_id' => $pHCHCUsers->first() ? $pHCHCUsers->random()->id : 1,

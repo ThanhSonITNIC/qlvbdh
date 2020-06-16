@@ -1,8 +1,7 @@
 <template>
   <CCard>
     <CCardHeader>
-      <strong v-if="documentId">Chi tiết văn bản</strong>
-      <strong v-else>Tạo văn bản</strong>
+      <strong>Thống kê</strong>
     </CCardHeader>
     <CCardBody>
       <CForm>
@@ -93,7 +92,7 @@
           </CCol>
           <CCol sm="6">
             <CInput
-              :label="isIncome ? 'Ngày nhận' : 'Ngày ban hành'"
+              label="Ngày ban hành"
               type="date"
               :value.sync="document.effective_at"
               class="mb-0"
@@ -137,10 +136,10 @@
         class="float-right"
         color="success"
       >
-        <CIcon name="cil-check" />Lưu
+        <CIcon name="cil-check" /> Lưu
       </CButton>
       <CButton v-else size="sm" @click="createDocument" class="float-right" color="success">
-        <CIcon name="cil-plus" />Tạo
+        <CIcon name="cil-plus" /> Tạo
       </CButton>
     </CCardFooter>
   </CCard>
@@ -199,11 +198,6 @@ export default {
           this.document.book_id = Number.parseInt(route.query.book);
         }
       }
-    }
-  },
-  computed: {
-    isIncome() {
-      return this.document.book_id == 1;
     }
   },
   created() {

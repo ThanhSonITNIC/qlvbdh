@@ -199,7 +199,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         writer_id: null,
         "abstract": null,
         publisher_id: null,
-        published_at: null,
+        effective_at: null,
         signer_id: null,
         sign_at: null,
         creator: {
@@ -223,6 +223,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           this.document.book_id = Number.parseInt(route.query.book);
         }
       }
+    }
+  },
+  computed: {
+    isIncome: function isIncome() {
+      return this.document.book_id == 1;
     }
   },
   created: function created() {
@@ -768,15 +773,15 @@ var render = function() {
                       _c("CInput", {
                         staticClass: "mb-0",
                         attrs: {
-                          label: "Ngày ban hành",
+                          label: _vm.isIncome ? "Ngày nhận" : "Ngày ban hành",
                           type: "date",
-                          value: _vm.document.published_at
+                          value: _vm.document.effective_at
                         },
                         on: {
                           "update:value": function($event) {
                             return _vm.$set(
                               _vm.document,
-                              "published_at",
+                              "effective_at",
                               $event
                             )
                           }
@@ -905,7 +910,7 @@ var render = function() {
                 },
                 [
                   _c("CIcon", { attrs: { name: "cil-check" } }),
-                  _vm._v(" Lưu\n    ")
+                  _vm._v("Lưu\n    ")
                 ],
                 1
               )
@@ -918,7 +923,7 @@ var render = function() {
                 },
                 [
                   _c("CIcon", { attrs: { name: "cil-plus" } }),
-                  _vm._v(" Tạo\n    ")
+                  _vm._v("Tạo\n    ")
                 ],
                 1
               )

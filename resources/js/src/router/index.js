@@ -65,6 +65,9 @@ const Documents = () => import('../views/documents/Documents')
 const Document = () => import('../views/documents/Document')
 const DocumentCreate = () => import('../views/documents/Create')
 
+// Statistic
+const Statistic = () => import('../views/statistic/Statistic')
+
 Vue.use(Router)
 
 const router = new Router({
@@ -214,6 +217,13 @@ function configRoutes () {
             },
           ]
         },
+        // Statistic
+        {
+          path: 'statistic',
+          name: 'Thống kê',
+          component: Statistic
+        },
+
         //
         {
           path: 'theme',
