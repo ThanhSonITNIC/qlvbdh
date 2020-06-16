@@ -830,11 +830,10 @@ var render = function() {
                                           return _c("label", {}, [
                                             _vm._v(
                                               _vm._s(
-                                                node.raw.signer
+                                                node.raw.description
                                                   ? node.raw.label +
                                                       " - " +
-                                                      node.raw.signer
-                                                        .description
+                                                      node.raw.description
                                                   : node.raw.label
                                               )
                                             )

@@ -118,7 +118,7 @@
                   <label
                     slot="option-label"
                     slot-scope="{ node }"
-                  >{{ node.raw.signer ? node.raw.label + ' - ' + node.raw.signer.description : node.raw.label }}</label>
+                  >{{ node.raw.description ? node.raw.label + ' - ' + node.raw.description : node.raw.label }}</label>
                 </treeselect>
               </template>
             </CFormGroup>
