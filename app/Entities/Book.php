@@ -32,4 +32,16 @@ class Book extends Model implements Transformable
         return $this->hasMany(Document::class);
     }
 
+    public function isComeIn(){
+        return $this->id == self::DEN;
+    }
+
+    public function isComeOut(){
+        return $this->id == self::DI;
+    }
+
+    public function isPrivate(){
+        return $this->id == self::NOIBO;
+    }
+
 }

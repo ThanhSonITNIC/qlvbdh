@@ -84,7 +84,7 @@ export default {
         },
         {
           _name: "CSidebarNavItem",
-          name: "Báo cáo - thống kê",
+          name: "Thống kê",
           to: "/statistic",
           icon: "cil-notes"
         }

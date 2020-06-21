@@ -36,6 +36,8 @@ Route::middleware('auth:sanctum', 'auth.active')->namespace('Api')->group(functi
     
     Route::get('download/attachments/{attachment}', 'AttachmentsController@download');
 
+    Route::get('statistic', 'ReportsControlle@export');
+
     Route::post('users/{user}/roles/{role}', 'UsersController@giveRole');
     Route::delete('users/{user}/roles/{role}', 'UsersController@revokeRole');
     Route::post('users/{user}/permissions/{permission}', 'UsersController@givePermission');

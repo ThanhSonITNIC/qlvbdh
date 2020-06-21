@@ -12,6 +12,7 @@ import publisher from "./publisher";
 import attachment from "./attachment";
 import receiver from "./receiver";
 import recipient from "./recipient";
+import statistic from "./statistic";
 
 export default {
     auth,
@@ -28,4 +29,5 @@ export default {
     attachment,
     receiver,
     recipient,
+    statistic,
 }

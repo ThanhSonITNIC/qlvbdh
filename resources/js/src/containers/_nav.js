@@ -4,13 +4,9 @@ export default [
     _children: [
       {
         _name: 'CSidebarNavItem',
-        name: 'Bảng điều khiển',
+        name: 'Trang chủ',
         to: '/dashboard',
-        icon: 'cil-speedometer',
-        badge: {
-          color: 'primary',
-          text: 'NEW'
-        }
+        icon: 'cil-home',
       },
       // {
       //   _name: 'CSidebarNavTitle',

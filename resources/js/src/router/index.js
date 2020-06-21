@@ -159,7 +159,6 @@ function configRoutes () {
       children: [
         {
           path: 'dashboard',
-          name: 'Dashboard',
           component: Dashboard
         },
         // Books
