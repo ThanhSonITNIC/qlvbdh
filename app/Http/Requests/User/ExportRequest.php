@@ -24,7 +24,7 @@ class ExportRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'export' => 'required|in:Xlsx,Csv,Xls,Html',
         ];
     }
 }

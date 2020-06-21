@@ -132,7 +132,10 @@ class UsersController extends Controller
 
     public function export(ExportRequest $request)
     {
-
+        $users = $this->repository->all();
+        $exporter = new \App\Exports\UsersExport($users);
+        $fileName = 'Danh sách người dùng.' . $request->export;
+        return \Excel::download($exporter, $fileName, $request->export);
     }
 
 }

@@ -25,12 +25,12 @@ implements
             'id' => $row['id'],
             'name' => $row['name'],
             'email' => $row['email'],
-            'password' => $row['password'],
             'tel' => $row['tel'],
             'birthday' => $row['birthday'],
-            'department_id' => $row['department'],
             'title_id' => $row['title'],
+            'department_id' => $row['department'],
             'active' => $row['active'],
+            'password' => \Hash::make($row['password'] ?? 'password'),
         ]);
     }
 
@@ -45,7 +45,7 @@ implements
             'id' => 'required|numeric|unique:users,id',
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6|max:32',
+            'password' => 'nullable|string|min:6|max:32',
             'tel' => 'nullable|string|unique:users,tel',
             'birthday' => 'nullable|date',
             'department' => 'nullable|exists:departments,id',

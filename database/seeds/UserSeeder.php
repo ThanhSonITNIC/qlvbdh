@@ -25,6 +25,6 @@ class UserSeeder extends Seeder
             ],
         ]);
 
-        factory(App\Entities\User::class, 100)->create();
+        factory(App\Entities\User::class, 300)->create();
     }
 }

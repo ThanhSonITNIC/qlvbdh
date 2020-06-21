@@ -43,8 +43,8 @@ Route::middleware('auth:sanctum', 'auth.active')->namespace('Api')->group(functi
     Route::post('users/{user}/permissions/{permission}', 'UsersController@givePermission');
     Route::delete('users/{user}/permissions/{permission}', 'UsersController@revokePermission');
     
-    Route::post('users/import', 'UsersController@import');
-    Route::post('users/export', 'UsersController@export');
+    Route::post('users/io/import', 'UsersController@import');
+    Route::get('users/io/export', 'UsersController@export');
 
     Route::prefix('me')->group(function(){
         Route::get('', 'MeController@show');
