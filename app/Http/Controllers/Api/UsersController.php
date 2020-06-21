@@ -12,6 +12,8 @@ use App\Http\Requests\User\{
     DestroyRequest,
     GiveRoleRequest,
     GivePermissionRequest,
+    ExportRequest,
+    ImportRequest,
 };
 
 /**
@@ -121,4 +123,16 @@ class UsersController extends Controller
         $this->repository->find($user)->revokePermissionTo($permission);
         return $this->respondNoContent();
     }
+
+    public function import(ImportRequest $request)
+    {
+        \Excel::import(new \App\Imports\UsersImport, $request->file('data'));
+        return $this->respondNoContent();
+    }
+
+    public function export(ExportRequest $request)
+    {
+
+    }
+
 }

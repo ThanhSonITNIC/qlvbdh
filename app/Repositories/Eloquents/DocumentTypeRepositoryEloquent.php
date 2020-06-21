@@ -24,7 +24,6 @@ class DocumentTypeRepositoryEloquent extends BaseRepository implements DocumentT
         'documents.id' => '=',
         'documents.symbol' => 'like',
         'documents.abstract' => 'like',
-        'documents.content' => 'like',
         'documents.book_id' => '=',
         'documents.type_id' => '=',
         'documents.signer_id' => '=',

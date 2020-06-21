@@ -13,9 +13,8 @@ use App\Entities\Organize;
 $factory->define(Document::class, function (Faker $faker) {
     $pHCHCUsers = User::where('department_id', 'PHCHC')->get();
     return [
-        'symbol' => $faker->bothify('##-??-???'),
+        'symbol' => $faker->bothify('##/??/???'),
         'abstract' => $faker->text(),
-        'content' => $faker->text(500),
         'book_id' => Book::all()->random()->id,
         'type_id' => DocumentType::all()->random()->id,
         'signer_id' =>  Signer::all()->random()->id,

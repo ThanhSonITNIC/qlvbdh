@@ -24,7 +24,6 @@ class Document extends Model implements Transformable
         'id',
         'symbol',
         'abstract',
-        'content',
         'book_id',
         'type_id',
         'signer_id',

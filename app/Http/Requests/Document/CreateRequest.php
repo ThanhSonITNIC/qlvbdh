@@ -30,7 +30,6 @@ class CreateRequest extends FormRequest
             'id' => 'nullable|numeric|unique:documents,id',
             'symbol' => 'nullable|string|max:30|unique:documents,symbol',
             'abstract' => 'nullable|string',
-            'content' => 'nullable|string',
             'book_id' => 'required|exists:books,id',
             'type_id' => 'required|exists:document_types,id',
             'signer_id' => 'required|exists:signers,id',

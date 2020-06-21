@@ -19,7 +19,6 @@ class CreateDocumentsTable extends Migration
             $table->increments('id');
 			$table->string('symbol', 30)->nullable();
 			$table->text('abstract')->nullable();
-			$table->text('content')->nullable();
 			$table->unsignedInteger('book_id');
 			$table->string('type_id', 2);
 			$table->unsignedInteger('signer_id')->nullable();
