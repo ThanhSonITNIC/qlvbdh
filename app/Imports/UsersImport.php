@@ -42,7 +42,7 @@ implements
     public function rules(): array
     {
         return [
-            'id' => 'required|numeric|unique:users,id',
+            'id' => 'required|string|max:20|unique:users,id',
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'password' => 'nullable|string|min:6|max:32',
