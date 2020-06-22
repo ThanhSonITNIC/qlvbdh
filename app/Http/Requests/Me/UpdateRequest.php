@@ -24,7 +24,6 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'nullable|numeric|unique:users,id,'.$this->user,
             'name' => 'nullable|string',
             'email' => 'nullable|email|unique:users,email,'.$this->user,
             'password' => 'nullable|confirmed',

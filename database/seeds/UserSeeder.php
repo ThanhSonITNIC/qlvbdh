@@ -14,13 +14,14 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
+                'id' => 'PKTCN-TP-1',
                 'name' => 'Administrator', 
                 'email' => 'admin@domain.com', 
                 'password' => Hash::make('password'), 
                 'tel' => '0376111000', 
                 'birthday' => '1975-04-30', 
-                'department_id' => null,
-                'title_id' => null,
+                'department_id' => 'PKTCN',
+                'title_id' => 'TP',
                 'email_verified_at' => now(),
             ],
         ]);

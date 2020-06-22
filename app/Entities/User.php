@@ -33,6 +33,10 @@ class User extends Authenticatable implements Transformable, CanResetPassword
         'active',
     ];
 
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
     /**
      * The attributes that should be hidden for arrays.
      *

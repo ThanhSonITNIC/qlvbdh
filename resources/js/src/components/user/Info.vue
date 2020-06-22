@@ -6,6 +6,12 @@
     <CCardBody>
       <CForm>
         <CInput
+          label="Mã"
+          :value.sync="user.id"
+          horizontal
+          :readonly="true"
+        />
+        <CInput
           placeholder="Let us know your full name."
           label="Tên"
           :value.sync="user.name"

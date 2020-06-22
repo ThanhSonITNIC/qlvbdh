@@ -168,6 +168,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       loading: true,
       items: null,
       fields: [{
+        key: "id",
+        label: "Mã"
+      }, {
         key: "name",
         label: "Tên",
         _classes: "font-weight-bold"
@@ -178,9 +181,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         key: "tel",
         label: "Số điện thoại"
       }, {
-        key: "birthday",
-        label: "Ngày sinh"
-      }, {
         key: "title",
         label: "Chức danh"
       }, {
@@ -190,6 +190,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       searchFields: [{
         value: "",
         label: "Tất cả"
+      }, {
+        value: "id",
+        label: "Mã"
       }, {
         value: "name",
         label: "Tên"

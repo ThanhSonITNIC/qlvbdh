@@ -84,6 +84,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Info",
@@ -648,6 +654,20 @@ var render = function() {
           _c(
             "CForm",
             [
+              _c("CInput", {
+                attrs: {
+                  label: "Mã",
+                  value: _vm.user.id,
+                  horizontal: "",
+                  readonly: true
+                },
+                on: {
+                  "update:value": function($event) {
+                    return _vm.$set(_vm.user, "id", $event)
+                  }
+                }
+              }),
+              _vm._v(" "),
               _c("CInput", {
                 attrs: {
                   placeholder: "Let us know your full name.",

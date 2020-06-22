@@ -57,7 +57,7 @@ class MeController extends Controller
             $request->merge(['password' => \Hash::make($request->password)]);
         }
         $data = $this->repository->update(
-            $request->except(['department_id', 'title_id', 'active']), 
+            $request->except(['department_id', 'title_id', 'active', 'id']), 
             $request->user()->id
         );
         return $this->respond($data);

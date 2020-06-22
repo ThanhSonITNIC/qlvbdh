@@ -25,15 +25,11 @@ class DocumentReceiver extends Model implements Transformable
         'id', 
         'user_id', 
         'document_id', 
-        'view_only', 
         'seen', 
-        'done',
     ];
 
     protected $casts = [
-        'view_only' => 'boolean',
         'seen' => 'boolean',
-        'done' => 'boolean',
     ];
 
     public function user(){

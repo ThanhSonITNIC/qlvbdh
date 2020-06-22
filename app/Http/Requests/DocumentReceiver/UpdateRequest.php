@@ -30,11 +30,7 @@ class UpdateRequest extends FormRequest
         return [
             'user_id' => 'nullable|exists:users,id',
             'document_id' => 'nullable|exists:documents,id',
-            'view_only' => 'nullable|boolean',
             'seen' => 'nullable|boolean',
-            'done' => 'nullable|boolean',
-            'role_id' => 'nullable|exists:roles,id',
-            'department_id' => 'nullable|exists:departments,id',
         ];
     }
 }

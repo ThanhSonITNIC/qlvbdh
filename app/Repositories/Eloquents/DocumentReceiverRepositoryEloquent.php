@@ -21,11 +21,7 @@ class DocumentReceiverRepositoryEloquent extends BaseRepository implements Docum
         'id' => '=',
         'user_id' => '=',
         'document_id' => '=',
-        'view_only' => '=',
         'seen' => '=',
-        'done' => '=',
-        'role_id' => '=',
-        'department_id' => '=',
 
         'user.id' => '=',
         'user.name' => 'like',

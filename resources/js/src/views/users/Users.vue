@@ -84,15 +84,16 @@ export default {
       loading: true,
       items: null,
       fields: [
+        { key: "id", label: "Mã" },
         { key: "name", label: "Tên", _classes: "font-weight-bold" },
         { key: "email", label: "Email" },
         { key: "tel", label: "Số điện thoại" },
-        { key: "birthday", label: "Ngày sinh" },
         { key: "title", label: "Chức danh" },
         { key: "department", label: "Phòng ban" }
       ],
       searchFields: [
         { value: "", label: "Tất cả" },
+        { value: "id", label: "Mã" },
         { value: "name", label: "Tên" },
         { value: "email", label: "Email" },
         { value: "tel", label: "Số điện thoại" },

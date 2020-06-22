@@ -23,8 +23,8 @@ class CreateDocumentsTable extends Migration
 			$table->string('type_id', 2);
 			$table->unsignedInteger('signer_id')->nullable();
 			$table->date('sign_at')->nullable();
-			$table->unsignedInteger('creator_id');
-			$table->unsignedInteger('writer_id')->nullable();
+			$table->string('creator_id', 20);
+			$table->string('writer_id', 20)->nullable();
 			$table->date('effective_at');
 			$table->string('publisher_id', 30);
 			$table->unsignedInteger('link_id')->nullable();

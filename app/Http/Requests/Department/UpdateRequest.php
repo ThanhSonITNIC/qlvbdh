@@ -24,7 +24,7 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'nullable|string|alpha_dash|max:30|unique:departments,id,'.$this->department,
+            'id' => 'nullable|string|alpha_dash|max:7|unique:departments,id,'.$this->department,
             'name' => 'nullable|string',
             'tel' => 'nullable|alpha_num|max:15',
         ];

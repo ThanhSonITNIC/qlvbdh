@@ -8,6 +8,29 @@ use Hash;
 class UserObserver
 {
     /**
+     * Handle the user "creating" event.
+     *
+     * @param  \App\Entities\User  $user
+     * @return void
+     */
+    public function creating(User $user)
+    {
+        $department_id = $user->department_id;
+        $title_id = $user->title_id;
+        $lastUser = User::where('department_id', $department_id)->where('title_id', $title_id)->orderBy('id', 'desc')->first();
+        $no = 1;
+        if($lastUser){
+            $no = explode('-', $lastUser->id)[2];
+            if(!is_numeric($no)){
+                throw new \App\Exceptions\UserIdIncorrectFormat($lastUser);
+            }
+            $no++;
+        }
+        $user->id = $department_id . '-' . $title_id . '-' . $no;
+        return $user;
+    }
+
+    /**
      * Handle the user "created" event.
      *
      * @param  \App\Entities\User  $user

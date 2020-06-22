@@ -17,13 +17,9 @@ class CreateDocumentReceiversTable extends Migration
 	{
 		Schema::create('document_receivers', function(Blueprint $table) {
             $table->increments('id');
-			$table->unsignedInteger('user_id');
+			$table->string('user_id', 20);
 			$table->unsignedInteger('document_id');
-			$table->boolean('view_only')->default(true);
 			$table->boolean('seen')->default(false);
-			$table->boolean('done')->nullable();
-			$table->unsignedBigInteger('role_id')->nullable();
-			$table->string('department_id', 30)->nullable();
             $table->timestamps();
 		
 			$table->unique(['user_id', 'document_id']);
@@ -36,14 +32,6 @@ class CreateDocumentReceiversTable extends Migration
 				->on('documents')
 				->onUpdate('cascade')
 				->onDelete('cascade');
-			$table->foreign('role_id')
-				->references('id')
-				->on(config('permission.table_names.roles'))
-				->onUpdate('cascade');
-			$table->foreign('department_id')
-				->references('id')
-				->on('departments')
-				->onUpdate('cascade');
 		});
 	}
 

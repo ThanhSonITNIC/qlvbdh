@@ -30,11 +30,7 @@ class CreateRequest extends FormRequest
         return [
             'user_id' => 'required|exists:users,id',
             'document_id' => 'required|exists:documents,id',
-            'view_only' => 'nullable|boolean',
             'seen' => 'nullable|boolean',
-            'done' => 'nullable|boolean',
-            'role_id' => 'nullable|exists:roles,id',
-            'department_id' => 'nullable|exists:departments,id',
         ];
     }
 }
