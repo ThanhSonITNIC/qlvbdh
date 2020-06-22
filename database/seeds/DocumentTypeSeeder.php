@@ -14,7 +14,6 @@ class DocumentTypeSeeder extends Seeder
         DB::table('document_types')->insert([
             ['id' => 'BC', 'name' => 'Báo cáo'],
             ['id' => 'CV', 'name' => 'Công văn'],
-            ['id' => 'GM', 'name' => 'Giấy mời'],
             ['id' => 'HD', 'name' => 'Hướng dẫn'],
             ['id' => 'KH', 'name' => 'Kế hoạch'],
             ['id' => 'NQ', 'name' => 'Nghị quyết'],

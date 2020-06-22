@@ -13,7 +13,12 @@ class OrganizeSeeder extends Seeder
     {
         DB::table('organizes')->insert([
             ['id' => 'HS', 'name' => 'Công ty Hải Sơn'],
-            ['id' => 'BQP', 'name' => 'Bộ quốc phòng'],
+            ['id' => 'TCHQ', 'name' => 'Tổng cục Hải quán'],
+            ['id' => 'BTC', 'name' => 'Bộ Tài chính'],
+            ['id' => 'BCT', 'name' => 'Bộ Công Thương'],
+            ['id' => 'VPTT', 'name' => 'Văn phòng Thường trực BCĐ 389 quốc gia'],
+            ['id' => 'BTNMT', 'name' => 'Bộ Tài nguyên môi trường'],
+            ['id' => 'BQP', 'name' => 'Bộ Quốc phòng'],
             ['id' => 'SHC', 'name' => 'Sở Hành Chính thành phố Đà Nẵng'],
         ]);
     }

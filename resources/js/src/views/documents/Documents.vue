@@ -122,8 +122,8 @@ export default {
     },
     fields() {
       return [
-        { key: "symbol", label: "Số ký hiệu", _classes: "font-weight-bold" },
-        { key: "abstract", label: "Trích yếu", _classes: "w-50" },
+        { key: "symbol", label: "Số ký hiệu" },
+        { key: "abstract", label: "Trích yếu", _classes: "w-50 font-weight-bold" },
         { key: "type", label: "Loại" },
         { key: "publisher", label: "Nơi ban hành" },
         {

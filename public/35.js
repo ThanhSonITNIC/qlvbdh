@@ -202,12 +202,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     fields: function fields() {
       return [{
         key: "symbol",
-        label: "Số ký hiệu",
-        _classes: "font-weight-bold"
+        label: "Số ký hiệu"
       }, {
         key: "abstract",
         label: "Trích yếu",
-        _classes: "w-50"
+        _classes: "w-50 font-weight-bold"
       }, {
         key: "type",
         label: "Loại"

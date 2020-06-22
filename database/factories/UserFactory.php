@@ -20,8 +20,9 @@ use App\Entities\Title;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+    $name = $faker->name;
     return [
-        'name' => $faker->name,
+        'name' => Str::contains($name, '.') ? explode('.', $name)[1] : $name,
         'email' => $faker->unique()->safeEmail,
         'tel' => $faker->phoneNumber,
         'birthday' => $faker->date($format = 'Y-m-d', $max = 'now'),

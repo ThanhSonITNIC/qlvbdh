@@ -12,11 +12,9 @@ use Spatie\Permission\Models\Role;
 
 
 $factory->define(DocumentReceiver::class, function (Faker $faker) {
-    $document = Document::all()->random();
-    $user = User::all()->random();
     return [
-        'user_id' => $user->id,
-        'document_id' => $document->id,
+        'user_id' => User::all()->random()->id,
+        'document_id' => Document::all()->random()->id,
         'seen' => rand(0, 1),
     ];
 });
