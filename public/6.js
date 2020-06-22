@@ -518,6 +518,35 @@ var resource = '/api/users';
   },
   revokePermission: function revokePermission(permission, id) {
     return axios["delete"]("".concat(resource, "/").concat(id, "/permissions/").concat(permission));
+  },
+  "import": function _import(data) {
+    return axios.post("".concat(resource, "/io/import"), data);
+  },
+  "export": function _export() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios.get("".concat(resource, "/io/export"), {
+      params: params,
+      responseType: 'blob'
+    }).then(function (response) {
+      var blob = new Blob([response.data]);
+      var url = window.URL.createObjectURL(blob);
+      var link = document.createElement('a');
+      link.href = url;
+      var contentDisposition = response.headers['content-disposition'];
+      var fileName = 'unknown';
+
+      if (contentDisposition) {
+        var fileNameMatch = contentDisposition.match(/filename="(.+)"/);
+        if (fileNameMatch.length === 2) fileName = fileNameMatch[1];
+      }
+
+      link.setAttribute('download', fileName);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(url);
+      return response;
+    });
   }
 });
 

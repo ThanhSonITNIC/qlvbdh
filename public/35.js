@@ -134,6 +134,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -399,6 +400,14 @@ var render = function() {
                   _c(
                     "CButton",
                     {
+                      directives: [
+                        {
+                          name: "c-tooltip",
+                          rawName: "v-c-tooltip",
+                          value: "Tạo mới",
+                          expression: "'Tạo mới'"
+                        }
+                      ],
                       staticClass: "float-right",
                       attrs: {
                         size: "sm",

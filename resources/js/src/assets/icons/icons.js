@@ -100,6 +100,7 @@ import {
   cilCloudUpload,
   cilPlus,
   cilVerticalAlignBottom,
+  cilVerticalAlignTop,
   cilHome,
 
 } from '@coreui/icons'
@@ -110,6 +111,7 @@ export const iconsSet = Object.assign(
   { logo },
   {
     cilHome,
+    cilVerticalAlignTop,
     cilVerticalAlignBottom,
     cilPlus,
     cilCloudUpload,

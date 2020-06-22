@@ -133,10 +133,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Users',
+  name: "Users",
   components: {
     CSearchBox: _components_SearchBox__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
@@ -145,52 +168,52 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       loading: true,
       items: null,
       fields: [{
-        key: 'name',
-        label: 'Tên',
-        _classes: 'font-weight-bold'
+        key: "name",
+        label: "Tên",
+        _classes: "font-weight-bold"
       }, {
-        key: 'email',
-        label: 'Email'
+        key: "email",
+        label: "Email"
       }, {
-        key: 'tel',
-        label: 'Số điện thoại'
+        key: "tel",
+        label: "Số điện thoại"
       }, {
-        key: 'birthday',
-        label: 'Ngày sinh'
+        key: "birthday",
+        label: "Ngày sinh"
       }, {
-        key: 'title',
-        label: 'Chức danh'
+        key: "title",
+        label: "Chức danh"
       }, {
-        key: 'department',
-        label: 'Phòng ban'
+        key: "department",
+        label: "Phòng ban"
       }],
       searchFields: [{
-        value: '',
-        label: 'Tất cả'
+        value: "",
+        label: "Tất cả"
       }, {
-        value: 'name',
-        label: 'Tên'
+        value: "name",
+        label: "Tên"
       }, {
-        value: 'email',
-        label: 'Email'
+        value: "email",
+        label: "Email"
       }, {
-        value: 'tel',
-        label: 'Số điện thoại'
+        value: "tel",
+        label: "Số điện thoại"
       }, {
-        value: 'birthday',
-        label: 'Ngày sinh'
+        value: "birthday",
+        label: "Ngày sinh"
       }, {
-        value: 'title.name',
-        label: 'Chức danh'
+        value: "title.name",
+        label: "Chức danh"
       }, {
-        value: 'department.name',
-        label: 'Phòng ban'
+        value: "department.name",
+        label: "Phòng ban"
       }],
       currentPage: 1,
       pages: 0,
       size: 0,
-      searchValue: '',
-      searchField: ''
+      searchValue: "",
+      searchField: ""
     };
   },
   created: function created() {
@@ -218,13 +241,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.withQuery + "&" + this.pageQuery + "&" + this.searchQuery;
     },
     pageQuery: function pageQuery() {
-      return this.currentPage ? 'page=' + this.currentPage : '';
+      return this.currentPage ? "page=" + this.currentPage : "";
     },
     withQuery: function withQuery() {
-      return 'with=title;department';
+      return "with=title;department";
     },
     searchQuery: function searchQuery() {
-      return this.searchValue ? 'search=' + this.searchValue + (this.searchField ? '&searchFields=' + this.searchField : '') : '';
+      return this.searchValue ? "search=" + this.searchValue + (this.searchField ? "&searchFields=" + this.searchField : "") : "";
     }
   },
   methods: {
@@ -280,6 +303,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     searchValueChanged: function searchValueChanged(value) {
       this.searchValue = value;
       this.fetch();
+    },
+    onClickImport: function onClickImport() {
+      document.getElementById("fileimport").click();
+    },
+    upload: function upload(files) {
+      var _this2 = this;
+
+      this.loading = true;
+      var file = files[0];
+      var formData = new FormData();
+      formData.append("data", file);
+      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].user["import"](formData).then(function (response) {
+        _this2.$toast.success("Đã nhập thành công");
+
+        _this2.loading = false;
+      })["catch"](function (error) {
+        _this2.toastHttpError(error);
+
+        _this2.loading = false;
+      });
+    },
+    downloadExport: function downloadExport() {
+      var _this3 = this;
+
+      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].user["export"]({
+        "export": 'Xlsx',
+        search: this.searchValue,
+        searchFields: this.searchField
+      }).then(function (response) {
+        _this3.$toast.success("Đã xuất");
+      })["catch"](function (error) {
+        _this3.toastHttpError(error);
+      });
     }
   }
 });
@@ -367,10 +423,18 @@ var render = function() {
                 "CCardHeader",
                 [
                   _c("CIcon", { attrs: { name: "cil-grid" } }),
-                  _vm._v("\n        Danh sách người dùng\n        "),
+                  _vm._v("Danh sách người dùng\n        "),
                   _c(
                     "CButton",
                     {
+                      directives: [
+                        {
+                          name: "c-tooltip",
+                          rawName: "v-c-tooltip",
+                          value: "Tạo mới",
+                          expression: "'Tạo mới'"
+                        }
+                      ],
                       staticClass: "float-right",
                       attrs: {
                         size: "sm",
@@ -381,7 +445,64 @@ var render = function() {
                     },
                     [_c("CIcon", { attrs: { name: "cil-user-follow" } })],
                     1
-                  )
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "CButton",
+                    {
+                      directives: [
+                        {
+                          name: "c-tooltip",
+                          rawName: "v-c-tooltip",
+                          value: "Xuất",
+                          expression: "'Xuất'"
+                        }
+                      ],
+                      staticClass: "float-right mr-2",
+                      attrs: {
+                        size: "sm",
+                        color: "primary",
+                        variant: "outline"
+                      },
+                      on: { click: _vm.downloadExport }
+                    },
+                    [
+                      _c("CIcon", {
+                        attrs: { name: "cil-vertical-align-bottom" }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "CButton",
+                    {
+                      directives: [
+                        {
+                          name: "c-tooltip",
+                          rawName: "v-c-tooltip",
+                          value: "Nhập",
+                          expression: "'Nhập'"
+                        }
+                      ],
+                      staticClass: "float-right mr-2",
+                      attrs: {
+                        size: "sm",
+                        color: "primary",
+                        variant: "outline"
+                      },
+                      on: { click: _vm.onClickImport }
+                    },
+                    [
+                      _c("CIcon", { attrs: { name: "cil-vertical-align-top" } })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("CInputFile", {
+                    attrs: { hidden: "", id: "fileimport", accept: ".Xlsx" },
+                    on: { change: _vm.upload }
+                  })
                 ],
                 1
               ),
@@ -415,13 +536,9 @@ var render = function() {
                           return [
                             _c("td", [
                               _vm._v(
-                                "\n              " +
-                                  _vm._s(
-                                    item.title
-                                      ? item.title.name
-                                      : "Chưa xác định"
-                                  ) +
-                                  "\n            "
+                                _vm._s(
+                                  item.title ? item.title.name : "Chưa xác định"
+                                )
                               )
                             ])
                           ]
@@ -434,13 +551,11 @@ var render = function() {
                           return [
                             _c("td", [
                               _vm._v(
-                                "\n              " +
-                                  _vm._s(
-                                    item.department
-                                      ? item.department.name
-                                      : "Chưa xác định"
-                                  ) +
-                                  "\n            "
+                                _vm._s(
+                                  item.department
+                                    ? item.department.name
+                                    : "Chưa xác định"
+                                )
                               )
                             ])
                           ]

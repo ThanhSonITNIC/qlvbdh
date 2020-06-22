@@ -69,7 +69,7 @@ __webpack_require__.r(__webpack_exports__);
         password: this.password
       }).then(function (response) {
         _this.$router.push(_this.$route.query.redirectFrom || {
-          name: "Dashboard"
+          name: "Trang chủ"
         });
       }).then(function (response) {
         _this.$toast.success("Đăng nhập thành công");

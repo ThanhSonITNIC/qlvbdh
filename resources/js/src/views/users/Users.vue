@@ -3,11 +3,38 @@
     <CCol col="12">
       <CCard>
         <CCardHeader>
-          <CIcon name="cil-grid"/>
-          Danh sách người dùng
-          <CButton size="sm" @click="createUser" class="float-right" color="primary" variant="outline">
+          <CIcon name="cil-grid" />Danh sách người dùng
+          <CButton
+            size="sm"
+            @click="createUser"
+            class="float-right"
+            color="primary"
+            variant="outline"
+            v-c-tooltip="'Tạo mới'"
+          >
             <CIcon name="cil-user-follow" />
           </CButton>
+          <CButton
+            size="sm"
+            @click="downloadExport"
+            class="float-right mr-2"
+            color="primary"
+            variant="outline"
+            v-c-tooltip="'Xuất'"
+          >
+            <CIcon name="cil-vertical-align-bottom" />
+          </CButton>
+          <CButton
+            size="sm"
+            @click="onClickImport"
+            class="float-right mr-2"
+            color="primary"
+            variant="outline"
+            v-c-tooltip="'Nhập'"
+          >
+            <CIcon name="cil-vertical-align-top" />
+          </CButton>
+          <CInputFile hidden id="fileimport" accept=".Xlsx" @change="upload" />
         </CCardHeader>
         <CCardBody>
           <CSearchBox
@@ -25,14 +52,10 @@
             @row-clicked="rowClicked"
           >
             <template #title="{item}">
-              <td>
-                {{item.title ? item.title.name : 'Chưa xác định'}}
-              </td>
+              <td>{{item.title ? item.title.name : 'Chưa xác định'}}</td>
             </template>
             <template #department="{item}">
-              <td>
-                {{item.department ? item.department.name : 'Chưa xác định'}}
-              </td>
+              <td>{{item.department ? item.department.name : 'Chưa xác định'}}</td>
             </template>
           </CDataTable>
           <CPagination
@@ -48,104 +71,139 @@
 </template>
 
 <script>
-import services from "../../services/factory"
-import CSearchBox from "../../components/SearchBox"
+import services from "../../services/factory";
+import CSearchBox from "../../components/SearchBox";
 
 export default {
-  name: 'Users',
+  name: "Users",
   components: {
-    CSearchBox,
+    CSearchBox
   },
-  data () {
+  data() {
     return {
       loading: true,
       items: null,
       fields: [
-        { key: 'name', label: 'Tên', _classes: 'font-weight-bold'},
-        { key: 'email', label: 'Email' },
-        { key: 'tel', label: 'Số điện thoại' },
-        { key: 'birthday', label: 'Ngày sinh' },
-        { key: 'title', label: 'Chức danh' },
-        { key: 'department', label: 'Phòng ban' },
+        { key: "name", label: "Tên", _classes: "font-weight-bold" },
+        { key: "email", label: "Email" },
+        { key: "tel", label: "Số điện thoại" },
+        { key: "birthday", label: "Ngày sinh" },
+        { key: "title", label: "Chức danh" },
+        { key: "department", label: "Phòng ban" }
       ],
       searchFields: [
-        { value: '', label: 'Tất cả'},
-        { value: 'name', label: 'Tên'},
-        { value: 'email', label: 'Email'},
-        { value: 'tel', label: 'Số điện thoại'},
-        { value: 'birthday', label: 'Ngày sinh'},
-        { value: 'title.name', label: 'Chức danh'},
-        { value: 'department.name', label: 'Phòng ban'},
+        { value: "", label: "Tất cả" },
+        { value: "name", label: "Tên" },
+        { value: "email", label: "Email" },
+        { value: "tel", label: "Số điện thoại" },
+        { value: "birthday", label: "Ngày sinh" },
+        { value: "title.name", label: "Chức danh" },
+        { value: "department.name", label: "Phòng ban" }
       ],
       currentPage: 1,
       pages: 0,
       size: 0,
-      searchValue: '',
-      searchField: '',
-    }
+      searchValue: "",
+      searchField: ""
+    };
   },
   created() {
-    this.fetch()
+    this.fetch();
   },
   watch: {
     $route: {
       immediate: true,
-      handler (route) {
+      handler(route) {
         if (route.query && route.query.page) {
-          this.currentPage = Number(route.query.page)
+          this.currentPage = Number(route.query.page);
         }
       }
     },
     currentPage: {
-      handler(page){
-        this.pageChange(page)
-        this.currentPage = page
-        this.fetch()
+      handler(page) {
+        this.pageChange(page);
+        this.currentPage = page;
+        this.fetch();
       }
-    },
+    }
   },
   computed: {
-    query(){
-      return this.withQuery + "&" + this.pageQuery + "&" + this.searchQuery
+    query() {
+      return this.withQuery + "&" + this.pageQuery + "&" + this.searchQuery;
     },
-    pageQuery(){
-      return this.currentPage ? 'page=' + this.currentPage : ''
+    pageQuery() {
+      return this.currentPage ? "page=" + this.currentPage : "";
     },
-    withQuery(){
-      return 'with=title;department'
+    withQuery() {
+      return "with=title;department";
     },
-    searchQuery(){
-      return this.searchValue 
-             ? 'search=' + this.searchValue + (this.searchField ? '&searchFields=' + this.searchField : '') 
-             : ''
+    searchQuery() {
+      return this.searchValue
+        ? "search=" +
+            this.searchValue +
+            (this.searchField ? "&searchFields=" + this.searchField : "")
+        : "";
     }
   },
   methods: {
-    async fetch(){
-      this.loading = true
-      const response = await services.user.all(this.query)
-      this.items = response.data.data
-      this.currentPage = response.data.current_page
-      this.pages = response.data.last_page
-      this.loading = false
+    async fetch() {
+      this.loading = true;
+      const response = await services.user.all(this.query);
+      this.items = response.data.data;
+      this.currentPage = response.data.current_page;
+      this.pages = response.data.last_page;
+      this.loading = false;
     },
-    rowClicked (item, index) {
-      this.$router.push({path: `users/${item.id}`})
+    rowClicked(item, index) {
+      this.$router.push({ path: `users/${item.id}` });
     },
     createUser() {
-      this.$router.push({path: `users/create`})
+      this.$router.push({ path: `users/create` });
     },
-    pageChange (val) {
-      this.$router.push({ query: { page: val }})
+    pageChange(val) {
+      this.$router.push({ query: { page: val } });
     },
-    searchFieldChanged(item){
-      this.searchField = item.value
-      this.fetch()
+    searchFieldChanged(item) {
+      this.searchField = item.value;
+      this.fetch();
     },
-    searchValueChanged(value){
-      this.searchValue = value
-      this.fetch()
+    searchValueChanged(value) {
+      this.searchValue = value;
+      this.fetch();
     },
+    onClickImport() {
+      document.getElementById("fileimport").click();
+    },
+    upload(files) {
+      this.loading = true;
+      let file = files[0];
+      let formData = new FormData();
+      formData.append("data", file);
+      services.user
+        .import(formData)
+        .then(response => {
+          this.$toast.success("Đã nhập thành công");
+          this.loading = false;
+        })
+        .catch(error => {
+          this.toastHttpError(error);
+          this.loading = false;
+        });
+    },
+    downloadExport(){
+      services.user
+        .export({
+          export: 'Xlsx',
+          search: this.searchValue,
+          searchFields: this.searchField,
+        })
+        .then(response => {
+          this.$toast.success("Đã xuất");
+        })
+        .catch(error => {
+          this.toastHttpError(error);
+        });
+    }
   }
-}
+};
 </script>

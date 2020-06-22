@@ -56,7 +56,7 @@ export default {
         .dispatch("auth/login", { email: this.email, password: this.password })
         .then(response => {
           this.$router.push(
-            this.$route.query.redirectFrom || { name: "Dashboard" }
+            this.$route.query.redirectFrom || { name: "Trang chủ" }
           );
         })
         .then(response => {
