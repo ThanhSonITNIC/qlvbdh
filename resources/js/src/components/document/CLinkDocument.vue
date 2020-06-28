@@ -16,9 +16,9 @@
             @deselect="unLinkTo"
           >
             <div
-              slot="value-label"
+              slot="option-label"
               slot-scope="{ node }"
-            >{{ node.raw.label || getSymbol(node.raw.id) }}</div>
+            >{{ node.raw.label + ' - ' + node.raw.abstract || getSymbol(node.raw.id) }}</div>
           </treeselect>
         </CCol>
         <CCol v-else sm="12">

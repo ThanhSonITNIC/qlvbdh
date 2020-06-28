@@ -102,6 +102,7 @@ import {
   cilVerticalAlignBottom,
   cilVerticalAlignTop,
   cilHome,
+  cilX,
 
 } from '@coreui/icons'
 import { logo } from './logo'
@@ -110,6 +111,7 @@ export const iconsSet = Object.assign(
   {},
   { logo },
   {
+    cilX,
     cilHome,
     cilVerticalAlignTop,
     cilVerticalAlignBottom,

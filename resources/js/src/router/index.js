@@ -68,6 +68,16 @@ const DocumentCreate = () => import('../views/documents/Create')
 // Statistic
 const Statistic = () => import('../views/statistic/Statistic')
 
+// System
+const Titles = () => import('../views/system/Titles')
+const Departments = () => import('../views/system/Departments')
+const Signers = () => import('../views/system/Signers')
+const Publishers = () => import('../views/system/Publishers')
+const DocumentTypes = () => import('../views/system/DocumentTypes')
+const Books = () => import('../views/system/Books')
+const Groups = () => import('../views/system/Groups')
+const Permissions = () => import('../views/system/Permissions')
+
 Vue.use(Router)
 
 const router = new Router({
@@ -173,6 +183,11 @@ function configRoutes () {
             }
           },
           children: [
+            {
+              path: '',
+              name: 'Sổ văn bản',
+              component: Books
+            },
             {
               path: ':book',
               name: 'Chi tiết sổ',
@@ -292,6 +307,41 @@ function configRoutes () {
               component: User
             }
           ]
+        },
+        {
+          path: 'titles',
+          name: 'Chức danh',
+          component: Titles
+        },
+        {
+          path: 'departments',
+          name: 'Phòng ban',
+          component: Departments
+        },
+        {
+          path: 'signers',
+          name: 'Người ký',
+          component: Signers
+        },
+        {
+          path: 'publishers',
+          name: 'Nơi ban hành',
+          component: Publishers
+        },
+        {
+          path: 'document-types',
+          name: 'Loại văn bản',
+          component: DocumentTypes
+        },
+        {
+          path: 'roles',
+          name: 'Nhóm',
+          component: Groups
+        },
+        {
+          path: 'permissions',
+          name: 'Quyền',
+          component: Permissions
         },
         {
           path: 'base',
