@@ -155,6 +155,11 @@ export default {
       this.loading = true;
       const response = await services.document.all(this.query);
       this.items = response.data.data;
+      // this.items = response.data.data.map(item => {
+      //   item["_classes"] = 'bg-success';
+      //   return item;
+      // });
+
       this.currentPage = response.data.current_page;
       this.pages = response.data.last_page;
       this.loading = false;

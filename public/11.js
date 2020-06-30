@@ -268,7 +268,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 response = _context.sent;
-                _this.items = response.data.data;
+                _this.items = response.data.data; // this.items = response.data.data.map(item => {
+                //   item["_classes"] = 'bg-success';
+                //   return item;
+                // });
+
                 _this.currentPage = response.data.current_page;
                 _this.pages = response.data.last_page;
                 _this.loading = false;

@@ -49,7 +49,7 @@ class DocumentReceived extends Notification implements ShouldQueue
         return (new MailMessage)
                     ->line($this->document->type->name)
                     ->line('Trích yếu: '. $this->document->abstract)
-                    ->action('Xem', $this->getUrlToDocument());
+                    ->action('Xem', url($this->getPathToDocument()));
     }
 
     /**
@@ -63,11 +63,11 @@ class DocumentReceived extends Notification implements ShouldQueue
         return [
             'title' => $this->document->type->name,
             'content' => $this->document->abstract,
-            'url' => $this->getUrlToDocument(),
+            'path' => $this->getPathToDocument(),
         ];
     }
 
-    protected function getUrlToDocument(){
-        return url('/documents/'.$this->document->id);
+    protected function getPathToDocument(){
+        return '/documents/'.$this->document->id;
     }
 }

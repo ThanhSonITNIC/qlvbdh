@@ -115,15 +115,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'TheHeader',
@@ -699,33 +690,15 @@ var render = function() {
             [
               _c(
                 "CHeaderNavLink",
-                [_c("CIcon", { attrs: { name: "cil-bell" } })],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CHeaderNavItem",
-            { staticClass: "d-md-down-none mx-2" },
-            [
-              _c(
-                "CHeaderNavLink",
-                [_c("CIcon", { attrs: { name: "cil-list" } })],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "CHeaderNavItem",
-            { staticClass: "d-md-down-none mx-2" },
-            [
-              _c(
-                "CHeaderNavLink",
-                [_c("CIcon", { attrs: { name: "cil-envelope-open" } })],
+                [
+                  _c("CIcon", { attrs: { name: "cil-bell" } }),
+                  _vm._v(" "),
+                  _c(
+                    "CBadge",
+                    { staticClass: "ml-auto", attrs: { color: "danger" } },
+                    [_vm._v("1")]
+                  )
+                ],
                 1
               )
             ],

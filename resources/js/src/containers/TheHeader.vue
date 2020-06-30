@@ -19,16 +19,7 @@
       <CHeaderNavItem class="d-md-down-none mx-2">
         <CHeaderNavLink>
           <CIcon name="cil-bell"/>
-        </CHeaderNavLink>
-      </CHeaderNavItem>
-      <CHeaderNavItem class="d-md-down-none mx-2">
-        <CHeaderNavLink>
-          <CIcon name="cil-list"/>
-        </CHeaderNavLink>
-      </CHeaderNavItem>
-      <CHeaderNavItem class="d-md-down-none mx-2">
-        <CHeaderNavLink>
-          <CIcon name="cil-envelope-open"/>
+          <CBadge color="danger" class="ml-auto">1</CBadge>
         </CHeaderNavLink>
       </CHeaderNavItem>
       <TheHeaderDropdownAccnt/>
