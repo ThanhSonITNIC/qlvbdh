@@ -12,6 +12,7 @@ use App\Http\Requests\Document\{
     DestroyRequest,
 };
 use App\Traits\Attachmentable;
+use App\Events\UserViewedDocument;
 
 /**
  * Class DocumentsController.
@@ -75,6 +76,7 @@ class DocumentsController extends Controller
     public function show(ShowRequest $request, $id)
     {
         $data = $this->repository->find($id);
+        event(new UserViewedDocument($data));
         return $this->respond($data);
     }
 
