@@ -12,7 +12,8 @@ class UsersImport
 implements 
     ToModel, 
     WithHeadingRow,
-    WithValidation
+    WithValidation,
+    WithMappedCells
 {
     /**
     * @param array $row
@@ -22,7 +23,6 @@ implements
     public function model(array $row)
     {
         return new User([
-            'id' => $row['id'],
             'name' => $row['name'],
             'email' => $row['email'],
             'tel' => $row['tel'],
@@ -34,6 +34,20 @@ implements
         ]);
     }
 
+    public function mapping(): array
+    {
+        return [
+            'name' => 'B2',
+            'email' => 'C2',
+            'tel' => 'D2',
+            'birthday' => 'E2',
+            'title' => 'F2',
+            'department' => 'G2',
+            'active' => 'H2',
+            'password' => 'I2',
+        ];
+    }
+
     public function headingRow(): int
     {
         return 1;
@@ -42,7 +56,6 @@ implements
     public function rules(): array
     {
         return [
-            'id' => 'required|string|max:20|unique:users,id',
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'password' => 'nullable|string|min:6|max:32',

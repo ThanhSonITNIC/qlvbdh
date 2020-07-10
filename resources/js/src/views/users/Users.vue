@@ -99,7 +99,8 @@ export default {
         { value: "tel", label: "Số điện thoại" },
         { value: "birthday", label: "Ngày sinh" },
         { value: "title.name", label: "Chức danh" },
-        { value: "department.name", label: "Phòng ban" }
+        { value: "department.name", label: "Phòng ban" },
+        { value: "created_at", label: "Ngày tạo" }
       ],
       currentPage: 1,
       pages: 0,
@@ -184,19 +185,19 @@ export default {
         .import(formData)
         .then(response => {
           this.$toast.success("Đã nhập thành công");
-          this.loading = false;
+          this.fetch();
         })
         .catch(error => {
           this.toastHttpError(error);
           this.loading = false;
         });
     },
-    downloadExport(){
+    downloadExport() {
       services.user
         .export({
-          export: 'Xlsx',
+          export: "Xlsx",
           search: this.searchValue,
-          searchFields: this.searchField,
+          searchFields: this.searchField
         })
         .then(response => {
           this.$toast.success("Đã xuất");

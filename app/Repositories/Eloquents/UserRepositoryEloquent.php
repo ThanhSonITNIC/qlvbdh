@@ -26,6 +26,8 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         'department_id' => '=',
         'title_id' => '=',
         'active' => '=',
+        'created_at' => 'like',
+        'updated_at' => 'like',
 
         'roles.id' => '=',
         'roles.name' => 'like',

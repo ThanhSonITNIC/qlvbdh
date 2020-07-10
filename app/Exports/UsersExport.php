@@ -43,14 +43,14 @@ implements
     public function headings(): array
     {
         return [
-            'id',
-            'name',
-            'email',
-            'tel',
-            'birthday',
-            'title',
-            'department',
-            'active',
+            'Mã',
+            'Tên',
+            'Email',
+            'Số điện thoại',
+            'Ngày sinh',
+            'Chức danh',
+            'Phòng ban',
+            'Kích hoạt',
         ];
     }
 

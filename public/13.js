@@ -211,6 +211,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, {
         value: "department.name",
         label: "Phòng ban"
+      }, {
+        value: "created_at",
+        label: "Ngày tạo"
       }],
       currentPage: 1,
       pages: 0,
@@ -320,7 +323,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].user["import"](formData).then(function (response) {
         _this2.$toast.success("Đã nhập thành công");
 
-        _this2.loading = false;
+        _this2.fetch();
       })["catch"](function (error) {
         _this2.toastHttpError(error);
 
@@ -331,7 +334,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this3 = this;
 
       _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].user["export"]({
-        "export": 'Xlsx',
+        "export": "Xlsx",
         search: this.searchValue,
         searchFields: this.searchField
       }).then(function (response) {
