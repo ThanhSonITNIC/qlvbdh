@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Attachment;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Entities\Attachment;
 
 class DestroyRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class DestroyRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Attachment::find($this->attachment)->document->creator_id == $this->user()->id;
     }
 
     /**

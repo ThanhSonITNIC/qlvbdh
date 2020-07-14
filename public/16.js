@@ -66,10 +66,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 bookResponse = _context.sent;
                 _this.books = bookResponse.data;
-                console.log(_this.books);
                 return _context.abrupt("return", bookResponse);
 
-              case 6:
+              case 5:
               case "end":
                 return _context.stop();
             }

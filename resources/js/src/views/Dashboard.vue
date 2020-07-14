@@ -36,7 +36,6 @@ export default {
     async fetchBooks() {
       const bookResponse = await services.book.all();
       this.books = bookResponse.data;
-      console.log(this.books)
       return bookResponse;
     },
   }

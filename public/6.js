@@ -297,7 +297,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   name: "TheSidebar",
   nav: _nav__WEBPACK_IMPORTED_MODULE_1__["default"],
   created: function created() {
-    this.fetchDocument();
+    this.init();
   },
   computed: {
     show: function show() {
@@ -308,20 +308,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   methods: {
-    fetchDocument: function fetchDocument() {
+    init: function init() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response;
+        var _this$$options$nav$0$;
+
+        var books, system, operating;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _services_factory__WEBPACK_IMPORTED_MODULE_2__["default"].book.all().then(function (response) {
-                  var _this$$options$nav$0$;
+                return _this.fetchDocument();
 
-                  var document = [{
+              case 2:
+                books = _context.sent;
+                _context.next = 5;
+                return _this.fetchSystem();
+
+              case 5:
+                system = _context.sent;
+                _context.next = 8;
+                return _this.fetchOperating();
+
+              case 8:
+                operating = _context.sent;
+
+                (_this$$options$nav$0$ = _this.$options.nav[0]._children).push.apply(_this$$options$nav$0$, _toConsumableArray(books).concat(_toConsumableArray(operating), _toConsumableArray(system)));
+
+                _this.RFKey += 1;
+
+              case 11:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    fetchDocument: function fetchDocument() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return _services_factory__WEBPACK_IMPORTED_MODULE_2__["default"].book.all().then(function (response) {
+                  return [{
                     _name: "CSidebarNavTitle",
                     _children: ["Sổ văn bản"]
                   }].concat(_toConsumableArray(response.data.map(function (item) {
@@ -332,21 +366,69 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       icon: "cil-notes"
                     };
                   })));
-
-                  (_this$$options$nav$0$ = _this.$options.nav[0]._children).push.apply(_this$$options$nav$0$, _toConsumableArray(document).concat(_toConsumableArray(_this.operating), _toConsumableArray(_this.system)));
-
-                  _this.RFKey += 1;
                 });
 
               case 2:
-                response = _context.sent;
+                return _context2.abrupt("return", _context2.sent);
 
               case 3:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee);
+        }, _callee2);
+      }))();
+    },
+    fetchSystem: function fetchSystem() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return _services_factory__WEBPACK_IMPORTED_MODULE_2__["default"].auth.namePermissions().then(function (permissions) {
+                  return _this2.system.filter(function (item) {
+                    return !!item.permission ? permissions.includes(item.permission) : true;
+                  });
+                });
+
+              case 2:
+                return _context3.abrupt("return", _context3.sent);
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    fetchOperating: function fetchOperating() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return _services_factory__WEBPACK_IMPORTED_MODULE_2__["default"].auth.namePermissions().then(function (permissions) {
+                  return _this3.operating.filter(function (item) {
+                    return !!item.permission ? permissions.includes(item.permission) : true;
+                  });
+                });
+
+              case 2:
+                return _context4.abrupt("return", _context4.sent);
+
+              case 3:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
       }))();
     }
   },
@@ -361,7 +443,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _name: "CSidebarNavItem",
         name: "Thống kê",
         to: "/statistic",
-        icon: "cil-notes"
+        icon: "cil-notes",
+        permission: "Báo cáo thống kê"
       }],
       system: [{
         _name: "CSidebarNavTitle",
@@ -370,47 +453,56 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _name: "CSidebarNavItem",
         name: "Người dùng",
         to: "/users",
-        icon: "cil-people"
+        icon: "cil-people",
+        permission: "Quản lý người dùng"
       }, {
         _name: "CSidebarNavItem",
         name: "Chức danh",
         to: "/titles",
-        icon: "cil-contact"
+        icon: "cil-contact",
+        permission: "Quản lý chức danh"
       }, {
         _name: "CSidebarNavItem",
         name: "Phòng ban",
         to: "/departments",
-        icon: "cil-lan"
+        icon: "cil-lan",
+        permission: "Quản lý phòng ban"
       }, {
         _name: "CSidebarNavItem",
         name: "Người ký",
         to: "/signers",
-        icon: "cil-touch-app"
+        icon: "cil-touch-app",
+        permission: "Quản lý người ký"
       }, {
         _name: "CSidebarNavItem",
         name: "Nơi ban hành",
         to: "/publishers",
-        icon: "cil-institution"
+        icon: "cil-institution",
+        permission: "Quản lý nơi ban hành"
       }, {
         _name: "CSidebarNavItem",
         name: "Loại văn bản",
         to: "/document-types",
-        icon: "cil-text-size"
+        icon: "cil-text-size",
+        permission: "Quản lý loại văn bản"
       }, {
         _name: "CSidebarNavItem",
         name: "Sổ văn bản",
         to: "/books",
-        icon: "cil-book"
+        icon: "cil-book",
+        permission: "Quản lý sổ văn bản"
       }, {
         _name: "CSidebarNavItem",
         name: "Nhóm",
         to: "/roles",
-        icon: "cil-address-book"
+        icon: "cil-address-book",
+        permission: "Quản lý nhóm"
       }, {
         _name: "CSidebarNavItem",
         name: "Quyền",
         to: "/permissions",
-        icon: "cil-lock-locked"
+        icon: "cil-lock-locked",
+        permission: "Quản lý quyền"
       }, {
         _name: "CSidebarNavItem",
         name: "Cài đặt",

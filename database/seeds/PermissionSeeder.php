@@ -23,6 +23,7 @@ class PermissionSeeder extends Seeder
             ['name' => 'Quản lý người ký', 'guard_name' => $guard],
             ['name' => 'Quản lý nơi ban hành', 'guard_name' => $guard],
             ['name' => 'Quản lý loại văn bản', 'guard_name' => $guard],
+            ['name' => 'Quản lý quyền', 'guard_name' => $guard],
             ['name' => 'Phân quyền', 'guard_name' => $guard],
             ['name' => 'Báo cáo thống kê', 'guard_name' => $guard],
             ['name' => 'Quản lý văn bản đến', 'guard_name' => $guard],
@@ -44,6 +45,7 @@ class PermissionSeeder extends Seeder
             'Quản lý phòng ban',
             'Quản lý người ký',
             'Quản lý nơi ban hành',
+            'Quản lý quyền',
             'Phân quyền',
             'Báo cáo thống kê',
         ]);

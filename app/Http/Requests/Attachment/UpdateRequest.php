@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Attachment;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Entities\Document;
 
 class UpdateRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Document::find($this->document_id)->creator_id == $this->user()->id;
     }
 
     /**

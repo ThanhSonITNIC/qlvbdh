@@ -3,6 +3,7 @@
 namespace App\Http\Requests\DocumentOrganize;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Entities\DocumentOrganize;
 
 class DestroysRequest extends FormRequest
 {
@@ -13,7 +14,9 @@ class DestroysRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return DocumentOrganize::where('organize_id', $this->organize_id)
+            ->where('document_id', $this->document_id)
+            ->first()->document->creator_id == $this->user()->id;
     }
 
     /**

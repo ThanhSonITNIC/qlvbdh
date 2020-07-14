@@ -13,7 +13,7 @@ class ImportRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->hasPermissionTo('Quản lý người dùng');
     }
 
     /**

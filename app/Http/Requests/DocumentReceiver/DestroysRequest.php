@@ -3,6 +3,7 @@
 namespace App\Http\Requests\DocumentReceiver;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Entities\Document;
 
 class DestroysRequest extends FormRequest
 {
@@ -13,11 +14,7 @@ class DestroysRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->hasAnyPermission([
-            'Quản lý văn bản đến', 
-            'Quản lý văn bản đi', 
-            'Quản lý văn bản nội bộ',
-        ]);
+        return Document::find($this->document_id)->creator_id == $this->user()->id;
     }
 
     /**
