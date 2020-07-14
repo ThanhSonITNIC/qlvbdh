@@ -11,11 +11,17 @@
 __webpack_require__.r(__webpack_exports__);
 var resource = '/api/attachments';
 /* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all(query) {
-    return axios.get("".concat(resource, "?").concat(query));
+  all: function all() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios.get("".concat(resource), {
+      params: params
+    });
   },
-  get: function get(id, query) {
-    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  get: function get(id) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    return axios.get("".concat(resource, "/").concat(id), {
+      params: params
+    });
   },
   create: function create(data) {
     return axios.post("".concat(resource), data);
@@ -54,11 +60,17 @@ var resource = '/api/attachments';
 __webpack_require__.r(__webpack_exports__);
 var resource = '/api/books';
 /* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all(query) {
-    return axios.get("".concat(resource, "?").concat(query));
+  all: function all() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios.get("".concat(resource), {
+      params: params
+    });
   },
-  get: function get(id, query) {
-    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  get: function get(id) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    return axios.get("".concat(resource, "/").concat(id), {
+      params: params
+    });
   },
   create: function create(data) {
     return axios.post("".concat(resource), data);
@@ -84,11 +96,17 @@ var resource = '/api/books';
 __webpack_require__.r(__webpack_exports__);
 var resource = '/api/departments';
 /* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all(query) {
-    return axios.get("".concat(resource, "?").concat(query));
+  all: function all() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios.get("".concat(resource), {
+      params: params
+    });
   },
-  get: function get(id, query) {
-    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  get: function get(id) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    return axios.get("".concat(resource, "/").concat(id), {
+      params: params
+    });
   },
   create: function create(data) {
     return axios.post("".concat(resource), data);
@@ -114,11 +132,17 @@ var resource = '/api/departments';
 __webpack_require__.r(__webpack_exports__);
 var resource = '/api/documents';
 /* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all(query) {
-    return axios.get("".concat(resource, "?").concat(query));
+  all: function all() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios.get("".concat(resource), {
+      params: params
+    });
   },
-  get: function get(id, query) {
-    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  get: function get(id) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    return axios.get("".concat(resource, "/").concat(id), {
+      params: params
+    });
   },
   create: function create(data) {
     return axios.post("".concat(resource), data);
@@ -144,11 +168,17 @@ var resource = '/api/documents';
 __webpack_require__.r(__webpack_exports__);
 var resource = '/api/document-types';
 /* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all(query) {
-    return axios.get("".concat(resource, "?").concat(query));
+  all: function all() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios.get("".concat(resource), {
+      params: params
+    });
   },
-  get: function get(id, query) {
-    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  get: function get(id) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    return axios.get("".concat(resource, "/").concat(id), {
+      params: params
+    });
   },
   create: function create(data) {
     return axios.post("".concat(resource), data);
@@ -233,11 +263,17 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 var resource = '/api/permissions';
 /* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all(query) {
-    return axios.get("".concat(resource, "?").concat(query));
+  all: function all() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios.get("".concat(resource), {
+      params: params
+    });
   },
-  get: function get(id, query) {
-    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  get: function get(id) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    return axios.get("".concat(resource, "/").concat(id), {
+      params: params
+    });
   },
   create: function create(data) {
     return axios.post("".concat(resource), data);
@@ -263,11 +299,17 @@ var resource = '/api/permissions';
 __webpack_require__.r(__webpack_exports__);
 var resource = '/api/organizes';
 /* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all(query) {
-    return axios.get("".concat(resource, "?").concat(query));
+  all: function all() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios.get("".concat(resource), {
+      params: params
+    });
   },
-  get: function get(id, query) {
-    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  get: function get(id) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    return axios.get("".concat(resource, "/").concat(id), {
+      params: params
+    });
   },
   create: function create(data) {
     return axios.post("".concat(resource), data);
@@ -293,11 +335,17 @@ var resource = '/api/organizes';
 __webpack_require__.r(__webpack_exports__);
 var resource = '/api/document-receivers';
 /* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all(query) {
-    return axios.get("".concat(resource, "?").concat(query));
+  all: function all() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios.get("".concat(resource), {
+      params: params
+    });
   },
-  get: function get(id, query) {
-    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  get: function get(id) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    return axios.get("".concat(resource, "/").concat(id), {
+      params: params
+    });
   },
   create: function create(data) {
     return axios.post("".concat(resource), data);
@@ -311,8 +359,11 @@ var resource = '/api/document-receivers';
   creates: function creates(data) {
     return data.user_id ? this.create(data) : axios.post("".concat(resource, "-m"), data);
   },
-  deletes: function deletes(query) {
-    return axios["delete"]("".concat(resource, "-m?").concat(query));
+  deletes: function deletes() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios["delete"]("".concat(resource, "-m"), {
+      params: params
+    });
   }
 });
 
@@ -329,11 +380,17 @@ var resource = '/api/document-receivers';
 __webpack_require__.r(__webpack_exports__);
 var resource = '/api/document-organizes';
 /* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all(query) {
-    return axios.get("".concat(resource, "?").concat(query));
+  all: function all() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios.get("".concat(resource), {
+      params: params
+    });
   },
-  get: function get(id, query) {
-    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  get: function get(id) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    return axios.get("".concat(resource, "/").concat(id), {
+      params: params
+    });
   },
   create: function create(data) {
     return axios.post("".concat(resource), data);
@@ -344,8 +401,11 @@ var resource = '/api/document-organizes';
   "delete": function _delete(id) {
     return axios["delete"]("".concat(resource, "/").concat(id));
   },
-  deletes: function deletes(query) {
-    return axios["delete"]("".concat(resource, "-m?").concat(query));
+  deletes: function deletes() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios["delete"]("".concat(resource, "-m"), {
+      params: params
+    });
   }
 });
 
@@ -362,11 +422,17 @@ var resource = '/api/document-organizes';
 __webpack_require__.r(__webpack_exports__);
 var resource = '/api/roles';
 /* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all(query) {
-    return axios.get("".concat(resource, "?").concat(query));
+  all: function all() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios.get("".concat(resource), {
+      params: params
+    });
   },
-  get: function get(id, query) {
-    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  get: function get(id) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    return axios.get("".concat(resource, "/").concat(id), {
+      params: params
+    });
   },
   create: function create(data) {
     return axios.post("".concat(resource), data);
@@ -392,11 +458,17 @@ var resource = '/api/roles';
 __webpack_require__.r(__webpack_exports__);
 var resource = '/api/signers';
 /* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all(query) {
-    return axios.get("".concat(resource, "?").concat(query));
+  all: function all() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios.get("".concat(resource), {
+      params: params
+    });
   },
-  get: function get(id, query) {
-    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  get: function get(id) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    return axios.get("".concat(resource, "/").concat(id), {
+      params: params
+    });
   },
   create: function create(data) {
     return axios.post("".concat(resource), data);
@@ -462,11 +534,17 @@ var resource = '/api/statistic';
 __webpack_require__.r(__webpack_exports__);
 var resource = '/api/titles';
 /* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all(query) {
-    return axios.get("".concat(resource, "?").concat(query));
+  all: function all() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios.get("".concat(resource), {
+      params: params
+    });
   },
-  get: function get(id, query) {
-    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  get: function get(id) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    return axios.get("".concat(resource, "/").concat(id), {
+      params: params
+    });
   },
   create: function create(data) {
     return axios.post("".concat(resource), data);
@@ -492,11 +570,17 @@ var resource = '/api/titles';
 __webpack_require__.r(__webpack_exports__);
 var resource = '/api/users';
 /* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all(query) {
-    return axios.get("".concat(resource, "?").concat(query));
+  all: function all() {
+    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    return axios.get("".concat(resource), {
+      params: params
+    });
   },
-  get: function get(id, query) {
-    return axios.get("".concat(resource, "/").concat(id, "?").concat(query));
+  get: function get(id) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    return axios.get("".concat(resource, "/").concat(id), {
+      params: params
+    });
   },
   create: function create(data) {
     return axios.post("".concat(resource), data);

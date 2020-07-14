@@ -30,7 +30,7 @@
             :openOnClick="false"
             :clearable="false"
             disabled
-            placeholder=""
+            placeholder
           >
             <CButton
               @click="redirectToDocument(node.raw.id)"
@@ -94,10 +94,9 @@ export default {
       this.fetchDocument();
     },
     async fetchDocument() {
-      const documentResponse = await services.document.get(
-        this.documentId,
-        "with=linkTo;linked"
-      );
+      const documentResponse = await services.document.get(this.documentId, {
+        with: "linkTo;linked"
+      });
       this.document = documentResponse.data;
       this.linkToDocument = this.document.link_to
         ? this.document.link_to.id
@@ -109,9 +108,9 @@ export default {
       });
       this.documentsLinked = this.document.linked.map(d => d.id);
     },
-    fetchDocuments(query = '') {
+    fetchDocuments(query = "") {
       const documentsResponse = services.document
-        .all(`search=symbol:${query};book_id:1&searchJoin=and`)
+        .all({ search: `symbol:${query};book_id:1`, searchJoin: and })
         .then(response => {
           const documents = this.formatKeys(response.data.data, {
             id: "id",

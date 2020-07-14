@@ -100,7 +100,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].attachment.all("search=document_id:".concat(_this.documentId));
+                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].attachment.all({
+                  search: "document_id:".concat(_this.documentId)
+                });
 
               case 2:
                 attachmentResponse = _context.sent;
@@ -307,7 +309,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.get(_this2.documentId, "with=linkTo;linked");
+                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.get(_this2.documentId, {
+                  "with": "linkTo;linked"
+                });
 
               case 2:
                 documentResponse = _context2.sent;
@@ -335,8 +339,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     fetchDocuments: function fetchDocuments() {
       var _this3 = this;
 
-      var query = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-      var documentsResponse = _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.all("search=symbol:".concat(query, ";book_id:1&searchJoin=and")).then(function (response) {
+      var query = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+      var documentsResponse = _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.all({
+        search: "symbol:".concat(query, ";book_id:1"),
+        searchJoin: and
+      }).then(function (response) {
         var documents = _this3.formatKeys(response.data.data, {
           id: "id",
           symbol: "label"
@@ -549,7 +556,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].department.all("with=users");
+                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].department.all({
+                  "with": "users"
+                });
 
               case 2:
                 departmentResponse = _context2.sent;
@@ -652,7 +661,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     removeViewer: function removeViewer(item) {
       var _this6 = this;
 
-      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].receiver.deletes("document_id=".concat(this.documentId, "&").concat(item.children ? "department_id" : "user_id", "=").concat(item.id)).then(function (response) {
+      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].receiver.deletes(_defineProperty({
+        document_id: this.documentId
+      }, item.children ? "department_id" : "user_id", item.id)).then(function (response) {
         _this6.fetchReceivers();
 
         _this6.fetchHandlers();
@@ -719,10 +730,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {
     viewerQuery: function viewerQuery() {
-      return "search=document_id:".concat(this.documentId, "&with=user");
+      return {
+        search: "document_id:".concat(this.documentId),
+        "with": "user"
+      };
     },
     hanlderQuery: function hanlderQuery() {
-      return "search=document_id:".concat(this.documentId, ";view_only:false&with=user&searchJoin=and");
+      return {
+        search: "document_id:".concat(this.documentId, ";view_only:false"),
+        "with": "user",
+        searchJoin: "and"
+      };
     }
   }
 });
@@ -866,7 +884,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].recipient.all("search=document_id:".concat(_this3.documentId));
+                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].recipient.all({
+                  search: "document_id:".concat(_this3.documentId)
+                });
 
               case 2:
                 recipientResponse = _context3.sent;
@@ -896,7 +916,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     removeRecipient: function removeRecipient(item) {
       var _this5 = this;
 
-      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].recipient.deletes("document_id=".concat(this.documentId, "&organize_id=").concat(item.id))["catch"](function (error) {
+      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].recipient.deletes({
+        document_id: this.documentId,
+        organize_id: item.id
+      })["catch"](function (error) {
         _this5.toastHttpError(error);
       });
     }

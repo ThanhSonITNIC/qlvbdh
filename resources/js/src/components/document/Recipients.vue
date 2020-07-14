@@ -69,9 +69,9 @@ export default {
       return organizes;
     },
     async fetchRecipients() {
-      const recipientResponse = await services.recipient.all(
-        `search=document_id:${this.documentId}`
-      );
+      const recipientResponse = await services.recipient.all({
+        search: `document_id:${this.documentId}`
+      });
       this.organizes = recipientResponse.data.map(
         recipient => recipient.organize_id
       );
@@ -89,7 +89,10 @@ export default {
     },
     removeRecipient(item) {
       services.recipient
-        .deletes(`document_id=${this.documentId}&organize_id=${item.id}`)
+        .deletes({
+          document_id: this.documentId,
+          organize_id: item.id
+        })
         .catch(error => {
           this.toastHttpError(error);
         });

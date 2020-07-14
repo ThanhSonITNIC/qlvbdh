@@ -50,10 +50,9 @@ export default {
       return permissionResponse;
     },
     async fetchCurrentPermissions() {
-      const userResponse = await services.user.get(
-        this.userId,
-        "with=permissions"
-      );
+      const userResponse = await services.user.get(this.userId, {
+        with: "permissions"
+      });
       this.permissions = userResponse.data.permissions.map(
         permission => permission.id
       );

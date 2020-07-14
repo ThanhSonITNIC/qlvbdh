@@ -384,7 +384,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].user.get(_this2.userId, "with=permissions");
+                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].user.get(_this2.userId, {
+                  "with": "permissions"
+                });
 
               case 2:
                 userResponse = _context2.sent;
@@ -521,7 +523,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].user.get(_this2.userId, "with=roles");
+                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].user.get(_this2.userId, {
+                  "with": "roles"
+                });
 
               case 2:
                 userResponse = _context2.sent;

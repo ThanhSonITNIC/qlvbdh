@@ -252,7 +252,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.get(_this.documentId, "with=creator;writer");
+                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.get(_this.documentId, {
+                  "with": "creator;writer"
+                });
 
               case 2:
                 documentResponse = _context.sent;
@@ -388,7 +390,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 query = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : "";
                 _context6.next = 3;
-                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].user.all("search=name:".concat(query, "&with=department"));
+                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].user.all({
+                  search: "name:".concat(query),
+                  "with": "department"
+                });
 
               case 3:
                 writersResponse = _context6.sent;

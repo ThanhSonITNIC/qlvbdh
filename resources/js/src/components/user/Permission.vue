@@ -43,7 +43,9 @@ export default {
   },
   methods: {
     async fetch() {
-      const userResponse = await services.user.get(this.userId, "with=permissions");
+      const userResponse = await services.user.get(this.userId, {
+        with: "permissions"
+      });
       this.user = userResponse.data;
       const permissionResponse = await services.permission.all();
       this.permissions = permissionResponse.data;

@@ -131,20 +131,35 @@ export default {
   },
   computed: {
     query() {
-      return this.withQuery + "&" + this.pageQuery + "&" + this.searchQuery;
+      return {
+        ...this.withQuery,
+        ...this.pageQuery,
+        ...this.searchQuery,
+        ...this.orderQuery
+      };
+    },
+    orderQuery() {
+      return {
+        orderBy: "created_at",
+        sortedBy: "desc"
+      };
     },
     pageQuery() {
-      return this.currentPage ? "page=" + this.currentPage : "";
+      return this.currentPage ? { page: this.currentPage } : {};
     },
     withQuery() {
-      return "with=title;department";
+      return {
+        with: "title;department"
+      };
     },
     searchQuery() {
       return this.searchValue
-        ? "search=" +
-            this.searchValue +
-            (this.searchField ? "&searchFields=" + this.searchField : "")
-        : "";
+        ? {
+            search:
+              this.searchValue +
+              (this.searchField ? { searchFields: this.searchField } : {})
+          }
+        : {};
     }
   },
   methods: {

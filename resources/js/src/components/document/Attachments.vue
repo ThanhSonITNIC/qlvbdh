@@ -65,13 +65,13 @@ export default {
     this.init();
   },
   methods: {
-    init(){
+    init() {
       this.fetch();
     },
     async fetch() {
-      const attachmentResponse = await services.attachment.all(
-        `search=document_id:${this.documentId}`
-      );
+      const attachmentResponse = await services.attachment.all({
+        search: `document_id:${this.documentId}`
+      });
       this.attachments = this.formatKeys(attachmentResponse.data, {
         id: "id",
         name: "name"

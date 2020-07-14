@@ -219,10 +219,9 @@ export default {
       this.fetchWriters();
     },
     async fetchDocument() {
-      const documentResponse = await services.document.get(
-        this.documentId,
-        "with=creator;writer"
-      );
+      const documentResponse = await services.document.get(this.documentId, {
+        with: "creator;writer"
+      });
       this.document = documentResponse.data;
       return documentResponse.data;
     },
@@ -256,9 +255,10 @@ export default {
       return signerResponse;
     },
     async fetchWriters(query = "") {
-      const writersResponse = await services.user.all(
-        `search=name:${query}&with=department`
-      );
+      const writersResponse = await services.user.all({
+        search: `name:${query}`,
+        with: "department"
+      });
       this.writers = this.formatKeys(writersResponse.data.data, {
         id: "id",
         name: "label"

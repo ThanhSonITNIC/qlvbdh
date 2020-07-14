@@ -50,7 +50,9 @@ export default {
       return roleResponse;
     },
     async fetchCurrentRoles() {
-      const userResponse = await services.user.get(this.userId, "with=roles");
+      const userResponse = await services.user.get(this.userId, {
+        with: "roles"
+      });
       this.roles = userResponse.data.roles.map(role => role.id);
     },
     addRole(role) {

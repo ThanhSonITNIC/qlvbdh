@@ -100,22 +100,36 @@ export default {
   },
   computed: {
     query() {
-      return this.withQuery + "&" + this.pageQuery + "&" + this.searchQuery;
+      return {
+        ...this.withQuery,
+        ...this.pageQuery,
+        ...this.searchQuery,
+        ...this.orderQuery
+      };
+    },
+    orderQuery() {
+      return {
+        orderBy: "created_at",
+        sortedBy: "desc"
+      };
     },
     pageQuery() {
-      return this.currentPage ? "page=" + this.currentPage : "";
+      return this.currentPage ? { page: this.currentPage } : {};
     },
     withQuery() {
-      return "with=publisher;type";
+      return {
+        with: "publisher;type"
+      };
     },
     searchQuery() {
-      return (
-        `search=book.id:${this.bookId}` +
-        (this.searchField && this.searchValue
-          ? ";" + (this.searchField + ":" + this.searchValue)
-          : "") +
-        "&searchJoin=and"
-      );
+      return {
+        search:
+          `book.id:${this.bookId}` +
+          (this.searchField && this.searchValue
+            ? ";" + (this.searchField + ":" + this.searchValue)
+            : ""),
+        searchJoin: "and"
+      };
     },
     isDocumentsIncome() {
       return this.bookId == 1;
@@ -123,7 +137,11 @@ export default {
     fields() {
       return [
         { key: "symbol", label: "Số ký hiệu" },
-        { key: "abstract", label: "Trích yếu", _classes: "w-50 font-weight-bold" },
+        {
+          key: "abstract",
+          label: "Trích yếu",
+          _classes: "w-50 font-weight-bold"
+        },
         { key: "type", label: "Loại" },
         { key: "publisher", label: "Nơi ban hành" },
         {

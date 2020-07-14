@@ -1,11 +1,11 @@
 const resource = '/api/document-receivers';
 
 export default {
-    all(query) {
-        return axios.get(`${resource}?${query}`)
+    all(params = null) {
+        return axios.get(`${resource}`, { params })
     },
-    get(id, query) {
-        return axios.get(`${resource}/${id}?${query}`)
+    get(id, params = null) {
+        return axios.get(`${resource}/${id}`, { params })
     },
     create(data) {
         return axios.post(`${resource}`, data)
@@ -19,7 +19,7 @@ export default {
     creates(data) {
         return data.user_id ? this.create(data) : axios.post(`${resource}-m`, data)
     },
-    deletes(query) {
-        return axios.delete(`${resource}-m?${query}`)
+    deletes(params = null) {
+        return axios.delete(`${resource}-m`, { params })
     }
 }

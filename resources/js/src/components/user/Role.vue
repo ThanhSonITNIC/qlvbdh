@@ -43,10 +43,9 @@ export default {
   },
   methods: {
     async fetch() {
-      const userResponse = await services.user.get(
-        this.userId,
-        "with=roles"
-      );
+      const userResponse = await services.user.get(this.userId, {
+        with: "roles"
+      });
       this.user = userResponse.data;
       const roleResponse = await services.role.all();
       this.roles = roleResponse.data;

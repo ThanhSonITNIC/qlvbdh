@@ -26,7 +26,7 @@
             :options="handlerOptions"
             :clearable="false"
           ></treeselect>
-        </CCol> -->
+        </CCol>-->
       </CRow>
     </CCardBody>
   </CCard>
@@ -73,7 +73,9 @@ export default {
       this.fetchDepartments(), this.fetchViewers(), this.fetchHandlers();
     },
     async fetchDepartments() {
-      const departmentResponse = await services.department.all("with=users");
+      const departmentResponse = await services.department.all({
+        with: "users"
+      });
       const departments = this.formatKeys(departmentResponse.data, {
         id: "id",
         name: "label"
@@ -106,11 +108,10 @@ export default {
     },
     removeViewer(item) {
       services.receiver
-        .deletes(
-          `document_id=${this.documentId}&${
-            item.children ? "department_id" : "user_id"
-          }=${item.id}`
-        )
+        .deletes({
+          document_id: this.documentId,
+          [item.children ? "department_id" : "user_id"]: item.id
+        })
         .then(response => {
           this.fetchReceivers();
           this.fetchHandlers();
@@ -174,10 +175,17 @@ export default {
   },
   computed: {
     viewerQuery() {
-      return `search=document_id:${this.documentId}&with=user`;
+      return {
+        search: `document_id:${this.documentId}`,
+        with: "user"
+      };
     },
     hanlderQuery() {
-      return `search=document_id:${this.documentId};view_only:false&with=user&searchJoin=and`;
+      return {
+        search: `document_id:${this.documentId};view_only:false`,
+        with: "user",
+        searchJoin: "and"
+      };
     }
   }
 };

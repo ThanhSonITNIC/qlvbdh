@@ -1,11 +1,11 @@
 const resource = '/api/documents';
 
 export default {
-    all(query){
-        return axios.get(`${resource}?${query}`)
+    all(params = null){
+        return axios.get(`${resource}`, { params })
     },
-    get(id, query){
-        return axios.get(`${resource}/${id}?${query}`)
+    get(id, params = null){
+        return axios.get(`${resource}/${id}`, { params })
     },
     create(data){
         return axios.post(`${resource}`, data)
