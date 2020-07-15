@@ -55,7 +55,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "Login",
   data: function data() {
     return {
-      email: "thanhsonitnic@gmail.com",
+      email: "admin@domain.com",
       password: "password",
       error: null
     };

@@ -17,10 +17,10 @@
     </CHeaderNav>
     <CHeaderNav class="mr-4">
       <CHeaderNavItem class="d-md-down-none mx-2">
-        <CHeaderNavLink>
+        <!-- <CHeaderNavLink>
           <CIcon name="cil-bell"/>
           <CBadge color="danger" class="ml-auto">1</CBadge>
-        </CHeaderNavLink>
+        </CHeaderNavLink> -->
       </CHeaderNavItem>
       <TheHeaderDropdownAccnt/>
     </CHeaderNav>
