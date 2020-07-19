@@ -46,14 +46,14 @@ export default {
     },
     minimize() {
       return this.$store.state.sidebarMinimize;
-    }
+    },
   },
   methods: {
     async init() {
       const books = await this.fetchDocument();
       const system = await this.fetchSystem();
       const operating = await this.fetchOperating();
-      this.$options.nav[0]._children.push(...books, ...operating, ...system);
+      this.$options.nav[0]._children = [...books, ...operating, ...system];
       this.RFKey += 1;
     },
 
