@@ -270,9 +270,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     searchQuery: function searchQuery() {
       return this.searchValue ? {
-        search: this.searchValue + (this.searchField ? {
-          searchFields: this.searchField
-        } : {})
+        search: this.searchValue,
+        searchFields: this.searchField || ''
       } : {};
     }
   },

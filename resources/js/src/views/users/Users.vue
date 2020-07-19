@@ -155,9 +155,8 @@ export default {
     searchQuery() {
       return this.searchValue
         ? {
-            search:
-              this.searchValue +
-              (this.searchField ? { searchFields: this.searchField } : {})
+            search: this.searchValue,
+            searchFields: this.searchField || ''
           }
         : {};
     }
