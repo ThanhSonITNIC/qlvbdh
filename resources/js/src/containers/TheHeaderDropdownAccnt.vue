@@ -10,7 +10,7 @@
       <CIcon name="cil-user" class="m-0" />
     </CButton>
     <CButton size="sm" color="danger" @click="logout" variant="outline" v-c-tooltip="'Đăng xuất'">
-      <CIcon name="cil-lock-locked" class="m-0" />
+      <CIcon name="cil-power-standby" class="m-0" />
     </CButton>
   </div>
 </template>

@@ -464,6 +464,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         permission: "Quản lý quyền"
       }, {
         _name: "CSidebarNavItem",
+        name: "Hướng dẫn",
+        to: "/help",
+        icon: "cil-touch-app"
+      }, {
+        _name: "CSidebarNavItem",
         name: "Cài đặt",
         to: "/settings",
         icon: "cil-settings"
@@ -794,7 +799,7 @@ var render = function() {
         [
           _c("CIcon", {
             staticClass: "m-0",
-            attrs: { name: "cil-lock-locked" }
+            attrs: { name: "cil-power-standby" }
           })
         ],
         1

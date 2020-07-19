@@ -190,6 +190,12 @@ export default {
         },
         {
           _name: "CSidebarNavItem",
+          name: "Hướng dẫn",
+          to: "/help",
+          icon: "cil-touch-app"
+        },
+        {
+          _name: "CSidebarNavItem",
           name: "Cài đặt",
           to: "/settings",
           icon: "cil-settings"
