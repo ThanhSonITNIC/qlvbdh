@@ -60,9 +60,6 @@
       </CForm>
     </CCardBody>
     <CCardFooter>
-      <CButton color="primary" size="sm" @click="goBack">
-        <CIcon name="cil-chevron-left" />Trở lại
-      </CButton>
       <CButton type="submit" size="sm" @click="updateInfo" class="float-right" color="success">
         <CIcon name="cil-check" /> Lưu
       </CButton>
@@ -104,11 +101,6 @@ export default {
       this.departments = this.formatKeys(departmentResponse.data);
       const userResponse = await services.user.get(this.userId);
       this.user = userResponse.data;
-    },
-    goBack() {
-      this.usersOpened
-        ? this.$router.go(-1)
-        : this.$router.push({ path: "/users" });
     },
     async updateInfo() {
       await services.user

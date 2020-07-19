@@ -146,6 +146,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TheHeaderDropdownAccnt",
   data: function data() {
@@ -166,6 +171,11 @@ __webpack_require__.r(__webpack_exports__);
     redirectToLogin: function redirectToLogin() {
       this.$router.push({
         name: "Login"
+      });
+    },
+    goProfile: function goProfile() {
+      this.$router.push({
+        name: "Profile"
       });
     }
   }
@@ -250,6 +260,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     minimize: function minimize() {
       return this.$store.state.sidebarMinimize;
+    },
+    dashboard: function dashboard() {
+      return {
+        _name: 'CSidebarNavItem',
+        name: 'Trang chủ',
+        to: '/dashboard',
+        icon: 'cil-home'
+      };
     }
   },
   methods: {
@@ -277,7 +295,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 8:
                 operating = _context.sent;
-                _this.$options.nav[0]._children = [].concat(_toConsumableArray(books), _toConsumableArray(operating), _toConsumableArray(system));
+                _this.$options.nav[0]._children = [_this.dashboard].concat(_toConsumableArray(books), _toConsumableArray(operating), _toConsumableArray(system));
                 _this.RFKey += 1;
 
               case 11:
@@ -739,20 +757,49 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "CButton",
-    {
-      directives: [
+    "div",
+    [
+      _c(
+        "CButton",
         {
-          name: "c-tooltip",
-          rawName: "v-c-tooltip",
-          value: "Đăng xuất",
-          expression: "'Đăng xuất'"
-        }
-      ],
-      attrs: { size: "sm", color: "danger", variant: "outline" },
-      on: { click: _vm.logout }
-    },
-    [_c("CIcon", { staticClass: "m-0", attrs: { name: "cil-lock-locked" } })],
+          directives: [
+            {
+              name: "c-tooltip",
+              rawName: "v-c-tooltip",
+              value: "Thông tin cá nhân",
+              expression: "'Thông tin cá nhân'"
+            }
+          ],
+          attrs: { size: "sm", color: "info", variant: "outline" },
+          on: { click: _vm.goProfile }
+        },
+        [_c("CIcon", { staticClass: "m-0", attrs: { name: "cil-user" } })],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "CButton",
+        {
+          directives: [
+            {
+              name: "c-tooltip",
+              rawName: "v-c-tooltip",
+              value: "Đăng xuất",
+              expression: "'Đăng xuất'"
+            }
+          ],
+          attrs: { size: "sm", color: "danger", variant: "outline" },
+          on: { click: _vm.logout }
+        },
+        [
+          _c("CIcon", {
+            staticClass: "m-0",
+            attrs: { name: "cil-lock-locked" }
+          })
+        ],
+        1
+      )
+    ],
     1
   )
 }

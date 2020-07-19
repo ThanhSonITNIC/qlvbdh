@@ -59,6 +59,7 @@ const Register = () => import('../views/pages/Register')
 const Users = () => import('../views/users/Users')
 const User = () => import('../views/users/User')
 const CreateUser = () => import('../views/users/Create')
+const Me = () => import('../views/users/Me')
 
 // Documents
 const Documents = () => import('../views/documents/Documents')
@@ -273,6 +274,14 @@ function configRoutes () {
           path: 'widgets',
           name: 'Widgets',
           component: Widgets
+        },
+        {
+          path: 'me',
+          name: 'Profile',
+          meta: {
+            label: 'Cá nhân'
+          },
+          component: Me
         },
         {
           path: 'users',

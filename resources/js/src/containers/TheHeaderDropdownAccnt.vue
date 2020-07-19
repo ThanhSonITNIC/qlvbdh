@@ -1,13 +1,18 @@
 <template>
-  <CButton
-    size="sm"
-    color="danger"
-    @click="logout"
-    variant="outline"
-    v-c-tooltip="'Đăng xuất'"
-  >
-    <CIcon name="cil-lock-locked" class="m-0" />
-  </CButton>
+  <div>
+    <CButton
+      size="sm"
+      color="info"
+      @click="goProfile"
+      variant="outline"
+      v-c-tooltip="'Thông tin cá nhân'"
+    >
+      <CIcon name="cil-user" class="m-0" />
+    </CButton>
+    <CButton size="sm" color="danger" @click="logout" variant="outline" v-c-tooltip="'Đăng xuất'">
+      <CIcon name="cil-lock-locked" class="m-0" />
+    </CButton>
+  </div>
 </template>
 
 <script>
@@ -31,6 +36,9 @@ export default {
     },
     redirectToLogin() {
       this.$router.push({ name: "Login" });
+    },
+    goProfile() {
+      this.$router.push({ name: "Profile" });
     }
   }
 };

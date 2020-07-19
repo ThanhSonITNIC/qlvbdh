@@ -22,6 +22,9 @@ export const getters = {
     loggedIn(state) {
         return !!state.currentUser
     },
+    userId(state) {
+        return state.currentUser.id
+    }
 }
 
 export const actions = {

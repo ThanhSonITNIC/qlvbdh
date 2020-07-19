@@ -47,13 +47,21 @@ export default {
     minimize() {
       return this.$store.state.sidebarMinimize;
     },
+    dashboard() {
+      return {
+        _name: 'CSidebarNavItem',
+        name: 'Trang chủ',
+        to: '/dashboard',
+        icon: 'cil-home',
+      }
+    },
   },
   methods: {
     async init() {
       const books = await this.fetchDocument();
       const system = await this.fetchSystem();
       const operating = await this.fetchOperating();
-      this.$options.nav[0]._children = [...books, ...operating, ...system];
+      this.$options.nav[0]._children = [this.dashboard , ...books, ...operating, ...system];
       this.RFKey += 1;
     },
 
