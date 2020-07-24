@@ -21,7 +21,7 @@ class CreateAttachmentsTable extends Migration
 			$table->string('name');
 			$table->string('extension');
 			$table->decimal('size', 5, 2);
-			$table->text('path')->unique();
+			$table->text('path');
 			$table->timestamps();
 			
 			$table->foreign('document_id')
