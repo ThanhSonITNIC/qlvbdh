@@ -22,6 +22,9 @@ docker-compose exec workspace bash
 # Rename file env-example to .env
 cp .env.example .env
 
+# Install packages
+composer install
+
 # Generate application key
 php artisan key:generate
 
