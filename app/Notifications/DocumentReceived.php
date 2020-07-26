@@ -47,9 +47,10 @@ class DocumentReceived extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line($this->document->type->name)
+                    ->subject($this->document->type->name)
+                    ->greeting($this->document->type->name)
                     ->line('Trích yếu: '. $this->document->abstract)
-                    ->action('Xem', url($this->getPathToDocument()));
+                    ->action('Chi tiết', url($this->getPathToDocument()));
     }
 
     /**
@@ -68,6 +69,6 @@ class DocumentReceived extends Notification implements ShouldQueue
     }
 
     protected function getPathToDocument(){
-        return '/documents/'.$this->document->id;
+        return '/#/documents/'.$this->document->id;
     }
 }
