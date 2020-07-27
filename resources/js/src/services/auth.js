@@ -34,5 +34,9 @@ export default {
 
             return _.union([..._.union(...permissionsViaRoles.map(p => p)), ...directPermissions])
         })
-    }
+    },
+
+    update(data) {
+        return axios.put('api/me', data)
+    },
 }

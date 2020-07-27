@@ -23,8 +23,14 @@
       </CForm>
     </CCardBody>
     <CCardFooter>
-      <CButton type="submit" @click="updatePassword" size="sm" class="float-right" color="success">
-        <CIcon name="cil-check" /> Thay đổi
+      <CButton
+        type="submit"
+        @click="updatePassword"
+        size="sm"
+        class="float-right"
+        color="success"
+      >
+        <CIcon name="cil-check" />Thay đổi
       </CButton>
     </CCardFooter>
   </CCard>
@@ -37,28 +43,33 @@ export default {
   name: "Password",
   props: {
     userId: {
-      required: true
-    }
+      required: true,
+    },
+    isMe: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       password: {
         password_confirmation: "",
-        password: ""
-      }
+        password: "",
+      },
     };
   },
   methods: {
     async updatePassword() {
-      await services.user
+      return await (this.isMe ? services.auth : services.user)
         .update(this.password, this.userId)
-        .then(response => {
-          this.$toast.success({ message: "Đã thay đổi", type: "success" });
+        .then((response) => {
+          this.$toast.success("Đã thay đổi");
         })
-        .catch(error => {
+        .catch((error) => {
           this.toastHttpError(error);
         });
-    }
-  }
+    },
+  },
 };
 </script>

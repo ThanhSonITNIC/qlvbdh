@@ -58,6 +58,7 @@ class UsersController extends Controller
      */
     public function store(CreateRequest $request)
     {
+        $request->merge(['password' => \Hash::make($request->password)]);
         $data = $this->repository->create($request->all());
         return $this->respondCreated($data);
     }

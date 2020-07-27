@@ -5,12 +5,7 @@
     </CCardHeader>
     <CCardBody>
       <CForm>
-        <CInput
-          label="Mã"
-          :value.sync="user.id"
-          horizontal
-          :readonly="true"
-        />
+        <CInput label="Mã" :value.sync="user.id" horizontal :readonly="true" />
         <CInput
           placeholder="Let us know your full name."
           label="Tên"
@@ -61,7 +56,7 @@
     </CCardBody>
     <CCardFooter>
       <CButton type="submit" size="sm" @click="updateInfo" class="float-right" color="success">
-        <CIcon name="cil-check" /> Lưu
+        <CIcon name="cil-check" />Lưu
       </CButton>
     </CCardFooter>
   </CCard>
@@ -74,11 +69,16 @@ export default {
   name: "Info",
   props: {
     userId: {
-      required: true
-    }
+      required: true,
+    },
+    isMe: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
   },
   beforeRouteEnter(to, from, next) {
-    next(vm => {
+    next((vm) => {
       vm.usersOpened = from.fullPath.includes("users");
     });
   },
@@ -87,7 +87,7 @@ export default {
       usersOpened: null,
       user: [],
       titles: [],
-      departments: []
+      departments: [],
     };
   },
   created() {
@@ -103,15 +103,15 @@ export default {
       this.user = userResponse.data;
     },
     async updateInfo() {
-      await services.user
+      return await (this.isMe ? services.auth : services.user)
         .update(this.user, this.userId)
-        .then(response => {
+        .then((response) => {
           this.$toast.success("Đã lưu");
         })
-        .catch(error => {
+        .catch((error) => {
           this.toastHttpError(error);
         });
-    }
-  }
+    },
+  },
 };
 </script>

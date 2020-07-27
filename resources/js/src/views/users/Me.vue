@@ -2,10 +2,10 @@
   <div>
     <CRow>
       <CCol col="md-6">
-        <CInfo :userId="userId" />
+        <CInfo :userId="userId" :isMe="true" />
       </CCol>
       <CCol col="md-6">
-        <CPassword :userId="userId" />
+        <CPassword :userId="userId" :isMe="true" />
       </CCol>
     </CRow>
     <CCard>

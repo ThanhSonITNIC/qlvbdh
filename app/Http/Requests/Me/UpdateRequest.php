@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'nullable|string',
-            'email' => 'nullable|email|unique:users,email,'.$this->user,
+            'email' => 'nullable|email',
             'password' => 'nullable|confirmed',
             'tel' => 'nullable|string',
             'birthday' => 'nullable|date',
