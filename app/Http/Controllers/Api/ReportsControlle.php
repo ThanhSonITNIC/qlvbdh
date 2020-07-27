@@ -46,7 +46,7 @@ class ReportsControlle extends Controller
     {
         $books = $this->bookRepository->all();
 
-        if($request->has('book')){
+        if($request->filled('book')){
             $books = collect();
             $books->push($this->bookRepository->find($request->book));
         }
@@ -57,11 +57,11 @@ class ReportsControlle extends Controller
             {
                 $query->where('book_id', $book->id);
         
-                if($request->has('type')){
+                if($request->filled('type')){
                     $query->where('type_id', $request->type);
                 }
 
-                if($request->has('from')){
+                if($request->filled('from')){
                     $request->to = $request->to ?: date('Y-m-d');
                     $query->whereBetween('effective_at', [$request->from, $request->to]);
                 }

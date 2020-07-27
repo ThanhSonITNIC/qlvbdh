@@ -27,7 +27,7 @@ class UpdateRequest extends FormRequest
             'id' => 'nullable|string|unique:users,id,'.$this->user,
             'name' => 'nullable|string',
             'email' => 'nullable|email|unique:users,email,'.$this->user,
-            'password' => 'nullable|confirmed',
+            'password' => 'nullable|min:6|max:32|confirmed',
             'tel' => 'nullable|string',
             'birthday' => 'nullable|date',
             'department_id' => 'nullable|exists:departments,id',

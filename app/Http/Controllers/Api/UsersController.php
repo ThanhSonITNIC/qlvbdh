@@ -87,6 +87,9 @@ class UsersController extends Controller
      */
     public function update(UpdateRequest $request, $id)
     {
+        if($request->filled('password')){
+            $request->password = \Hash::make($request->password);
+        }
         $data = $this->repository->update($request->all(), $id);
         return $this->respond($data);
     }

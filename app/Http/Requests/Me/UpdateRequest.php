@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'nullable|string',
             'email' => 'nullable|email',
-            'password' => 'nullable|confirmed',
+            'password' => 'nullable|min:6|max:32|confirmed',
             'tel' => 'nullable|string',
             'birthday' => 'nullable|date',
         ];

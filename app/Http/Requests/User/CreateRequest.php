@@ -26,7 +26,7 @@ class CreateRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed',
+            'password' => 'required|min:6|max:32|confirmed',
             'tel' => 'nullable|string|unique:users,tel',
             'birthday' => 'nullable|date',
             'department_id' => 'nullable|exists:departments,id',

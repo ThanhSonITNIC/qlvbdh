@@ -59,7 +59,7 @@ class DocumentsController extends Controller
     public function store(CreateRequest $request)
     {
         $data = $this->repository->create($request->all());
-        if($request->has('attachments')){
+        if($request->filled('attachments')){
             $this->attachments($request->file('attachments'), $data->id);
         }
         return $this->respondCreated($data);

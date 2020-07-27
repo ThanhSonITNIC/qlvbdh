@@ -120,7 +120,7 @@ class DocumentReceiversController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroys(DestroysRequest $request){
-        if($request->has('department_id'))
+        if($request->filled('department_id'))
         {
             $usersInDepartment = $this->departmentRepository->find($request->department_id)->users;
 
@@ -130,7 +130,7 @@ class DocumentReceiversController extends Controller
                     'document_id' => $request->document_id,
                 ]);
             }
-        }elseif($request->has('user_id')){
+        }elseif($request->filled('user_id')){
             $this->repository->deleteWhere([
                 'user_id' => $request->user_id,
                 'document_id' => $request->document_id,
