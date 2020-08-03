@@ -36,29 +36,44 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       field: String,
-      value: String
+      value: "",
+      searching: {}
     };
   },
   watch: {
     field: {
       handler: function handler(value) {
         this.$emit("fieldChanged", value);
+        this.value = value.defaultValue;
+        this.fireSearching();
       }
     },
     value: {
       handler: function handler(value) {
         this.$emit("valueChanged", value);
+        this.fireSearching();
+      }
+    },
+    searching: {
+      handler: function handler(value) {
+        this.$emit("searching", value);
       }
     }
   },
   methods: {
-    fieldChanged: function fieldChanged(value) {
+    fieldChanged: function fieldChanged(field) {
       this.field = this.fields.find(function (e) {
-        return e.value == value;
+        return e.value == field;
       });
     },
     valueChanged: function valueChanged(value) {
       this.value = value;
+    },
+    fireSearching: function fireSearching() {
+      this.searching = {
+        field: this.field.value,
+        value: this.value
+      };
     }
   }
 });
@@ -90,8 +105,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
 //
 //
 //
@@ -214,7 +227,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     searchQuery: function searchQuery() {
       return {
-        search: "book.id:".concat(this.bookId) + (this.searchField && this.searchValue ? ";" + (this.searchField + ":" + this.searchValue) : ""),
+        search: "book.id:".concat(this.bookId) + (this.searchField && this.searchValue != null ? ";" + (this.searchField + ":" + this.searchValue) : ""),
         searchJoin: "and"
       };
     },
@@ -271,10 +284,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, {
         value: "linkTo.symbol",
         label: "Liên kết văn bản đến"
+      }, {
+        value: "receivers.seen",
+        label: "Chưa xem",
+        defaultValue: 0
       }];
     },
     highlightStyle: function highlightStyle() {
-      return 'font-weight-bold';
+      return "font-weight-bold";
     }
   },
   methods: {
@@ -330,12 +347,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       });
     },
-    searchFieldChanged: function searchFieldChanged(item) {
-      this.searchField = item.value;
-      this.fetch();
-    },
-    searchValueChanged: function searchValueChanged(value) {
-      this.searchValue = value;
+    searching: function searching(payload) {
+      this.searchField = payload.field;
+      this.searchValue = payload.value;
       this.fetch();
     }
   }
@@ -378,8 +392,15 @@ var render = function() {
         { attrs: { sm: "9" } },
         [
           _c("CInput", {
-            attrs: { placeholder: "Tìm kiếm" },
-            on: { "update:value": _vm.valueChanged }
+            attrs: { placeholder: "Tìm kiếm", value: _vm.value },
+            on: {
+              "update:value": [
+                function($event) {
+                  _vm.value = $event
+                },
+                _vm.valueChanged
+              ]
+            }
           })
         ],
         1
@@ -456,10 +477,7 @@ var render = function() {
                 [
                   _c("CSearchBox", {
                     attrs: { fields: _vm.searchFields },
-                    on: {
-                      fieldChanged: _vm.searchFieldChanged,
-                      valueChanged: _vm.searchValueChanged
-                    }
+                    on: { searching: _vm.searching }
                   }),
                   _vm._v(" "),
                   _c("CDataTable", {

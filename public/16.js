@@ -18,6 +18,44 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41,15 +79,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   name: "Dashboard",
   data: function data() {
     return {
-      books: []
+      books: [],
+      loading: true,
+      items: null
     };
   },
   created: function created() {
     this.init();
   },
+  computed: {
+    query: function query() {
+      return _objectSpread(_objectSpread({}, this.withQuery), this.orderQuery);
+    },
+    withQuery: function withQuery() {
+      return {
+        "with": "book;type"
+      };
+    },
+    orderQuery: function orderQuery() {
+      return {
+        orderBy: "updated_at",
+        sortedBy: "desc"
+      };
+    },
+    fields: function fields() {
+      return [{
+        key: "symbol",
+        label: "Số ký hiệu"
+      }, {
+        key: "abstract",
+        label: "Trích yếu",
+        _classes: "w-50 font-weight-bold"
+      }, {
+        key: "type",
+        label: "Loại"
+      }, {
+        key: "book",
+        label: "Sổ"
+      }];
+    },
+    highlightStyle: function highlightStyle() {
+      return "font-weight-bold";
+    }
+  },
   methods: {
     init: function init() {
       this.fetchBooks();
+      this.fetchDocuments();
     },
     fetchBooks: function fetchBooks() {
       var _this = this;
@@ -75,6 +151,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    fetchDocuments: function fetchDocuments() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this2.loading = true;
+                _context2.next = 3;
+                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.all(_this2.query);
+
+              case 3:
+                response = _context2.sent;
+                _this2.items = response.data.data;
+                _this2.loading = false;
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    rowClicked: function rowClicked(item, index) {
+      this.$router.push({
+        path: "/documents/".concat(item.id)
+      });
     }
   }
 });
@@ -129,6 +236,92 @@ var render = function() {
             1
           )
         }),
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "CRow",
+        [
+          _c(
+            "CCol",
+            { attrs: { col: "12" } },
+            [
+              _c(
+                "CCard",
+                [
+                  _c(
+                    "CCardHeader",
+                    [
+                      _c("CIcon", { attrs: { name: "cil-grid" } }),
+                      _vm._v(" Văn bản gần đây\n        ")
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "CCardBody",
+                    { staticClass: "p-0" },
+                    [
+                      _c("CDataTable", {
+                        attrs: {
+                          hover: "",
+                          striped: "",
+                          loading: _vm.loading,
+                          items: _vm.items,
+                          fields: _vm.fields,
+                          "clickable-rows": ""
+                        },
+                        on: { "row-clicked": _vm.rowClicked },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "type",
+                            fn: function(ref) {
+                              var item = ref.item
+                              return [
+                                _c("td", [_vm._v(_vm._s(item.type.name))])
+                              ]
+                            }
+                          },
+                          {
+                            key: "book",
+                            fn: function(ref) {
+                              var item = ref.item
+                              return [
+                                _c("td", [_vm._v(_vm._s(item.book.name))])
+                              ]
+                            }
+                          },
+                          {
+                            key: "abstract",
+                            fn: function(ref) {
+                              var item = ref.item
+                              return [
+                                _c("td", [
+                                  _c(
+                                    "label",
+                                    {
+                                      class: !item.seen
+                                        ? _vm.highlightStyle
+                                        : ""
+                                    },
+                                    [_vm._v(_vm._s(item.abstract))]
+                                  )
+                                ])
+                              ]
+                            }
+                          }
+                        ])
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
         1
       )
     ],

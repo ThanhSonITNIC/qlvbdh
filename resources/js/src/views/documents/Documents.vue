@@ -16,11 +16,7 @@
           </CButton>
         </CCardHeader>
         <CCardBody>
-          <CSearchBox
-            :fields="searchFields"
-            @fieldChanged="searchFieldChanged"
-            @valueChanged="searchValueChanged"
-          />
+          <CSearchBox :fields="searchFields" @searching="searching" />
           <CDataTable
             hover
             striped
@@ -37,7 +33,9 @@
               <td>{{item.type.name}}</td>
             </template>
             <template #abstract="{item}">
-              <td><label :class="!item.seen ? highlightStyle : ''">{{item.abstract}}</label></td>
+              <td>
+                <label :class="!item.seen ? highlightStyle : ''">{{item.abstract}}</label>
+              </td>
             </template>
           </CDataTable>
           <CPagination
@@ -59,7 +57,7 @@ import CSearchBox from "../../components/SearchBox";
 export default {
   name: "Documents",
   components: {
-    CSearchBox
+    CSearchBox,
   },
   data() {
     return {
@@ -70,7 +68,7 @@ export default {
       size: 0,
       searchValue: "",
       searchField: "symbol",
-      bookId: null
+      bookId: null,
     };
   },
   created() {
@@ -86,20 +84,20 @@ export default {
         if (route.query && route.query.page) {
           this.currentPage = Number(route.query.page);
         }
-      }
+      },
     },
     currentPage: {
       handler(page) {
         this.pageChange(page);
         this.currentPage = page;
         this.fetch();
-      }
+      },
     },
     bookId: {
       handler(page) {
         this.fetch();
-      }
-    }
+      },
+    },
   },
   computed: {
     query() {
@@ -107,13 +105,13 @@ export default {
         ...this.withQuery,
         ...this.pageQuery,
         ...this.searchQuery,
-        ...this.orderQuery
+        ...this.orderQuery,
       };
     },
     orderQuery() {
       return {
         orderBy: "created_at",
-        sortedBy: "desc"
+        sortedBy: "desc",
       };
     },
     pageQuery() {
@@ -121,17 +119,17 @@ export default {
     },
     withQuery() {
       return {
-        with: "publisher;type"
+        with: "publisher;type",
       };
     },
     searchQuery() {
       return {
         search:
           `book.id:${this.bookId}` +
-          (this.searchField && this.searchValue
+          (this.searchField && this.searchValue != null
             ? ";" + (this.searchField + ":" + this.searchValue)
             : ""),
-        searchJoin: "and"
+        searchJoin: "and",
       };
     },
     isDocumentsIncome() {
@@ -143,14 +141,14 @@ export default {
         {
           key: "abstract",
           label: "Trích yếu",
-          _classes: "w-50 font-weight-bold"
+          _classes: "w-50 font-weight-bold",
         },
         { key: "type", label: "Loại" },
         { key: "publisher", label: "Nơi ban hành" },
         {
           key: "effective_at",
-          label: this.isDocumentsIncome ? "Ngày nhận" : "Ngày ban hành"
-        }
+          label: this.isDocumentsIncome ? "Ngày nhận" : "Ngày ban hành",
+        },
       ];
     },
     searchFields() {
@@ -162,17 +160,18 @@ export default {
         { value: "signer.name", label: "Người ký" },
         {
           value: "effective_at",
-          label: this.isDocumentsIncome ? "Ngày nhận" : "Ngày ban hành"
+          label: this.isDocumentsIncome ? "Ngày nhận" : "Ngày ban hành",
         },
         { value: "sign_at", label: "Ngày ký" },
         { value: "publisher.name", label: "Nơi ban hành" },
         { value: "organizes.name", label: "Nơi nhận" },
-        { value: "linkTo.symbol", label: "Liên kết văn bản đến" }
+        { value: "linkTo.symbol", label: "Liên kết văn bản đến" },
+        { value: "receivers.seen", label: "Chưa xem", defaultValue: 0 },
       ];
     },
-    highlightStyle(){
-      return 'font-weight-bold';
-    }
+    highlightStyle() {
+      return "font-weight-bold";
+    },
   },
   methods: {
     async fetch() {
@@ -194,20 +193,17 @@ export default {
     goCreate() {
       this.$router.push({
         path: `/documents/create`,
-        query: { book: this.bookId }
+        query: { book: this.bookId },
       });
     },
     pageChange(val) {
       this.$router.push({ query: { page: val } });
     },
-    searchFieldChanged(item) {
-      this.searchField = item.value;
+    searching(payload) {
+      this.searchField = payload.field;
+      this.searchValue = payload.value;
       this.fetch();
     },
-    searchValueChanged(value) {
-      this.searchValue = value;
-      this.fetch();
-    }
-  }
+  },
 };
 </script>

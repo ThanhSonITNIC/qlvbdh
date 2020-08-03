@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'id' => 'nullable|numeric|unique:documents,id,'.$this->document,
-            'symbol' => 'nullable|string|max:30|unique:documents,symbol,'.$this->document,
+            'symbol' => 'nullable|string|max:30',
             'abstract' => 'nullable|string',
             'book_id' => 'nullable|exists:books,id',
             'type_id' => 'nullable|exists:document_types,id',

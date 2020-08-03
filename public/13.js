@@ -36,29 +36,44 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       field: String,
-      value: String
+      value: "",
+      searching: {}
     };
   },
   watch: {
     field: {
       handler: function handler(value) {
         this.$emit("fieldChanged", value);
+        this.value = value.defaultValue;
+        this.fireSearching();
       }
     },
     value: {
       handler: function handler(value) {
         this.$emit("valueChanged", value);
+        this.fireSearching();
+      }
+    },
+    searching: {
+      handler: function handler(value) {
+        this.$emit("searching", value);
       }
     }
   },
   methods: {
-    fieldChanged: function fieldChanged(value) {
+    fieldChanged: function fieldChanged(field) {
       this.field = this.fields.find(function (e) {
-        return e.value == value;
+        return e.value == field;
       });
     },
     valueChanged: function valueChanged(value) {
       this.value = value;
+    },
+    fireSearching: function fireSearching() {
+      this.searching = {
+        field: this.field.value,
+        value: this.value
+      };
     }
   }
 });
@@ -402,8 +417,15 @@ var render = function() {
         { attrs: { sm: "9" } },
         [
           _c("CInput", {
-            attrs: { placeholder: "Tìm kiếm" },
-            on: { "update:value": _vm.valueChanged }
+            attrs: { placeholder: "Tìm kiếm", value: _vm.value },
+            on: {
+              "update:value": [
+                function($event) {
+                  _vm.value = $event
+                },
+                _vm.valueChanged
+              ]
+            }
           })
         ],
         1

@@ -30,6 +30,13 @@ class Attachment extends Model implements Transformable
     ];
 
     /**
+     * All of the relationships to be touched.
+     *
+     * @var array
+     */
+    protected $touches = ['document'];
+
+    /**
      * The attributes that should be cast to native types.
      *
      * @var array
