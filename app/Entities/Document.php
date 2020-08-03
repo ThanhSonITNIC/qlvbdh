@@ -35,6 +35,10 @@ class Document extends Model implements Transformable
         'link_id',
     ];
 
+    public $appends = [
+        'seen',
+    ];
+
     protected $casts = [
         'effective_at' => 'date:Y-m-d',
         'sign_at' => 'date:Y-m-d',
@@ -82,6 +86,14 @@ class Document extends Model implements Transformable
 
     public function linked(){
         return $this->hasMany(Document::class, 'link_id');
+    }
+
+    public function getSeenAttribute(){
+        $receiver = $this->receivers()->where('user_id', auth()->id())->first();
+        if($receiver){
+            return $receiver->seen;
+        }
+        return true;
     }
 
 }

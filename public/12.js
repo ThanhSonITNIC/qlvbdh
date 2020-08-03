@@ -141,6 +141,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -269,6 +272,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         value: "linkTo.symbol",
         label: "Liên kết văn bản đến"
       }];
+    },
+    highlightStyle: function highlightStyle() {
+      return 'font-weight-bold';
     }
   },
   methods: {
@@ -481,6 +487,21 @@ var render = function() {
                         fn: function(ref) {
                           var item = ref.item
                           return [_c("td", [_vm._v(_vm._s(item.type.name))])]
+                        }
+                      },
+                      {
+                        key: "abstract",
+                        fn: function(ref) {
+                          var item = ref.item
+                          return [
+                            _c("td", [
+                              _c(
+                                "label",
+                                { class: !item.seen ? _vm.highlightStyle : "" },
+                                [_vm._v(_vm._s(item.abstract))]
+                              )
+                            ])
+                          ]
                         }
                       }
                     ])

@@ -36,6 +36,9 @@
             <template #type="{item}">
               <td>{{item.type.name}}</td>
             </template>
+            <template #abstract="{item}">
+              <td><label :class="!item.seen ? highlightStyle : ''">{{item.abstract}}</label></td>
+            </template>
           </CDataTable>
           <CPagination
             align="center"
@@ -166,6 +169,9 @@ export default {
         { value: "organizes.name", label: "Nơi nhận" },
         { value: "linkTo.symbol", label: "Liên kết văn bản đến" }
       ];
+    },
+    highlightStyle(){
+      return 'font-weight-bold';
     }
   },
   methods: {
