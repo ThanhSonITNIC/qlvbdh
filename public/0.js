@@ -442,6 +442,12 @@ var resource = '/api/roles';
   },
   "delete": function _delete(id) {
     return axios["delete"]("".concat(resource, "/").concat(id));
+  },
+  givePermission: function givePermission(permission, id) {
+    return axios.post("".concat(resource, "/").concat(id, "/permissions/").concat(permission));
+  },
+  revokePermission: function revokePermission(permission, id) {
+    return axios["delete"]("".concat(resource, "/").concat(id, "/permissions/").concat(permission));
   }
 });
 

@@ -36,6 +36,7 @@
         :key="field.key"
         :value.sync="itemUpdating[field.key]"
       />
+      <slot v-if="!createMode" name="append-body"></slot>
       <template #footer>
         <CButton
           v-if="canCreate && createMode"
@@ -126,6 +127,7 @@ export default {
       this.loading = false;
     },
     showDetail(item) {
+      this.$emit("show", item);
       this.createMode = false;
       this.itemSelected = item;
       this.itemUpdating = _.clone(item);

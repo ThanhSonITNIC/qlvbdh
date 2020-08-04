@@ -15,5 +15,11 @@ export default {
     },
     delete(id){
         return axios.delete(`${resource}/${id}`)
-    }
+    },
+    givePermission(permission, id) {
+        return axios.post(`${resource}/${id}/permissions/${permission}`)
+    },
+    revokePermission(permission, id) {
+        return axios.delete(`${resource}/${id}/permissions/${permission}`)
+    },    
 }

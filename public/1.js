@@ -88,6 +88,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "List",
   props: {
@@ -164,6 +165,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     showDetail: function showDetail(item) {
+      this.$emit("show", item);
       this.createMode = false;
       this.itemSelected = item;
       this.itemUpdating = _.clone(item);
@@ -362,18 +364,22 @@ var render = function() {
             }
           ])
         },
-        _vm._l(_vm.fields, function(field) {
-          return _c("CInput", {
-            key: field.key,
-            attrs: { label: field.label, value: _vm.itemUpdating[field.key] },
-            on: {
-              "update:value": function($event) {
-                return _vm.$set(_vm.itemUpdating, field.key, $event)
+        [
+          _vm._l(_vm.fields, function(field) {
+            return _c("CInput", {
+              key: field.key,
+              attrs: { label: field.label, value: _vm.itemUpdating[field.key] },
+              on: {
+                "update:value": function($event) {
+                  return _vm.$set(_vm.itemUpdating, field.key, $event)
+                }
               }
-            }
-          })
-        }),
-        1
+            })
+          }),
+          _vm._v(" "),
+          !_vm.createMode ? _vm._t("append-body") : _vm._e()
+        ],
+        2
       )
     ],
     1
