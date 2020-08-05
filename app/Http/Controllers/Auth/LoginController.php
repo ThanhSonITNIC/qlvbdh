@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use \Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -42,6 +43,21 @@ class LoginController extends Controller
     protected function guard()
     {
         return Auth::guard('web');
+    }
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        if(filter_var($request->email, FILTER_VALIDATE_EMAIL)){
+            return $request->only($this->username(), 'password');
+        }
+        $request->merge(['id' => $request->email]);
+        return $request->only('id', 'password');
     }
 
 }

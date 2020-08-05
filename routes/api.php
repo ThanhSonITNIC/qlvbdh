@@ -67,12 +67,12 @@ Route::middleware('auth:sanctum', 'auth.active')->namespace('Api')->group(functi
 
 Route::post('/sanctum/token', function (Request $request) {
     $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-        'device_name' => 'required'
+        'email' => 'required|string',
+        'password' => 'required|string',
+        'device_name' => 'required|string'
     ]);
 
-    $user = \App\Entities\User::where('email', $request->email)->first();
+    $user = \App\Entities\User::where('email', $request->email)->orWhere('id', $request->email)->first();
 
     if (! $user || ! \Illuminate\Support\Facades\Hash::check($request->password, $user->password)) {
         throw \Illuminate\Validation\ValidationException::withMessages([

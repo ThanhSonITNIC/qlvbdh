@@ -8,7 +8,7 @@
               <CForm>
                 <h1 class="pb-4">Đăng nhập</h1>
                 <CAlert :show="!!error" color="warning">{{error}}</CAlert>
-                <CInput autocomplete="email" placeholder="Enter Email..." v-model="email" required>
+                <CInput autocomplete="email" placeholder="Email or Username..." v-model="email" required>
                   <template #prepend-content>
                     <CIcon name="cil-user" />
                   </template>

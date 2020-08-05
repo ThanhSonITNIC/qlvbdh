@@ -136,7 +136,7 @@ var render = function() {
                               _c("CInput", {
                                 attrs: {
                                   autocomplete: "email",
-                                  placeholder: "Enter Email...",
+                                  placeholder: "Email or Username...",
                                   required: ""
                                 },
                                 scopedSlots: _vm._u([
