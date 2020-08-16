@@ -350,7 +350,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var query = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
       var documentsResponse = _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.all({
         search: "symbol:".concat(query, ";book_id:1"),
-        searchJoin: and
+        searchJoin: "and"
       }).then(function (response) {
         var documents = _this3.formatKeys(response.data.data, {
           id: "id",

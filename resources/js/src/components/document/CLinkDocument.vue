@@ -110,7 +110,7 @@ export default {
     },
     fetchDocuments(query = "") {
       const documentsResponse = services.document
-        .all({ search: `symbol:${query};book_id:1`, searchJoin: and })
+        .all({ search: `symbol:${query};book_id:1`, searchJoin: "and" })
         .then(response => {
           const documents = this.formatKeys(response.data.data, {
             id: "id",

@@ -37,8 +37,9 @@ trait Attachmentable
     }
 
     protected function downloadAttachment(Attachment $attachment){
+        $response = Storage::download($attachment->path, $attachment->name);
         $attachment->increment('downloads');
-        return Storage::download($attachment->path, $attachment->name);
+        return $response;
     }
 
     protected function removeAttachment(Attachment $attachment){
