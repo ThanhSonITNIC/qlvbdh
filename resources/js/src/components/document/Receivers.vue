@@ -2,6 +2,7 @@
   <CCard>
     <CCardHeader>
       <strong>Người nhận</strong>
+      <CBadge color="success" class="float-right" v-c-tooltip="{content: 'Đã xem'}">{{seenReceivers.length}}</CBadge>
     </CCardHeader>
     <CCardBody>
       <CRow class="form-group">
@@ -14,7 +15,9 @@
             :multiple="true"
             :options="viewerOptions"
             :clearable="false"
-          ></treeselect>
+          >
+            <div slot="value-label" slot-scope="{ node }" :class="seenStyle(node.raw.id)">{{ node.raw.label }}</div>
+          </treeselect>
         </CCol>
         <!-- <CCol sm="6">
           <label>Chọn xử lý</label>
@@ -55,7 +58,8 @@ export default {
       handlers: [],
       // define options
       viewerOptions: [],
-      handlerOptions: []
+      handlerOptions: [],
+      seenReceivers: []
     };
   },
   watch: {
@@ -86,6 +90,7 @@ export default {
     async fetchViewers() {
       const receivers = await this.fetchReceivers();
       this.viewers = receivers.map(receiver => receiver.user_id);
+      this.seenReceivers = receivers.filter(receiver => receiver.seen).map(receiver => receiver.user_id);
       return receivers;
     },
     async fetchReceivers() {
@@ -171,6 +176,9 @@ export default {
         });
         return department;
       }, this);
+    },
+    seenStyle(userId){
+      return this.seenReceivers.includes(userId) ? "seen" : null;
     }
   },
   computed: {
@@ -190,3 +198,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .seen {
+    color: #2eb85c;
+  }
+</style>
