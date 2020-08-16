@@ -42,13 +42,15 @@ export default {
       fields: [
         { key: "name", label: "Tên", _classes: "w-50" },
         { key: "size", label: "Kích thước (KB)" },
+        { key: "downloads", label: "Lượt tải" },
         { key: "id", label: "Hành động" }
       ],
       attachments: [
         {
           id: "",
           name: "",
-          size: ""
+          size: 0,
+          downloads: 0
         }
       ],
       file: {}
@@ -82,6 +84,7 @@ export default {
       services.attachment
         .download(item.id, item.name)
         .then(response => {
+          item.downloads++;
           this.$toast.success("Đã tải xuống");
         })
         .catch(error => {
@@ -114,6 +117,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response.data);
           this.attachments.push(response.data);
           this.$toast.success("Đã tải lên");
         })

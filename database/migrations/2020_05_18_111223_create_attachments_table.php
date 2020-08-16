@@ -22,6 +22,7 @@ class CreateAttachmentsTable extends Migration
 			$table->string('extension');
 			$table->decimal('size', 5, 2);
 			$table->text('path');
+			$table->unsignedInteger('downloads')->default(0);
 			$table->timestamps();
 			
 			$table->foreign('document_id')

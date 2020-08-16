@@ -27,6 +27,7 @@ class Attachment extends Model implements Transformable
         'extension',
         'size',
         'path',
+        'downloads',
     ];
 
     /**
@@ -43,6 +44,7 @@ class Attachment extends Model implements Transformable
      */
     protected $casts = [
         'size' => 'decimal:2',
+        'downloads' => 'integer'
     ];
 
     public function document(){

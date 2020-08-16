@@ -22,6 +22,7 @@ trait Attachmentable
             'extension' => $file->getClientOriginalExtension(),
             'size' => Storage::size($path) / 100000,
             'path' => $path,
+            'downloads' => 0,
         ]);
     }
 
@@ -36,6 +37,7 @@ trait Attachmentable
     }
 
     protected function downloadAttachment(Attachment $attachment){
+        $attachment->increment('downloads');
         return Storage::download($attachment->path, $attachment->name);
     }
 
