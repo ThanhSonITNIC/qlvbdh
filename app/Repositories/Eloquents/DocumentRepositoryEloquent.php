@@ -31,16 +31,9 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
         'link_id' => '=',
 
         'attachments.id' => '=',
-        'attachments.document_id' => '=',
-        'attachments.name' => 'like',
-        'attachments.extension' => '=',
-        'attachments.size' => '=',
-        'attachments.path' => 'like',
 
         'receivers.id' => '=',
-        'receivers.user_id' => '=',
-        'receivers.document_id' => '=',
-        'receivers.seen' => '=',
+        'receivers.email' => '=',
 
         'organizes.id' => '=',
         'organizes.name' => 'like',
@@ -61,11 +54,8 @@ class DocumentRepositoryEloquent extends BaseRepository implements DocumentRepos
         'creator.id' => '=',
         'creator.name' => 'like',
         'creator.email' => '=',
-        'creator.tel' => '=',
-        'creator.birthday' => '=',
         'creator.department_id' => '=',
         'creator.title_id' => '=',
-        'creator.active' => '=',
 
         'linkTo.id' => '=',
         'linkTo.symbol' => 'like',

@@ -57,6 +57,8 @@ class PermissionSeeder extends Seeder
             'Quản lý người ký',
             'Quản lý nơi ban hành',
             'Phân quyền',
+            'Quản lý quyền',
+            'Quản lý nhóm',
             'Báo cáo thống kê',
             'Quản lý văn bản đến',
             'Quản lý văn bản đi',

@@ -15,5 +15,29 @@ export default {
     },
     delete(id){
         return axios.delete(`${resource}/${id}`)
-    }
+    },
+    assignReceivers(id, receiverIds){
+        return this.update({
+            action: 'attach',
+            params: JSON.stringify(["receivers", ...receiverIds])
+        }, id);
+    },
+    unassignReceivers(id, receiverIds){
+        return this.update({
+            action: 'detach',
+            params: JSON.stringify(["receivers", ...receiverIds])
+        }, id);
+    },
+    assignRecipients(id, organizeIds){
+        return this.update({
+            action: 'attach',
+            params: JSON.stringify(["organizes", ...organizeIds])
+        }, id);
+    },
+    unassignRecipients(id, organizeIds){
+        return this.update({
+            action: 'detach',
+            params: JSON.stringify(["organizes", ...organizeIds])
+        }, id);
+    },
 }

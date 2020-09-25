@@ -10,8 +10,6 @@ import document from "./document";
 import signer from "./signer";
 import publisher from "./publisher";
 import attachment from "./attachment";
-import receiver from "./receiver";
-import recipient from "./recipient";
 import statistic from "./statistic";
 
 export default {
@@ -27,7 +25,5 @@ export default {
     signer,
     publisher,
     attachment,
-    receiver,
-    recipient,
     statistic,
 }

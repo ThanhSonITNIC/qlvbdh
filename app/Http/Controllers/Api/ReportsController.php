@@ -10,11 +10,11 @@ use App\Http\Requests\Document\{
 };
 
 /**
- * Class ReportsControlle.
+ * Class ReportsController.
  *
  * @package namespace App\Http\Controllers\Api;
  */
-class ReportsControlle extends Controller
+class ReportsController extends Controller
 {
     /**
      * @var DocumentRepository
@@ -27,7 +27,7 @@ class ReportsControlle extends Controller
     protected $bookRepository;
 
     /**
-     * ReportsControlle constructor.
+     * ReportsController constructor.
      *
      * @param DocumentRepository $repository
      */
@@ -67,7 +67,7 @@ class ReportsControlle extends Controller
                 }
 
                 $query
-                ->with(['receivers.user', 'publisher', 'organizes'])
+                ->with(['receivers', 'publisher', 'organizes'])
                 ->orderBy('effective_at')
                 ->orderBy('publisher_id');
 

@@ -69,30 +69,22 @@ export default {
       return organizes;
     },
     async fetchRecipients() {
-      const recipientResponse = await services.recipient.all({
-        search: `document_id:${this.documentId}`
+      const recipientResponse = await services.document.get(this.documentId , {
+        with: 'organizes'
       });
-      this.organizes = recipientResponse.data.map(
-        recipient => recipient.organize_id
-      );
+      this.organizes = recipientResponse.data.organizes.map(organize => organize.id);
       return recipientResponse;
     },
     addRecipient(item) {
-      services.recipient
-        .create({
-          organize_id: item.id,
-          document_id: this.documentId
-        })
+      services.document
+        .assignRecipients(this.documentId, [item.id])
         .catch(error => {
           this.toastHttpError(error);
         });
     },
     removeRecipient(item) {
-      services.recipient
-        .deletes({
-          document_id: this.documentId,
-          organize_id: item.id
-        })
+      services.document
+        .unassignRecipients(this.documentId, [item.id])
         .catch(error => {
           this.toastHttpError(error);
         });

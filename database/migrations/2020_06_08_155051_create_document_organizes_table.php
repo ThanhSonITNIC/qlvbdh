@@ -16,11 +16,10 @@ class CreateDocumentOrganizesTable extends Migration
 	public function up()
 	{
 		Schema::create('document_organizes', function(Blueprint $table) {
-            $table->increments('id');
 			$table->unsignedInteger('document_id');
 			$table->string('organize_id', 30);
 
-			$table->unique(['document_id', 'organize_id']);
+			$table->primary(['document_id', 'organize_id']);
 			$table->foreign('document_id')
 				->references('id')
 				->on('documents')

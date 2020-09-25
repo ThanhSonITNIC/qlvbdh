@@ -90,7 +90,7 @@ class DocumentsController extends Controller
      */
     public function update(UpdateRequest $request, $id)
     {
-        $data = $this->repository->update($request->except('creator_id'), $id);
+        $data = $this->gateAction($this->repository, $request, $id) ?: $this->repository->update($request->except('creator_id'), $id);
         return $this->respond($data);
     }
 

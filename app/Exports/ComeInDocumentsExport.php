@@ -27,7 +27,7 @@ class ComeInDocumentsExport extends BaseDocumentsExport
             $document->type->name,
             $document->abstract,
             implode(', ', ($document->receivers->map(function($receiver){
-                return $receiver->user->name;
+                return $receiver->name;
             }))->toArray()),
         ];
     }

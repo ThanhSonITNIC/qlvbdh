@@ -14,6 +14,7 @@ use Prettus\Repository\Traits\TransformableTrait;
 class Document extends Model implements Transformable
 {
     use TransformableTrait;
+    use \App\Traits\ActionCallable;
 
     /**
      * The attributes that are mass assignable.
@@ -45,11 +46,11 @@ class Document extends Model implements Transformable
     ];
 
     public function receivers(){
-        return $this->hasMany(DocumentReceiver::class);
+        return $this->belongsToMany(User::class, 'document_receivers')->withPivot(['seen']);;
     }
 
     public function organizes(){
-        return $this->belongsToMany(Organize::class, DocumentOrganize::class);
+        return $this->belongsToMany(Organize::class, 'document_organizes');
     }
 
     public function type(){
@@ -89,9 +90,9 @@ class Document extends Model implements Transformable
     }
 
     public function getSeenAttribute(){
-        $receiver = $this->receivers()->where('user_id', auth()->id())->first();
+        $receiver = $this->receivers()->where('id', auth()->id())->first();
         if($receiver){
-            return $receiver->seen;
+            return $receiver->pivot->seen;
         }
         return true;
     }

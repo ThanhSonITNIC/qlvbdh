@@ -16,13 +16,12 @@ class CreateDocumentReceiversTable extends Migration
 	public function up()
 	{
 		Schema::create('document_receivers', function(Blueprint $table) {
-            $table->increments('id');
 			$table->string('user_id', 20);
 			$table->unsignedInteger('document_id');
 			$table->boolean('seen')->default(false);
             $table->timestamps();
 		
-			$table->unique(['user_id', 'document_id']);
+			$table->primary(['user_id', 'document_id']);
 			$table->foreign('user_id')
 				->references('id')
 				->on('users')

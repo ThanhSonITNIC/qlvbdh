@@ -13,7 +13,7 @@
             :options="documents"
             @search-change="fetchDocuments"
             @select="linkTo"
-            @deselect="unLinkTo"
+            @input="unLinkTo"
           >
             <div
               slot="option-label"
@@ -110,7 +110,7 @@ export default {
     },
     fetchDocuments(query = "") {
       const documentsResponse = services.document
-        .all({ search: `symbol:${query};book_id:1`, searchJoin: "and" })
+        .all({ search: `symbol:${query};book_id:1`, searchJoin: "and", orderBy: "created_at", sortedBy: "desc", })
         .then(response => {
           const documents = this.formatKeys(response.data.data, {
             id: "id",
@@ -140,12 +140,14 @@ export default {
           this.toastHttpError(error);
         });
     },
-    unLinkTo() {
-      services.document
-        .update({ link_id: null }, this.documentId)
-        .catch(error => {
-          this.toastHttpError(error);
-        });
+    unLinkTo(document) {
+      if(document === undefined){
+        services.document
+          .update({ link_id: null }, this.documentId)
+          .catch(error => {
+            this.toastHttpError(error);
+          });
+      }
     },
     redirectToDocument(id) {
       this.$emit("redirectTo", id);

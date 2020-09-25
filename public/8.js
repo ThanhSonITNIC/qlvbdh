@@ -161,8 +161,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           "Content-Type": "multipart/form-data"
         }
       }).then(function (response) {
-        console.log(response.data);
-
         _this4.attachments.push(response.data);
 
         _this4.$toast.success("Đã tải lên");
@@ -350,7 +348,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var query = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
       var documentsResponse = _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.all({
         search: "symbol:".concat(query, ";book_id:1"),
-        searchJoin: "and"
+        searchJoin: "and",
+        orderBy: "created_at",
+        sortedBy: "desc"
       }).then(function (response) {
         var documents = _this3.formatKeys(response.data.data, {
           id: "id",
@@ -421,14 +421,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this5.toastHttpError(error);
       });
     },
-    unLinkTo: function unLinkTo() {
+    unLinkTo: function unLinkTo(document) {
       var _this6 = this;
 
-      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.update({
-        link_id: null
-      }, this.documentId)["catch"](function (error) {
-        _this6.toastHttpError(error);
-      });
+      if (document === undefined) {
+        _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.update({
+          link_id: null
+        }, this.documentId)["catch"](function (error) {
+          _this6.toastHttpError(error);
+        });
+      }
     },
     redirectToDocument: function redirectToDocument(id) {
       this.$emit("redirectTo", id);
@@ -456,17 +458,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_riophae_vue_treeselect_dist_vue_treeselect_css__WEBPACK_IMPORTED_MODULE_3__);
 
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
 //
 //
 //
@@ -522,10 +519,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       // define the default value
       viewers: [],
-      handlers: [],
       // define options
       viewerOptions: [],
-      handlerOptions: [],
       seenReceivers: []
     };
   },
@@ -548,7 +543,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _this.fetchDepartments(), _this.fetchViewers(), _this.fetchHandlers();
+                _this.fetchDepartments(), _this.fetchViewers();
 
               case 1:
               case "end":
@@ -574,11 +569,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 departmentResponse = _context2.sent;
-                departments = _this2.formatKeys(departmentResponse.data, {
-                  id: "id",
-                  name: "label"
-                });
-                _this2.viewerOptions = _this2.formatDepartmentForTree(departments);
+                departments = departmentResponse.data;
+                _this2.viewerOptions = departments;
                 return _context2.abrupt("return", departments);
 
               case 6:
@@ -604,12 +596,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 receivers = _context3.sent;
                 _this3.viewers = receivers.map(function (receiver) {
-                  return receiver.user_id;
+                  return receiver.id;
                 });
                 _this3.seenReceivers = receivers.filter(function (receiver) {
-                  return receiver.seen;
+                  return receiver.pivot.seen;
                 }).map(function (receiver) {
-                  return receiver.user_id;
+                  return receiver.id;
                 });
                 return _context3.abrupt("return", receivers);
 
@@ -631,11 +623,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].receiver.all(_this4.viewerQuery);
+                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.get(_this4.documentId, {
+                  "with": "receivers"
+                });
 
               case 2:
                 receiversResponse = _context4.sent;
-                receivers = _this4.formatReceiverForTree(receiversResponse.data);
+                receivers = receiversResponse.data.receivers;
                 _this4.handlerOptions = receivers;
                 return _context4.abrupt("return", receivers);
 
@@ -647,120 +641,48 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    fetchHandlers: function fetchHandlers() {
+    removeViewer: function removeViewer(item) {
       var _this5 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var handleReceiversResponse, handleReceivers;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                _context5.next = 2;
-                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].receiver.all(_this5.hanlderQuery);
+      var viewerIds = [item.id];
 
-              case 2:
-                handleReceiversResponse = _context5.sent;
-                handleReceivers = _this5.formatReceiverForTree(handleReceiversResponse.data);
-                _this5.handlers = handleReceivers.map(function (receiver) {
-                  return receiver.id;
-                });
-                return _context5.abrupt("return", handleReceivers);
+      if (item.users) {
+        viewerIds = item.users.map(function (u) {
+          return u.id;
+        });
+      }
 
-              case 6:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5);
-      }))();
+      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.unassignReceivers(this.documentId, viewerIds).then(function (response) {
+        _this5.fetchReceivers();
+      })["catch"](function (error) {
+        _this5.toastHttpError(error);
+      });
     },
-    removeViewer: function removeViewer(item) {
+    addViewer: function addViewer(item) {
       var _this6 = this;
 
-      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].receiver.deletes(_defineProperty({
-        document_id: this.documentId
-      }, item.children ? "department_id" : "user_id", item.id)).then(function (response) {
-        _this6.fetchReceivers();
+      var viewerIds = [item.id];
 
-        _this6.fetchHandlers();
+      if (item.users) {
+        viewerIds = item.users.map(function (u) {
+          return u.id;
+        });
+      }
+
+      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.assignReceivers(this.documentId, viewerIds).then(function (response) {
+        _this6.fetchReceivers();
       })["catch"](function (error) {
         _this6.toastHttpError(error);
       });
     },
-    addViewer: function addViewer(item) {
-      var _this7 = this;
-
-      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].receiver.creates(_objectSpread(_objectSpread({}, _defineProperty({}, item.children ? "department_id" : "user_id", item.id)), {}, {
-        document_id: this.documentId
-      })).then(function (response) {
-        _this7.fetchReceivers();
-      })["catch"](function (error) {
-        _this7.toastHttpError(error);
-      });
-    },
-    onHandlerDeselected: function onHandlerDeselected(item) {
-      var _this8 = this;
-
-      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].receiver.update({
-        view_only: true
-      }, item.id)["catch"](function (error) {
-        _this8.toastHttpError(error);
-      });
-    },
-    onHandlerSelected: function onHandlerSelected(item) {
-      var _this9 = this;
-
-      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].receiver.update({
-        view_only: false
-      }, item.id)["catch"](function (error) {
-        _this9.toastHttpError(error);
-      });
-    },
-    formatReceiverForTree: function formatReceiverForTree(array) {
-      var keysMap = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-        id: "id"
-      };
-      return array.map(function (obj) {
-        var receiver = Object.keys(obj).reduce(function (acc, key) {
-          return _objectSpread(_objectSpread({}, acc), _defineProperty({}, keysMap[key] || key, obj[key]));
-        }, {});
-        receiver.label = receiver.user.name;
-        return receiver;
-      });
-    },
-    formatDepartmentForTree: function formatDepartmentForTree(array) {
-      var keysMap = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-        users: "children"
-      };
-      return array.map(function (obj) {
-        var department = Object.keys(obj).reduce(function (acc, key) {
-          return _objectSpread(_objectSpread({}, acc), _defineProperty({}, keysMap[key] || key, obj[key]));
-        }, {});
-        department.children = this.formatKeys(department.children, {
-          id: "id",
-          name: "label"
-        });
-        return department;
-      }, this);
-    },
     seenStyle: function seenStyle(userId) {
       return this.seenReceivers.includes(userId) ? "seen" : null;
-    }
-  },
-  computed: {
-    viewerQuery: function viewerQuery() {
-      return {
-        search: "document_id:".concat(this.documentId),
-        "with": "user"
-      };
     },
-    hanlderQuery: function hanlderQuery() {
-      return {
-        search: "document_id:".concat(this.documentId, ";view_only:false"),
-        "with": "user",
-        searchJoin: "and"
-      };
+    normalizer: function normalizer(node) {
+      return _defineProperty({
+        id: node.id,
+        label: node.name
+      }, node.users == undefined ? "" : node.users.length > 0 ? "children" : "", node.users);
     }
   }
 });
@@ -904,14 +826,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].recipient.all({
-                  search: "document_id:".concat(_this3.documentId)
+                return _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.get(_this3.documentId, {
+                  "with": 'organizes'
                 });
 
               case 2:
                 recipientResponse = _context3.sent;
-                _this3.organizes = recipientResponse.data.map(function (recipient) {
-                  return recipient.organize_id;
+                _this3.organizes = recipientResponse.data.organizes.map(function (organize) {
+                  return organize.id;
                 });
                 return _context3.abrupt("return", recipientResponse);
 
@@ -926,20 +848,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     addRecipient: function addRecipient(item) {
       var _this4 = this;
 
-      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].recipient.create({
-        organize_id: item.id,
-        document_id: this.documentId
-      })["catch"](function (error) {
+      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.assignRecipients(this.documentId, [item.id])["catch"](function (error) {
         _this4.toastHttpError(error);
       });
     },
     removeRecipient: function removeRecipient(item) {
       var _this5 = this;
 
-      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].recipient.deletes({
-        document_id: this.documentId,
-        organize_id: item.id
-      })["catch"](function (error) {
+      _services_factory__WEBPACK_IMPORTED_MODULE_1__["default"].document.unassignRecipients(this.documentId, [item.id])["catch"](function (error) {
         _this5.toastHttpError(error);
       });
     }
@@ -1086,7 +1002,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.seen[data-v-4c19f920] {\n  color: #2eb85c;\n}\n", ""]);
+exports.push([module.i, "\n.seen[data-v-4c19f920] {\r\n  color: #2eb85c;\n}\r\n", ""]);
 
 // exports
 
@@ -1267,7 +1183,7 @@ var render = function() {
                         on: {
                           "search-change": _vm.fetchDocuments,
                           select: _vm.linkTo,
-                          deselect: _vm.unLinkTo
+                          input: _vm.unLinkTo
                         },
                         scopedSlots: _vm._u(
                           [
@@ -1398,7 +1314,7 @@ var render = function() {
                   name: "c-tooltip",
                   rawName: "v-c-tooltip",
                   value: { content: "Đã xem" },
-                  expression: "{content: 'Đã xem'}"
+                  expression: "{ content: 'Đã xem' }"
                 }
               ],
               staticClass: "float-right",
@@ -1423,6 +1339,7 @@ var render = function() {
                 [
                   _c("treeselect", {
                     attrs: {
+                      normalizer: _vm.normalizer,
                       multiple: true,
                       options: _vm.viewerOptions,
                       clearable: false
@@ -1436,7 +1353,7 @@ var render = function() {
                           return _c(
                             "div",
                             { class: _vm.seenStyle(node.raw.id) },
-                            [_vm._v(_vm._s(node.raw.label))]
+                            [_vm._v(_vm._s(node.raw.name))]
                           )
                         }
                       }

@@ -117,7 +117,6 @@ export default {
           }
         })
         .then(response => {
-          console.log(response.data);
           this.attachments.push(response.data);
           this.$toast.success("Đã tải lên");
         })

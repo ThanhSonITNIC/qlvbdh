@@ -27,16 +27,9 @@ Route::middleware('auth:sanctum', 'auth.active')->namespace('Api')->group(functi
     Route::apiResource('roles', 'RolesController');
     Route::apiResource('permissions', 'PermissionsController');
 
-    Route::apiResource('document-organizes', 'DocumentOrganizesController');
-    Route::delete('document-organizes-m', 'DocumentOrganizesController@destroys');
-
-    Route::apiResource('document-receivers', 'DocumentReceiversController');
-    Route::post('document-receivers-m', 'DocumentReceiversController@stores');
-    Route::delete('document-receivers-m', 'DocumentReceiversController@destroys');
-    
     Route::get('download/attachments/{attachment}', 'AttachmentsController@download');
 
-    Route::get('statistic', 'ReportsControlle@export');
+    Route::get('statistic', 'ReportsController@export');
 
     Route::post('roles/{role}/permissions/{permission}', 'RolesController@givePermission');
     Route::delete('roles/{role}/permissions/{permission}', 'RolesController@revokePermission');

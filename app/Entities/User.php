@@ -15,6 +15,7 @@ use Prettus\Repository\Traits\TransformableTrait;
 class User extends Authenticatable implements Transformable, CanResetPassword
 {
     use HasApiTokens, Notifiable, HasRoles, CanResetPasswordTrait, TransformableTrait;
+    use \App\Traits\ActionCallable;
 
     /**
      * The attributes that are mass assignable.
@@ -78,7 +79,7 @@ class User extends Authenticatable implements Transformable, CanResetPassword
     }
 
     public function receivedDocuments(){
-        return $this->belongsToMany(Document::class, DocumentReceiver::class);
+        return $this->belongsToMany(Document::class, 'document_receivers');
     }
 
     public function getDocumentsAttribute(){

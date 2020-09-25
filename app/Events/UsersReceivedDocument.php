@@ -11,20 +11,22 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use App\Entities\Document;
 
-class UserViewedDocument
+class UsersReceivedDocument
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $document;
+    public $users;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Document $document)
+    public function __construct(Document $document, $users)
     {
         $this->document = $document;
+        $this->users = $users;
     }
 
     /**

@@ -49,14 +49,14 @@ class Book extends Model implements Transformable
     public function getUnreadAttribute(){
         return $this->documents()
                     ->wherehas('receivers', function($query) { 
-                        return $query->where('user_id', auth()->id())->where('seen', false);
+                        return $query->where('id', auth()->id())->where('seen', false);
                     })->count();
     }
 
     public function getCountAttribute(){
         return $this->documents()
                     ->wherehas('receivers', function($query) { 
-                        return $query->where('user_id', auth()->id());
+                        return $query->where('id', auth()->id());
                     })->count();
     }
 

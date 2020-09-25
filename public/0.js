@@ -130,6 +130,18 @@ var resource = '/api/departments';
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 var resource = '/api/documents';
 /* harmony default export */ __webpack_exports__["default"] = ({
   all: function all() {
@@ -152,6 +164,30 @@ var resource = '/api/documents';
   },
   "delete": function _delete(id) {
     return axios["delete"]("".concat(resource, "/").concat(id));
+  },
+  assignReceivers: function assignReceivers(id, receiverIds) {
+    return this.update({
+      action: 'attach',
+      params: JSON.stringify(["receivers"].concat(_toConsumableArray(receiverIds)))
+    }, id);
+  },
+  unassignReceivers: function unassignReceivers(id, receiverIds) {
+    return this.update({
+      action: 'detach',
+      params: JSON.stringify(["receivers"].concat(_toConsumableArray(receiverIds)))
+    }, id);
+  },
+  assignRecipients: function assignRecipients(id, organizeIds) {
+    return this.update({
+      action: 'attach',
+      params: JSON.stringify(["organizes"].concat(_toConsumableArray(organizeIds)))
+    }, id);
+  },
+  unassignRecipients: function unassignRecipients(id, organizeIds) {
+    return this.update({
+      action: 'detach',
+      params: JSON.stringify(["organizes"].concat(_toConsumableArray(organizeIds)))
+    }, id);
   }
 });
 
@@ -214,11 +250,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _signer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./signer */ "./resources/js/src/services/signer.js");
 /* harmony import */ var _publisher__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./publisher */ "./resources/js/src/services/publisher.js");
 /* harmony import */ var _attachment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./attachment */ "./resources/js/src/services/attachment.js");
-/* harmony import */ var _receiver__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./receiver */ "./resources/js/src/services/receiver.js");
-/* harmony import */ var _recipient__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./recipient */ "./resources/js/src/services/recipient.js");
-/* harmony import */ var _statistic__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./statistic */ "./resources/js/src/services/statistic.js");
-
-
+/* harmony import */ var _statistic__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./statistic */ "./resources/js/src/services/statistic.js");
 
 
 
@@ -245,9 +277,7 @@ __webpack_require__.r(__webpack_exports__);
   signer: _signer__WEBPACK_IMPORTED_MODULE_9__["default"],
   publisher: _publisher__WEBPACK_IMPORTED_MODULE_10__["default"],
   attachment: _attachment__WEBPACK_IMPORTED_MODULE_11__["default"],
-  receiver: _receiver__WEBPACK_IMPORTED_MODULE_12__["default"],
-  recipient: _recipient__WEBPACK_IMPORTED_MODULE_13__["default"],
-  statistic: _statistic__WEBPACK_IMPORTED_MODULE_14__["default"]
+  statistic: _statistic__WEBPACK_IMPORTED_MODULE_12__["default"]
 });
 
 /***/ }),
@@ -319,93 +349,6 @@ var resource = '/api/organizes';
   },
   "delete": function _delete(id) {
     return axios["delete"]("".concat(resource, "/").concat(id));
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/js/src/services/receiver.js":
-/*!***********************************************!*\
-  !*** ./resources/js/src/services/receiver.js ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var resource = '/api/document-receivers';
-/* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all() {
-    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    return axios.get("".concat(resource), {
-      params: params
-    });
-  },
-  get: function get(id) {
-    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-    return axios.get("".concat(resource, "/").concat(id), {
-      params: params
-    });
-  },
-  create: function create(data) {
-    return axios.post("".concat(resource), data);
-  },
-  update: function update(data, id) {
-    return axios.put("".concat(resource, "/").concat(id), data);
-  },
-  "delete": function _delete(id) {
-    return axios["delete"]("".concat(resource, "/").concat(id));
-  },
-  creates: function creates(data) {
-    return data.user_id ? this.create(data) : axios.post("".concat(resource, "-m"), data);
-  },
-  deletes: function deletes() {
-    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    return axios["delete"]("".concat(resource, "-m"), {
-      params: params
-    });
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/js/src/services/recipient.js":
-/*!************************************************!*\
-  !*** ./resources/js/src/services/recipient.js ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var resource = '/api/document-organizes';
-/* harmony default export */ __webpack_exports__["default"] = ({
-  all: function all() {
-    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    return axios.get("".concat(resource), {
-      params: params
-    });
-  },
-  get: function get(id) {
-    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-    return axios.get("".concat(resource, "/").concat(id), {
-      params: params
-    });
-  },
-  create: function create(data) {
-    return axios.post("".concat(resource), data);
-  },
-  update: function update(data, id) {
-    return axios.put("".concat(resource, "/").concat(id), data);
-  },
-  "delete": function _delete(id) {
-    return axios["delete"]("".concat(resource, "/").concat(id));
-  },
-  deletes: function deletes() {
-    var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    return axios["delete"]("".concat(resource, "-m"), {
-      params: params
-    });
   }
 });
 

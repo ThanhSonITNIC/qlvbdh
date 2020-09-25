@@ -6,8 +6,14 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
-use App\Events\UserViewedDocument;
-use App\Listeners\UpdateReceiverToSeen;
+use App\Events\{
+    UserViewedDocument,
+    UsersReceivedDocument,
+};
+use App\Listeners\{
+    UpdateReceiverToSeen,
+    NotifyDocumentReceivedToUsers,
+};
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -23,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
         UserViewedDocument::class => [
             UpdateReceiverToSeen::class,
         ],
+        UsersReceivedDocument::class => [
+            NotifyDocumentReceivedToUsers::class,
+        ],
     ];
 
     /**
@@ -34,7 +43,6 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        \App\Entities\DocumentReceiver::observe(\App\Observers\ReceiverObserver::class);
         \App\Entities\User::observe(\App\Observers\UserObserver::class);
     }
 }

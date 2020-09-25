@@ -2,7 +2,12 @@
   <CCard>
     <CCardHeader>
       <strong>Người nhận</strong>
-      <CBadge color="success" class="float-right" v-c-tooltip="{content: 'Đã xem'}">{{seenReceivers.length}}</CBadge>
+      <CBadge
+        color="success"
+        class="float-right"
+        v-c-tooltip="{ content: 'Đã xem' }"
+        >{{ seenReceivers.length }}</CBadge
+      >
     </CCardHeader>
     <CCardBody>
       <CRow class="form-group">
@@ -11,25 +16,19 @@
           <treeselect
             @select="addViewer"
             @deselect="removeViewer"
+            :normalizer="normalizer"
             v-model="viewers"
             :multiple="true"
             :options="viewerOptions"
             :clearable="false"
           >
-            <div slot="value-label" slot-scope="{ node }" :class="seenStyle(node.raw.id)">{{ node.raw.label }}</div>
+            <div
+              slot="value-label"
+              slot-scope="{ node }"
+              :class="seenStyle(node.raw.id)"
+            >{{ node.raw.name }}</div>
           </treeselect>
         </CCol>
-        <!-- <CCol sm="6">
-          <label>Chọn xử lý</label>
-          <treeselect
-            @select="onHandlerSelected"
-            @deselect="onHandlerDeselected"
-            v-model="handlers"
-            :multiple="true"
-            :options="handlerOptions"
-            :clearable="false"
-          ></treeselect>
-        </CCol>-->
       </CRow>
     </CCardBody>
   </CCard>
@@ -47,160 +46,105 @@ export default {
   name: "Receivers",
   props: {
     documentId: {
-      required: true
-    }
+      required: true,
+    },
   },
   components: { Treeselect },
   data() {
     return {
       // define the default value
       viewers: [],
-      handlers: [],
       // define options
       viewerOptions: [],
-      handlerOptions: [],
-      seenReceivers: []
+      seenReceivers: [],
     };
   },
   watch: {
     documentId: {
       handler() {
         this.init();
-      }
-    }
+      },
+    },
   },
   created() {
     this.init();
   },
   methods: {
     async init() {
-      this.fetchDepartments(), this.fetchViewers(), this.fetchHandlers();
+      this.fetchDepartments(), this.fetchViewers();
     },
     async fetchDepartments() {
       const departmentResponse = await services.department.all({
-        with: "users"
+        with: "users",
       });
-      const departments = this.formatKeys(departmentResponse.data, {
-        id: "id",
-        name: "label"
-      });
-      this.viewerOptions = this.formatDepartmentForTree(departments);
+      const departments = departmentResponse.data;
+      this.viewerOptions = departments;
       return departments;
     },
     async fetchViewers() {
       const receivers = await this.fetchReceivers();
-      this.viewers = receivers.map(receiver => receiver.user_id);
-      this.seenReceivers = receivers.filter(receiver => receiver.seen).map(receiver => receiver.user_id);
+      this.viewers = receivers.map((receiver) => receiver.id);
+      this.seenReceivers = receivers
+        .filter((receiver) => receiver.pivot.seen)
+        .map((receiver) => receiver.id);
       return receivers;
     },
     async fetchReceivers() {
-      const receiversResponse = await services.receiver.all(this.viewerQuery);
-      const receivers = this.formatReceiverForTree(receiversResponse.data);
+      const receiversResponse = await services.document.get(this.documentId, {
+        with: "receivers",
+      });
+      const receivers = receiversResponse.data.receivers;
       this.handlerOptions = receivers;
       return receivers;
     },
-    async fetchHandlers() {
-      const handleReceiversResponse = await services.receiver.all(
-        this.hanlderQuery
-      );
-      const handleReceivers = this.formatReceiverForTree(
-        handleReceiversResponse.data
-      );
-
-      this.handlers = handleReceivers.map(receiver => receiver.id);
-
-      return handleReceivers;
-    },
     removeViewer(item) {
-      services.receiver
-        .deletes({
-          document_id: this.documentId,
-          [item.children ? "department_id" : "user_id"]: item.id
-        })
-        .then(response => {
+      var viewerIds = [item.id];
+      if(item.users){
+        viewerIds = item.users.map(u => u.id)
+      }
+      services.document
+        .unassignReceivers(this.documentId, viewerIds)
+        .then((response) => {
           this.fetchReceivers();
-          this.fetchHandlers();
         })
-        .catch(error => {
+        .catch((error) => {
           this.toastHttpError(error);
         });
     },
     addViewer(item) {
-      services.receiver
-        .creates({
-          ...{ [item.children ? "department_id" : "user_id"]: item.id },
-          document_id: this.documentId
-        })
-        .then(response => {
+      var viewerIds = [item.id];
+      if(item.users){
+        viewerIds = item.users.map(u => u.id)
+      }
+      services.document
+        .assignReceivers(this.documentId, viewerIds)
+        .then((response) => {
           this.fetchReceivers();
         })
-        .catch(error => {
+        .catch((error) => {
           this.toastHttpError(error);
         });
     },
-    onHandlerDeselected(item) {
-      services.receiver.update({ view_only: true }, item.id).catch(error => {
-        this.toastHttpError(error);
-      });
-    },
-    onHandlerSelected(item) {
-      services.receiver.update({ view_only: false }, item.id).catch(error => {
-        this.toastHttpError(error);
-      });
-    },
-    formatReceiverForTree(array, keysMap = { id: "id" }) {
-      return array.map(function(obj) {
-        const receiver = Object.keys(obj).reduce(
-          (acc, key) => ({
-            ...acc,
-            ...{ [keysMap[key] || key]: obj[key] }
-          }),
-          {}
-        );
-        receiver.label = receiver.user.name;
-        return receiver;
-      });
-    },
-    formatDepartmentForTree(array, keysMap = { users: "children" }) {
-      return array.map(function(obj) {
-        const department = Object.keys(obj).reduce(
-          (acc, key) => ({
-            ...acc,
-            ...{ [keysMap[key] || key]: obj[key] }
-          }),
-          {}
-        );
-        department.children = this.formatKeys(department.children, {
-          id: "id",
-          name: "label"
-        });
-        return department;
-      }, this);
-    },
-    seenStyle(userId){
+    seenStyle(userId) {
       return this.seenReceivers.includes(userId) ? "seen" : null;
-    }
-  },
-  computed: {
-    viewerQuery() {
+    },
+    normalizer(node) {
       return {
-        search: `document_id:${this.documentId}`,
-        with: "user"
+        id: node.id,
+        label: node.name,
+        [node.users == undefined
+          ? ""
+          : node.users.length > 0
+          ? "children"
+          : ""]: node.users,
       };
     },
-    hanlderQuery() {
-      return {
-        search: `document_id:${this.documentId};view_only:false`,
-        with: "user",
-        searchJoin: "and"
-      };
-    }
-  }
+  },
 };
 </script>
 
 <style scoped>
-  .seen {
-    color: #2eb85c;
-  }
+.seen {
+  color: #2eb85c;
+}
 </style>

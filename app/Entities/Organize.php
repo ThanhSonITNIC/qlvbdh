@@ -14,6 +14,7 @@ use Prettus\Repository\Traits\TransformableTrait;
 class Organize extends Model implements Transformable
 {
     use TransformableTrait;
+    use \App\Traits\ActionCallable;
 
     /**
      * The attributes that are mass assignable.
@@ -33,7 +34,7 @@ class Organize extends Model implements Transformable
     }
 
     public function receivedDocuments(){
-        return $this->belongsToMany(Document::class, DocumentOrganize::class);
+        return $this->belongsToMany(Document::class, 'document_organizes');
     }
 
 }

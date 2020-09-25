@@ -25,8 +25,8 @@ class UpdateReceiverToSeen
      */
     public function handle($event)
     {
-        if($event->receiver){
-            $event->receiver->update(['seen' => true]);
+        if($event->document){
+            auth()->user()->receivedDocuments()->updateExistingPivot($event->document->id, ['seen' => true]);
         }
     }
 }
